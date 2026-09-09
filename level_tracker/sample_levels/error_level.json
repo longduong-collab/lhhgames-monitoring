@@ -1,0 +1,21 @@
+{
+  "id": "corrupted_level_99",
+  "girdSizeX": 6,
+  "girdSizeY": 6,
+  "shooters": [
+    {
+      "list": [
+        { "type": 5, "shot": 50, "shooterType": 0, "param": [], "mechanics": [] },
+        { "type": 99, "shot": 10, "shooterType": 0, "param": [], "mechanics": [] }
+      ]
+    }
+  ],
+  "blockData": [
+    { "d": [ { "type": 5 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 } ] },
+    { "d": [ { "type": -1 }, { "type": 5 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 } ] },
+    { "d": [ { "type": -1 }, { "type": -1 }, { "type": 99 }, { "type": -1 }, { "type": -1 }, { "type": -1 } ] },
+    { "d": [ { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": 5 }, { "type": -1 }, { "type": -1 } ] },
+    { "d": [ { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": 5 }, { "type": -1 } ] },
+    { "d": [ { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": 5 } ] }
+  ]
+}

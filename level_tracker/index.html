@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Header Section -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-icon">🎮</div>
+        <div>
+          <h1 class="brand-title">Pixel Ball — Game Design & Analytics Tool</h1>
+          <p class="brand-subtitle">Level Metrics • Mechanic Distribution Timeline • BI Analytics Dashboard</p>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="header-stats">
+          <div class="stat-item">
+            <span class="stat-label">Tổng Level</span>
+            <span id="statTotalLevels" class="stat-value">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Đang khớp</span>
+            <span id="statMatchLevels" class="stat-value">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Cảnh Báo</span>
+            <span id="statErrorLevels" class="stat-value">0</span>
+          </div>
+        </div>
+
+        <button id="btnThemeToggle" class="btn-theme-toggle" title="Chuyển đổi giao diện Sáng / Tối">
+          <span id="themeIcon">☀️</span>
+          <span id="themeText">Chế độ Sáng</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Top Level Navigation Tabs -->
+    <nav class="main-tabs-nav">
+      <button id="navTabExplorer" class="main-tab-btn active" data-tab="explorer">
+        📋 Level Explorer
+      </button>
+      <button id="navTabMechanicMap" class="main-tab-btn" data-tab="mechanic-map">
+        🗺️ Mechanic Map
+      </button>
+      <button id="navTabAnalytics" class="main-tab-btn" data-tab="analytics">
+        📊 Analytics Dashboard
+      </button>
+    </nav>
+
+    <!-- TAB 1: LEVEL EXPLORER -->
+    <main id="viewLevelExplorer" class="main-tab-pane active">
+      <!-- Import Section -->
+      <section class="import-card">
+        <div id="dropZone" class="drop-zone">
+          <div class="drop-icon">📥</div>
+          <div class="drop-title">Kéo & thả file JSON level vào đây hoặc click để chọn</div>
+          <div class="drop-desc">Hỗ trợ chọn nhiều file cùng lúc (.json) • Tự động trích xuất số Level từ tên file</div>
+          <input type="file" id="fileInput" multiple accept=".json" style="display: none;">
+        </div>
+
+        <div class="import-actions">
+          <div class="actions-left">
+            <button id="btnLoadSampleLevels" class="btn btn-sample" title="Nạp 50 levels mẫu từ LevelData">
+              <span>📂</span> Nạp Level mẫu (50 levels)
+            </button>
+            <button id="btnLoadAllLevels" class="btn btn-sample" title="Nạp toàn bộ 439 levels">
+              <span>🚀</span> Nạp Toàn bộ Level (439 levels)
+            </button>
+          </div>
+          <div class="actions-right">
+            <button id="btnClear" class="btn btn-danger">
+              <span>🗑️</span> Xóa tất cả
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Filter & Presets Section -->
+      <section class="filter-card">
+        <!-- Preset Shortcuts -->
+        <div class="filter-presets-row">
+          <span class="preset-label">⚡ Bộ lọc nhanh:</span>
+          <div id="presetChipsContainer" class="preset-chips"></div>
+          <button id="btnSaveCurrentPreset" class="btn btn-sm btn-secondary" title="Lưu bộ lọc hiện tại thành mẫu">
+            💾 Lưu bộ lọc này
+          </button>
+        </div>
+
+        <div class="filter-form">
+          <span class="filter-title-label">🔍 Lọc dữ liệu:</span>
+          <select id="filterProperty" class="form-control" title="Chọn thuộc tính"></select>
+          <select id="filterOperator" class="form-control" title="Chọn toán tử"></select>
+          <input type="text" id="filterValue" class="form-control" placeholder="Nhập giá trị..." />
+          <button id="btnAddFilter" class="btn btn-primary">
+            <span>➕</span> Thêm điều kiện
+          </button>
+          <button id="btnClearFilters" class="btn btn-secondary" style="display: none;">
+            Xóa bộ lọc
+          </button>
+        </div>
+
+        <!-- Filter Chips -->
+        <div id="filterChips" class="filter-chips-wrapper"></div>
+      </section>
+
+      <!-- Multi-View Mode Switcher -->
+      <div class="view-mode-bar">
+        <span class="view-mode-label">Chế độ xem:</span>
+        <div class="view-mode-buttons">
+          <button class="btn-view-mode active" data-mode="table">📋 Bảng dữ liệu</button>
+          <button class="btn-view-mode" data-mode="split">🌓 Bảng + Preview</button>
+          <button class="btn-view-mode" data-mode="grid">🔲 Grid Thumbnails</button>
+        </div>
+      </div>
+
+      <!-- Main Content Layout (Table) -->
+      <div class="explorer-layout-wrapper" id="explorerLayoutWrapper">
+        <section class="table-card" id="mainDisplaySection">
+          <div id="tableContainer">
+            <!-- Rendered by tableRenderer.js -->
+          </div>
+          <div id="gridThumbnailContainer" class="grid-thumbnail-container" style="display: none;"></div>
+        </section>
+      </div>
+    </main>
+
+    <!-- TAB 2: MECHANIC MAP -->
+    <main id="viewMechanicMap" class="main-tab-pane">
+      <section class="mechanic-card">
+        <div id="mechanicMapContainer">
+          <!-- Rendered by mechanicMapRenderer.js -->
+        </div>
+      </section>
+    </main>
+
+    <!-- TAB 3: ANALYTICS DASHBOARD -->
+    <main id="viewAnalyticsDashboard" class="main-tab-pane">
+      <!-- Analytics Import Bar -->
+      <section class="analytics-import-section">
+        <div id="analyticsDropZone" class="analytics-drop-zone">
+          <span class="icon">📊</span>
+          <span class="title">Kéo thả file JSON Analytics (Firebase/Amplitude/BI export) hoặc click để chọn</span>
+          <input type="file" id="analyticsFileInput" accept=".json" style="display: none;">
+        </div>
+      </section>
+
+      <section class="analytics-main-card">
+        <div id="analyticsDashboardContainer">
+          <!-- Rendered by analyticsDashboard.js -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Global Backdrop for Side Panel Drawer -->
+    <div id="sidePanelBackdrop" class="side-panel-backdrop" style="display: none;"></div>
+
+    <!-- GLOBAL Side Panel: Level Design Intent & Studio Drawer -->
+    <aside id="levelSidePanel" class="level-side-panel" style="display: none;">
+      <div class="side-panel-header">
+        <div class="side-panel-title-row">
+          <h3 id="sidePanelLevelTitle">Level -</h3>
+          <div class="side-panel-badges" id="sidePanelBadges"></div>
+        </div>
+        <div class="side-panel-controls">
+          <button id="btnSidePanelPlaytest" class="btn btn-sm btn-primary" title="Chơi thử level này">🎮 Chơi</button>
+          <button id="btnSidePanelClose" class="btn btn-sm btn-secondary" title="Đóng panel">✖</button>
+        </div>
+      </div>
+
+      <!-- Sub-tabs inside Side Panel -->
+      <div class="side-panel-tabs">
+        <button class="side-tab-btn active" data-side-tab="intent">🎯 Ý Đồ & Blueprint</button>
+        <button class="side-tab-btn" data-side-tab="playtest">🎮 Chơi Thử (Playtest)</button>
+        <button class="side-tab-btn" data-side-tab="shooter-map">🚚 Bãi Đậu Xe</button>
+      </div>
+
+      <!-- Tab Content 1: Design Intent Studio & Blueprint -->
+      <div id="sideTabContentIntent" class="side-tab-pane active">
+        
+        <!-- Pixel Art Canvas Preview & Basic Stats -->
+        <div class="intent-section" style="margin-bottom: 12px;">
+          <div class="intent-section-title" style="margin-bottom: 8px;">
+            <span>🖼️ Pixel Art & Thông Số Level:</span>
+            <span id="sidePixelArtMeta" class="text-muted font-xs">10×10 Grid</span>
+          </div>
+          <div class="canvas-viewport" style="min-height: 180px; display: flex; align-items: center; justify-content: center; background: #ffffff; border-radius: 8px; padding: 10px; border: 1px solid #cbd5e1; margin-bottom: 10px;">
+            <canvas id="sidePixelArtCanvas" style="max-width: 100%; max-height: 180px; image-rendering: pixelated;"></canvas>
+          </div>
+          <div id="sideLevelStatsGrid" class="side-stats-grid">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- READ-ONLY: Current Mechanics List (Only shown when in Actual Level Read-Only mode) -->
+        <div id="sideReadonlyMechSection" class="intent-section" style="margin-bottom: 14px; display: none;">
+          <div class="intent-section-title" style="margin-bottom: 8px;">
+            <span>🧩 Mechanic Trong Level Gốc:</span>
+            <span id="sideMechanicCountBadge" class="badge-tag font-xs">0 Mechanics</span>
+          </div>
+          <div id="sideExistingMechsList" class="side-mechs-list" style="display: flex; flex-direction: column; gap: 6px;"></div>
+        </div>
+
+        <!-- EDIT / BLUEPRINT SECTION (Shown when editing Proposed Map level) -->
+        <div id="sideEditControlsGroup">
+          <!-- 1. Profiles Grid (10 Intent Profiles with Full Descriptions) -->
+          <div class="intent-section">
+            <div class="intent-section-title">
+              <span>🌟 Pick Chọn 10 Mẫu Ý Đồ (Intent Profiles):</span>
+              <span class="text-muted font-xs">Bấm card để chọn</span>
+            </div>
+            <div id="intentProfilesList" class="intent-profiles-grid"></div>
+          </div>
+
+          <!-- 2. Intent Score Bars (7 axes) -->
+          <div class="intent-section">
+            <div class="intent-section-title">
+              <span>📊 Đánh Giá Áp Lực Ý Đồ (7 Trục):</span>
+              <span id="intentOverallBadge" class="badge-tag font-xs">Overall: -</span>
+            </div>
+            <div id="intentScoresBarsContainer" class="intent-scores-bars"></div>
+          </div>
+
+          <!-- 3. Mechanic Blueprint Checklist & Phase Selection -->
+          <div class="intent-section">
+            <div class="intent-section-title">
+              <span>📋 Pick Chọn Mechanic & Phase (Blueprint Level <span id="sideBlueprintLvlNum">-</span>):</span>
+              <span class="text-muted font-xs">Tích chọn mechanic & Phase</span>
+            </div>
+            <div id="sideBlueprintChecklist" class="side-blueprint-checklist" style="max-height: 240px; overflow-y: auto;"></div>
+            
+            <div class="side-note-box" style="margin-top: 8px;">
+              <label style="font-size: 11px; color: var(--text-muted); display: block; margin-bottom: 4px;">📝 Ghi chú thiết kế:</label>
+              <textarea id="sideLevelDesignerNote" class="form-control font-xs" rows="2" placeholder="Nhập ghi chú hoặc phân tích độ khó cho level này..."></textarea>
+              <div style="display: flex; justify-content: flex-end; margin-top: 6px;">
+                <button id="btnSaveBlueprintEdit" class="btn btn-xs btn-primary" style="background: #f59e0b; color: #0f172a; font-weight: 700; border: none;">💾 Lưu vào Blueprint</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Generator Action Buttons -->
+          <div class="intent-actions-row" style="margin-top: 12px; display: flex; gap: 8px;">
+            <button id="btnRunIntentGen" class="btn btn-sm btn-success flex-1" style="font-weight: 700;">⚡ Tạo Shooter theo Ý đồ</button>
+            <button id="btnDownloadGeneratedJson" class="btn btn-sm btn-secondary" title="Tải file JSON vừa sinh">💾 Tải JSON</button>
+            <button id="btnResetToOriginalJson" class="btn btn-sm btn-danger" title="Khôi phục file gốc">↺ Reset</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Tab Content 2: Embedded Live Playtest Simulator -->
+      <div id="sideTabContentPlaytest" class="side-tab-pane">
+        <div class="side-playtest-wrapper"></div>
+      </div>
+
+      <!-- Tab Content 3: Shooter Map Editor -->
+      <div id="sideTabContentShooterMap" class="side-tab-pane">
+        <div id="sideShooterMapContainer"></div>
+      </div>
+    </aside>
+  </div>
+
+
+  <!-- Analytics Import Preview Modal -->
+  <div id="analyticsImportModal" class="modal-backdrop">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-header">
+        <h2 class="modal-title">Xem trước & Xác nhận Import Analytics</h2>
+        <button id="analyticsImportClose" class="btn-close-modal" title="Đóng">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="analyticsImportMeta" class="import-meta-info"></div>
+        <div class="table-wrapper" style="max-height: 280px; overflow-y: auto;">
+          <table class="level-table" id="analyticsPreviewTable">
+            <thead id="analyticsPreviewHead"></thead>
+            <tbody id="analyticsPreviewBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btnAnalyticsCancel" class="btn btn-secondary">Hủy bỏ</button>
+        <button id="btnAnalyticsMerge" class="btn btn-sample" title="Gộp theo Level ID">Gộp dữ liệu (Merge)</button>
+        <button id="btnAnalyticsReplace" class="btn btn-primary" title="Xóa cũ nạp mới">Ghi đè tất cả (Replace)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pixel Art Modal -->
+  <div id="artModal" class="modal-backdrop">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2 id="artLevelTitle" class="modal-title">Level Pixel Art</h2>
+        <button id="artModalClose" class="btn-close-modal" title="Đóng">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="artLevelMeta" class="art-meta-tags"></div>
+        <div class="canvas-viewport">
+          <canvas id="artCanvas"></canvas>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="nav-controls">
+          <button id="btnPrevLevel" class="btn btn-secondary">
+            <span>◀</span> Level trước
+          </button>
+          <button id="btnNextLevel" class="btn btn-secondary">
+            Level sau <span>▶</span>
+          </button>
+        </div>
+        <div class="canvas-controls">
+          <button id="btnSwitchToPlaytest" class="btn btn-sample" title="Chơi thử ngay màn này">
+            <span>🎮</span> Play Test
+          </button>
+          <button id="btnToggleGrid" class="btn btn-secondary active" title="Bật/Tắt đường lưới">
+            <span>#</span> Lưới
+          </button>
+          <button id="btnDownloadPng" class="btn btn-primary" title="Xuất ra hình ảnh PNG">
+            <span>💾</span> Xuất PNG
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tooltip on Canvas -->
+  <div id="artTooltip" class="art-tooltip"></div>
+
+  <!-- Playtest Interactive Simulator Modal -->
+  <div id="playtestModal" class="modal-backdrop">
+    <div class="modal-dialog playtest-dialog">
+      <div class="modal-header">
+        <h2 id="playtestTitle" class="modal-title">🎮 Playtest Game: Level</h2>
+        <button id="playtestModalClose" class="btn-close-modal" title="Đóng">&times;</button>
+      </div>
+      <div id="playtestContainer" class="modal-body">
+        <!-- Rendered dynamically by playtestRenderer.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Modal (Diff Blocks vs Shots) -->
+  <div id="detailModal" class="modal-backdrop">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2 id="detailModalTitle" class="modal-title">Chi tiết thống kê Type</h2>
+        <button id="detailModalClose" class="btn-close-modal" title="Đóng">&times;</button>
+      </div>
+      <div id="detailModalContent" class="modal-body">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Mechanic Map Comment Modal / Floating Panel -->
+  <div id="mmapCommentModal" class="modal-backdrop">
+    <div class="modal-dialog modal-sm" style="max-width: 480px;">
+      <div class="modal-header">
+        <h2 id="mmapCommentModalTitle" class="modal-title">💬 Ghi chú Mechanic Level</h2>
+        <button id="mmapCommentModalClose" class="btn-close-modal" title="Đóng">&times;</button>
+      </div>
+      <div class="modal-body" style="padding: 1.25rem;">
+        <div id="mmapCommentCellMeta" class="mmap-cell-meta-info" style="margin-bottom: 0.75rem; font-size: 0.875rem; color: var(--text-secondary);"></div>
+        <textarea id="mmapCommentInput" class="form-control" rows="4" placeholder="Nhập ghi chú hoặc lý do thay đổi..." style="width: 100%; resize: vertical; margin-bottom: 1rem;"></textarea>
+        <div class="phase-selector-row" style="margin-bottom: 1rem;">
+          <label style="font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.35rem; color: var(--text-secondary);">Trạng thái / Phase:</label>
+          <select id="mmapOverridePhaseSelect" class="form-control form-control-sm">
+            <option value="default">-- Giữ mặc định (Computed) --</option>
+            <option value="teach">Teach (T) — Giới thiệu cô lập</option>
+            <option value="practice">Practice (P) — Luyện tập</option>
+            <option value="test">Test (Tst) — Thử thách kiểm tra</option>
+            <option value="combine">Combine (C) — Phối hợp</option>
+            <option value="removed">🚫 Loại bỏ khỏi Level này</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer" style="gap: 8px;">
+        <button id="mmapCommentBtnReset" class="btn btn-sm btn-danger" style="margin-right: auto;">🗑️ Reset cell</button>
+        <button id="mmapCommentBtnCancel" class="btn btn-sm btn-secondary">Hủy</button>
+        <button id="mmapCommentBtnSave" class="btn btn-sm btn-primary">💾 Lưu thay đổi</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Entry Script (ES Module) -->
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

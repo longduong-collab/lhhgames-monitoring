@@ -1,0 +1,25 @@
+{
+  "id": "heart_ruby_02",
+  "girdSizeX": 9,
+  "girdSizeY": 9,
+  "shooters": [
+    {
+      "list": [
+        { "type": 1, "shot": 28, "shooterType": 0, "param": [], "mechanics": [] },
+        { "type": 9, "shot": 6, "shooterType": 0, "param": [], "mechanics": [] },
+        { "type": 0, "shot": 0, "shooterType": 3, "param": [], "mechanics": [] }
+      ]
+    }
+  ],
+  "blockData": [
+    { "d": [ { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 } ] },
+    { "d": [ { "type": -1 }, { "type": 1 }, { "type": 1 }, { "type": 1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 } ] },
+    { "d": [ { "type": 1 }, { "type": 1 }, { "type": 9 }, { "type": 1 }, { "type": 1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 } ] },
+    { "d": [ { "type": 1 }, { "type": 9 }, { "type": 9 }, { "type": 1 }, { "type": 1 }, { "type": 1 }, { "type": -1 }, { "type": -1 }, { "type": -1 } ] },
+    { "d": [ { "type": -1 }, { "type": 1 }, { "type": 1 }, { "type": 1 }, { "type": 1 }, { "type": 1 }, { "type": 1 }, { "type": -1 }, { "type": -1 } ] },
+    { "d": [ { "type": 1 }, { "type": 9 }, { "type": 9 }, { "type": 1 }, { "type": 1 }, { "type": 1 }, { "type": -1 }, { "type": -1 }, { "type": -1 } ] },
+    { "d": [ { "type": 1 }, { "type": 1 }, { "type": 9 }, { "type": 1 }, { "type": 1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 } ] },
+    { "d": [ { "type": -1 }, { "type": 1 }, { "type": 1 }, { "type": 1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 } ] },
+    { "d": [ { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 } ] }
+  ]
+}

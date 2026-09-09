@@ -1,0 +1,25 @@
+{
+  "id": "emerald_sword_03",
+  "girdSizeX": 8,
+  "girdSizeY": 12,
+  "shooters": [
+    {
+      "list": [
+        { "type": 14, "shot": 10, "shooterType": 0, "param": [], "mechanics": [] },
+        { "type": 20, "shot": 10, "shooterType": 0, "param": [], "mechanics": [] },
+        { "type": 30, "shot": 6, "shooterType": 0, "param": [], "mechanics": [] },
+        { "type": 0, "shot": 0, "shooterType": 3, "param": [], "mechanics": [] }
+      ]
+    }
+  ],
+  "blockData": [
+    { "d": [ { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 } ] },
+    { "d": [ { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": 20 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 } ] },
+    { "d": [ { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": 20 }, { "type": 20 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 } ] },
+    { "d": [ { "type": -1 }, { "type": 14 }, { "type": 14 }, { "type": 14 }, { "type": 14 }, { "type": 14 }, { "type": 20 }, { "type": 20 }, { "type": 30 }, { "type": 30 }, { "type": 30 }, { "type": -1 } ] },
+    { "d": [ { "type": -1 }, { "type": 14 }, { "type": 14 }, { "type": 14 }, { "type": 14 }, { "type": 14 }, { "type": 20 }, { "type": 20 }, { "type": 30 }, { "type": 30 }, { "type": 30 }, { "type": -1 } ] },
+    { "d": [ { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": 20 }, { "type": 20 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 } ] },
+    { "d": [ { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": 20 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 } ] },
+    { "d": [ { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 }, { "type": -1 } ] }
+  ]
+}
