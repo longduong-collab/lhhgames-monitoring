@@ -988,16 +988,11 @@ export class MechanicMapRenderer {
         if (lvl >= mech.combineStartLevel && !activeForLvl.some(a => a.mech.id === mech.id)) {
           let isCandidate = false;
           if (mech.tier === 'CORE') {
-            if (isHardOrSuperHard) {
-              isCandidate = true;
-            } else if ((lvl - mech.combineStartLevel) % 3 === 0) {
-              isCandidate = true;
-            } else if (lvl >= 20 && (lvl % 6 === 0 || lvl % 6 === 2)) {
-              isCandidate = true;
-            }
+            // Core mechanics (Hidden & Connected) luôn sẵn sàng làm nền tảng combine
+            isCandidate = true;
           } else {
             // Secondary & Situational (Stack, Key Hunt, Tunnel, Pipe...):
-            // CHỈ xuất hiện khi level rơi vào đúng Cụm chủ đề (Micro Cluster) của nó hoặc màn Climax (SuperHard/PEAK)
+            // Xuất hiện khi level rơi vào đúng Cụm chủ đề (Micro Cluster) của nó hoặc màn Climax (SuperHard/PEAK)
             const activeCluster = getActiveClusterForLevel(lvl);
             if (isHardOrSuperHard || (activeCluster && activeCluster.mechs.includes(mech.id))) {
               isCandidate = true;
@@ -1036,11 +1031,22 @@ export class MechanicMapRenderer {
           }
         });
       } else {
-        // Density Cap:
-        // - Level thường: Tối đa 4 mechanics (2 Cores + 2 Secondary)
-        // - Level Hard/SuperHard: Cho phép tối đa 5 mechanics (2 Cores + tối đa 3 Secondary mechanics) để làm mới nội dung
-        const maxMechanicsCap = isHardOrSuperHard ? 5 : 4;
-        const maxCombineSlots = Math.max(0, maxMechanicsCap - activeForLvl.length);
+        // Density Cap theo Pacing:
+        // - Pha Teach: Cách ly cô lập để không gây quá tải nhận thức (0 combine slot)
+        // - Pha Practice: Giới hạn tối đa 1 Core mechanic hỗ trợ nhẹ nhàng
+        // - Pha Test / Combine: Tối đa 4 mechanics (2 Cores + 2 Secondaries), màn Hard/SuperHard tối đa 5
+        const hasTeach = activeForLvl.some(a => a.phase === 'teach');
+        const hasPractice = activeForLvl.some(a => a.phase === 'practice');
+
+        let maxCombineSlots = 0;
+        if (hasTeach) {
+          maxCombineSlots = 0;
+        } else if (hasPractice) {
+          maxCombineSlots = 1;
+        } else {
+          const maxCap = isHardOrSuperHard ? 5 : 4;
+          maxCombineSlots = Math.max(0, maxCap - activeForLvl.length);
+        }
 
         if (maxCombineSlots > 0) {
           const cores = combineCandidates.filter(c => c.mech.tier === 'CORE');
@@ -1054,14 +1060,14 @@ export class MechanicMapRenderer {
           });
 
           let added = 0;
-          // Ưu tiên 2 Core Combo
+          // 1. Luôn bảo đảm Core Combo (Hidden & Connected)
           for (const core of cores) {
             if (added < maxCombineSlots) {
               activeForLvl.push(core);
               added++;
             }
           }
-          // Thêm tối đa 2-3 Secondary mechanics xoay vòng công bằng theo Cụm chủ đề
+          // 2. Thêm Secondary mechanics xoay vòng theo Cụm chủ đề
           for (const sec of secondaries) {
             if (added < maxCombineSlots) {
               activeForLvl.push(sec);
@@ -1070,6 +1076,7 @@ export class MechanicMapRenderer {
           }
         }
       }
+
 
       // Cập nhật tracker lần xuất hiện cuối cùng của mỗi mechanic
       activeForLvl.forEach(item => {
