@@ -219,12 +219,12 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     type: 8,
     intent: 'Tường gỗ bất hoại chặn đường đạn trực diện, ép player tìm hướng tiếp cận vòng từ bên hông hoặc phía sau.',
     behaviorChange: 'Hành vi D (Định tuyến không gian): Thay đổi tư duy định tuyến không gian (Spatial Routing).',
-    teachLevel: 50,
-    practiceLevels: [51, 52, 53],
+    teachLevel: 51,
+    practiceLevels: [52, 53, 54],
     testLevel: 55,
     combineStartLevel: 58,
-    pacingNote: 'Dạy tại L50 (Mega-Challenge Milestone) thay đổi tư duy sang Spatial Routing. Test tại Hard L55.',
-    riskMitigation: 'Làm mới trải nghiệm giữa game, tạo điểm rơi sink tài nguyên.'
+    pacingNote: 'Dạy tại L51 (Relief level ngay sau SuperHard L50) thay đổi tư duy sang Spatial Routing. Test tại Hard L55.',
+    riskMitigation: 'Làm mới trải nghiệm giữa game, tạo nhịp thở mở đầu Act 2 ngay sau mốc L50.'
   },
   {
     id: 'b_6',
@@ -239,8 +239,8 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     teachLevel: 63,
     practiceLevels: [64, 65, 66],
     testLevel: 68,
-    combineStartLevel: 72,
-    pacingNote: 'Dạy tại L63 (giãn 13 level sau Wood Wall, tránh trùng lặp nhận thức), test tại Hard L68.',
+    combineStartLevel: 70,
+    pacingNote: 'Dạy tại L63 (giãn 12 level sau Wood Wall), luyện 64-66, test tại Hard L68, Combine Climax tại SH L70.',
     riskMitigation: 'Kích thích tính tò mò và bất ngờ mà không làm ngợp não.'
   },
   {
@@ -273,7 +273,7 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     teachLevel: 92,
     practiceLevels: [93, 94, 95],
     testLevel: 98,
-    combineStartLevel: 102,
+    combineStartLevel: 100,
     pacingNote: 'Dạy tại L92 (gap 16 level sau Ice) -> Practice 93-95 -> Test 98. Climax kết hợp Bomb tại Mega PEAK L100.',
     riskMitigation: 'Tạo khoảng cách xa để tạo hiệu ứng Wow bất ngờ cho Emergency Protocol.'
   },
@@ -321,11 +321,11 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     type: 'curtains',
     intent: 'Rèm che khuất tầm nhìn, tạo sự bất ngờ nhẹ nhàng và đổi gió thị giác.',
     behaviorChange: 'Hành vi A (Khám phá & Thư giãn thị giác): Khám phá dần dần các xe phía sau rèm.',
-    teachLevel: 142,
-    practiceLevels: [143],
+    teachLevel: 141,
+    practiceLevels: [142, 143],
     testLevel: 144,
     combineStartLevel: 146,
-    pacingNote: 'Dạy tại L142 (Visual Relief), test tại Hard L144, Climax tại Mega PEAK L150.',
+    pacingNote: 'Dạy tại L141 (Visual Relief), luyện 142-143, test tại Hard L144, Climax tại Mega PEAK L150.',
     riskMitigation: 'Tạo nhịp nghỉ (breathing room) trước mốc Mega Climax L150.'
   },
   {
@@ -356,11 +356,11 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     type: 'tunnel',
     intent: 'Hầm xe di chuyển liên hoàn ngầm dưới sàn đấu, tạo biến thể không gian cấp cao.',
     behaviorChange: 'Hành vi D (Dự đoán không gian ngầm): Phán đoán điểm xuất hiện và vòng lặp của đoàn xe hầm.',
-    teachLevel: 200,
-    practiceLevels: [201, 202],
-    testLevel: 203,
-    combineStartLevel: 205,
-    pacingNote: 'Mốc Mega Climax PEAK L200: Ra mắt mechanic cuối cùng Hầm xe liên hoàn cùng toàn bộ 14 mechanics.',
+    teachLevel: 201,
+    practiceLevels: [202, 203, 204],
+    testLevel: 205,
+    combineStartLevel: 208,
+    pacingNote: 'Dạy tại L201 (Relief level ngay sau Mega PEAK L200), luyện 202-204, test tại Hard L205, Combine tại L208+.',
     riskMitigation: 'Đỉnh cao biến thể cho player đã master toàn bộ core & secondary.'
   }
 ];
@@ -381,9 +381,9 @@ export function getProposedLevelDifficultyInfo(levelNum) {
 
   // L101+: Pattern breaking động
   const superHardLevels = [119, 135, 172];
-  const hardLevels = [113, 128, 144, 156, 167, 178, 197];
+  const hardLevels = [113, 128, 144, 156, 167, 178, 197, 205];
   const peakLevels = [150, 200];
-  const reliefLevels = [101, 108, 120, 124, 142, 151, 163];
+  const reliefLevels = [101, 108, 120, 124, 141, 151, 163, 201];
 
   if (peakLevels.includes(levelNum) || (levelNum % 50 === 0 && levelNum > 200)) {
     return { type: 'PEAK', isSuperHard: true, isHard: false, text: `⚡ PEAK L${levelNum} (Mega Challenge Sink)` };
@@ -1032,17 +1032,16 @@ export class MechanicMapRenderer {
         });
       } else {
         // Density Cap theo Pacing:
-        // - Pha Teach: Cách ly cô lập để không gây quá tải nhận thức (0 combine slot)
-        // - Pha Practice: Giới hạn tối đa 1 Core mechanic hỗ trợ nhẹ nhàng
-        // - Pha Test / Combine: Tối đa 4 mechanics (2 Cores + 2 Secondaries), màn Hard/SuperHard tối đa 5
+        // - Pha Teach / Practice / Test: Cách ly cô lập 1 mình để người chơi master cơ chế (0 combine slot)
+        // - Pha Combine thông thường: Tối đa 4 mechanics (2 Cores + 2 Secondaries), màn Hard/SuperHard tối đa 5
         const hasTeach = activeForLvl.some(a => a.phase === 'teach');
         const hasPractice = activeForLvl.some(a => a.phase === 'practice');
+        const hasTest = activeForLvl.some(a => a.phase === 'test');
 
         let maxCombineSlots = 0;
-        if (hasTeach) {
+        if (hasTeach || hasPractice || hasTest) {
+          // TPTC Rule: Teach, Practice, Test xuất hiện cô lập 1 mình, không trộn mechanic khác
           maxCombineSlots = 0;
-        } else if (hasPractice) {
-          maxCombineSlots = 1;
         } else {
           const maxCap = isHardOrSuperHard ? 5 : 4;
           maxCombineSlots = Math.max(0, maxCap - activeForLvl.length);
@@ -1150,14 +1149,15 @@ export class MechanicMapRenderer {
       else if (lvl === 20) tag = '<span class="mmap-tag tag-superhard" title="SuperHard L20 Milestone — Core Combine Climax">💀 SH L20</span>';
       else if (lvl === 21) tag = '<span class="mmap-tag tag-wow" title="D7 Retention Savior — Loader Stack Wow/Relief Teach">⭐ WOW</span>';
       else if (lvl === 35) tag = '<span class="mmap-tag tag-tier2" title="Teach Hard Block (2x2)">🧱 HardBlk</span>';
+      else if (lvl === 51) tag = '<span class="mmap-tag tag-tier2" title="Teach Solid Wood Wall (Spatial Routing)">🛡️ Wood</span>';
       else if (lvl === 63) tag = '<span class="mmap-tag tag-tier2" title="Teach Mystery Block">❓ Mystery</span>';
       else if (lvl === 76) tag = '<span class="mmap-tag tag-wow" title="Teach Frozen Truck (Tactile Crunch)">❄️ Ice</span>';
       else if (lvl === 92) tag = '<span class="mmap-tag tag-bomb" title="Teach Bomb Truck (Emergency Protocol)">💣 Bomb</span>';
       else if (lvl === 108) tag = '<span class="mmap-tag tag-tier2" title="Teach Long Key (Dependency Chain)">🗝️ Key</span>';
       else if (lvl === 124) tag = '<span class="mmap-tag tag-pipe" title="Teach Truck Pipe (FIFO Queue)">🧪 Pipe</span>';
-      else if (lvl === 142) tag = '<span class="mmap-tag tag-wow" title="Teach Curtains (Visual Relief)">🎪 Curtains</span>';
+      else if (lvl === 141) tag = '<span class="mmap-tag tag-wow" title="Teach Curtains (Visual Relief)">🎪 Curtains</span>';
       else if (lvl === 163) tag = '<span class="mmap-tag tag-tier2" title="Teach Key Hunt (Lock & Key Pair)">🔑 Hunt</span>';
-      else if (lvl === 200) tag = '<span class="mmap-tag tag-peak" title="⚡ PEAK L200 Endgame Climax — Tunnel Sink">⚡ PEAK L200</span>';
+      else if (lvl === 201) tag = '<span class="mmap-tag tag-tier2" title="Teach Truck Tunnel (Underground Routing)">🚇 Tunnel</span>';
       else {
         const diffInfo = getProposedLevelDifficultyInfo(lvl);
         if (diffInfo.type === 'PEAK') tag = `<span class="mmap-tag tag-peak" title="⚡ PEAK Mega-Challenge Climax L${lvl}">⚡ PEAK L${lvl}</span>`;
@@ -1904,26 +1904,24 @@ export class MechanicMapRenderer {
         else if (levelNum === 10) milestoneTag = '💀 Super Hard L10 (Solo Hidden Practice)';
         else if (levelNum === 14) milestoneTag = '⭐ D1 Retain Core (Connected Trucks)';
         else if (levelNum === 15) milestoneTag = '🔥 Hard Level L15 (Connected Practice)';
+        else if (levelNum === 18) milestoneTag = '🔥 Hard Level L18 (Connected Test)';
         else if (levelNum === 20) milestoneTag = '💀 Super Hard L20 Climax (Core Combine)';
         else if (levelNum === 21) milestoneTag = '⭐ D7 WOW / Relief (Loader Stack Teach)';
         else if (levelNum === 25) milestoneTag = '🔥 Hard Level L25 (Loader Test)';
         else if (levelNum === 30) milestoneTag = '💀 Super Hard L30 (Loader Climax)';
-        else if (levelNum === 31) milestoneTag = '🧱 Hard Block Debut (2x2 Teach)';
-        else if (levelNum === 35) milestoneTag = '🔥 Hard Level L35 (Parcel 3x3 Test)';
-        else if (levelNum === 40) milestoneTag = '💀 Super Hard L40 (Hard Parcel Climax)';
-        else if (levelNum === 41) milestoneTag = '🛡️ Solid Wood Wall Debut (Spatial Routing)';
-        else if (levelNum === 45) milestoneTag = '🔥 Hard Level L45 (Wood Wall Test)';
-        else if (levelNum === 50) milestoneTag = '💀 Super Hard L50 (Wall Climax)';
-        else if (levelNum === 51) milestoneTag = '❓ Mystery Block Debut (Dọn biên mở lõi)';
-        else if (levelNum === 55) milestoneTag = '🔥 Hard Level L55 (Mystery Test)';
-        else if (levelNum === 60) milestoneTag = '💀 Super Hard L60 (Mystery Climax)';
-        else if (levelNum === 61) milestoneTag = '❄️ Frozen Truck Debut (Tactile Crunch)';
-        else if (levelNum === 65) milestoneTag = '🔥 Hard Level L65 (Frozen Test)';
-        else if (levelNum === 70) milestoneTag = '💀 Super Hard L70 (Frozen Climax)';
-        else if (levelNum === 71) milestoneTag = '💣 Bomb Protocol Debut (Emergency Teach)';
-        else if (levelNum === 75) milestoneTag = '🔥 Hard Level L75 (Bomb Pressure Test)';
-        else if (levelNum === 80) milestoneTag = '💀 Super Hard L80 (Ice + Bomb Combine Climax)';
+        else if (levelNum === 35) milestoneTag = '🧱 Hard Block Debut (2x2 Teach)';
+        else if (levelNum === 40) milestoneTag = '💀 Super Hard L40 (Hard Parcel Climax — 3x3 Test)';
+        else if (levelNum === 50) milestoneTag = '⚡ PEAK L50 Mega-Challenge Climax (Act 1 Finale)';
+        else if (levelNum === 51) milestoneTag = '🛡️ Solid Wood Wall Debut (Teach Spatial Routing)';
+        else if (levelNum === 55) milestoneTag = '🔥 Hard Level L55 (Wood Wall Test)';
+        else if (levelNum === 60) milestoneTag = '💀 Super Hard L60 (Wood Wall Climax)';
+        else if (levelNum === 63) milestoneTag = '❓ Mystery Block Debut (Dọn biên mở lõi)';
+        else if (levelNum === 68) milestoneTag = '🔥 Hard Level L68 (Mystery Test)';
+        else if (levelNum === 70) milestoneTag = '💀 Super Hard L70 (Mystery Climax)';
+        else if (levelNum === 76) milestoneTag = '❄️ Frozen Truck Debut (Tactile Crunch)';
+        else if (levelNum === 80) milestoneTag = '💀 Super Hard L80 (Frozen Climax)';
         else if (levelNum === 92) milestoneTag = '💣 Bomb Protocol Debut (Emergency Teach)';
+        else if (levelNum === 98) milestoneTag = '🔥 Hard Level L98 (Bomb Test)';
         else if (levelNum === 100) milestoneTag = '💀 Super Hard L100 CLIMAX (Pipe + Bomb)';
         else if (levelNum === 108) milestoneTag = '🗝️ Long Key Debut (Dependency Chain)';
         else if (levelNum === 113) milestoneTag = '🔥 Hard Level L113 (Long Key Test — Pattern Break)';
@@ -1932,7 +1930,7 @@ export class MechanicMapRenderer {
         else if (levelNum === 124) milestoneTag = '🧪 Truck Pipe Debut (FIFO Queue Stream)';
         else if (levelNum === 128) milestoneTag = '🔥 Hard Level L128 (Truck Pipe Test)';
         else if (levelNum === 135) milestoneTag = '💀 Super Hard L135 (Truck Pipe Climax)';
-        else if (levelNum === 142) milestoneTag = '🎪 Curtains Debut (Visual Relief Teach)';
+        else if (levelNum === 141) milestoneTag = '🎪 Curtains Debut (Visual Relief Teach)';
         else if (levelNum === 144) milestoneTag = '🔥 Hard Level L144 (Curtains Test)';
         else if (levelNum === 150) milestoneTag = '⚡ PEAK L150 (Mega Challenge Sink)';
         else if (levelNum === 151) milestoneTag = '⭐ WOW / Relief L151 (Post PEAK)';
@@ -1940,7 +1938,9 @@ export class MechanicMapRenderer {
         else if (levelNum === 167) milestoneTag = '🔥 Hard Level L167 (Key Hunt Test)';
         else if (levelNum === 172) milestoneTag = '💀 Super Hard L172 (Key Hunt Climax)';
         else if (levelNum === 197) milestoneTag = '🔥 Hard Level L197 (Pre-Climax Spike)';
-        else if (levelNum === 200) milestoneTag = '⚡ MEGA PEAK L200 & Truck Tunnel Debut (Endgame Climax)';
+        else if (levelNum === 200) milestoneTag = '⚡ MEGA PEAK L200 Mega-Challenge (Act 2 Finale)';
+        else if (levelNum === 201) milestoneTag = '🚇 Truck Tunnel Debut (Underground Routing Teach)';
+        else if (levelNum === 205) milestoneTag = '🔥 Hard Level L205 (Truck Tunnel Test)';
         else if (diffInfo.isSuperHard) milestoneTag = `💀 Super Hard L${levelNum}`;
         else if (diffInfo.isHard) milestoneTag = `🔥 Hard Level L${levelNum}`;
         else if (diffInfo.type === 'RELIEF') milestoneTag = `🌱 Teach / Relief Window (L${levelNum})`;
