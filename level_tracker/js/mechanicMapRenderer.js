@@ -12,58 +12,238 @@ import { calculatePixelArtBounds } from './pixelArtRenderer.js';
 
 export const MECHANIC_DEFINITIONS = {
   block: {
-    7: { id: 'b_7', type: 7, name: 'Loader Stack', icon: '🔫', iconPath: './assets/mechanics/block_loader_stack.png', category: 'SECONDARY', desc: 'BlockShooter (Súng phát sinh block khi bắn trúng)', tutLevel: 21, order: 3 },
-    8: { id: 'b_8', type: 8, name: 'Solid Wood Parcel', icon: '🛡️', iconPath: './assets/mechanics/block_wood_wall.png', category: 'SECONDARY', desc: 'BlockWall (Tường chắn gỗ bất hoại)', tutLevel: 51, order: 5 },
-    6: { id: 'b_6', type: 6, name: 'Mystery Parcel', icon: '❓', iconPath: './assets/mechanics/block_mystery.png', category: 'SECONDARY', desc: 'BlockUnknown (Khối bí ẩn / Ẩn màu)', tutLevel: 63, order: 6 },
-    1: { id: 'b_1', type: 1, aliasTypes: [2, 3, 4], name: 'Hard Parcel Block', icon: '🧱', iconPath: './assets/mechanics/block_hard_parcel.png', category: 'SECONDARY', desc: 'BlockBig (Khối bưu kiện lớn đa hit 2x2, 2x3, 3x2, 3x3)', tutLevel: 76, order: 7 },
-    5: { id: 'b_5', type: 5, name: 'Key Hunt Block', icon: '🔑', iconPath: './assets/mechanics/block_key.png', category: 'SECONDARY', desc: 'BlockKey (Khối chìa khoá)', tutLevel: 163, order: 12 },
+    7: {
+      id: 'b_7',
+      type: 7,
+      name: 'Loader Stack',
+      icon: '🔫',
+      iconPath: './assets/mechanics/block_loader_stack.png',
+      category: 'SECONDARY',
+      desc: 'BlockShooter (Súng phát sinh block khi bắn trúng)',
+      tutLevel: 21,
+      order: 3,
+    },
+    8: {
+      id: 'b_8',
+      type: 8,
+      name: 'Solid Wood Parcel',
+      icon: '🛡️',
+      iconPath: './assets/mechanics/block_wood_wall.png',
+      category: 'SECONDARY',
+      desc: 'BlockWall (Tường chắn gỗ bất hoại)',
+      tutLevel: 51,
+      order: 5,
+    },
+    6: {
+      id: 'b_6',
+      type: 6,
+      name: 'Mystery Parcel',
+      icon: '❓',
+      iconPath: './assets/mechanics/block_mystery.png',
+      category: 'SECONDARY',
+      desc: 'BlockUnknown (Khối bí ẩn / Ẩn màu)',
+      tutLevel: 63,
+      order: 6,
+    },
+    1: {
+      id: 'b_1',
+      type: 1,
+      aliasTypes: [2, 3, 4],
+      name: 'Hard Parcel Block',
+      icon: '🧱',
+      iconPath: './assets/mechanics/block_hard_parcel.png',
+      category: 'SECONDARY',
+      desc: 'BlockBig (Khối bưu kiện lớn đa hit 2x2, 2x3, 3x2, 3x3)',
+      tutLevel: 76,
+      order: 7,
+    },
+    5: {
+      id: 'b_5',
+      type: 5,
+      name: 'Key Hunt Block',
+      icon: '🔑',
+      iconPath: './assets/mechanics/block_key.png',
+      category: 'SECONDARY',
+      desc: 'BlockKey (Khối chìa khoá)',
+      tutLevel: 163,
+      order: 12,
+    },
   },
   shooter: {
-    'hidden': { id: 's_hidden', type: 'hidden', name: 'Hidden Truck', icon: '🕶️', iconPath: './assets/mechanics/shooter_hidden.png', category: 'CORE', desc: 'ShooterHidden (Xe ẩn màu ban đầu)', tutLevel: 8, order: 1 },
-    'connected': { id: 's_connected', type: 'connected', name: 'Connected Trucks', icon: '⭐', iconPath: './assets/mechanics/shooter_connected.png', category: 'CORE', desc: 'ShooterLinked (Xe liên kết di chuyển/bắn cùng nhau)', tutLevel: 14, order: 2 },
-    'frozen': { id: 's_frozen', type: 'frozen', name: 'Frozen Truck', icon: '❄️', iconPath: './assets/mechanics/shooter_frozen.png', category: 'SECONDARY', desc: 'ShooterIce (Xe bị đóng băng cần giải cứu)', tutLevel: 32, order: 4 },
-    'bomb_truck': { id: 's_bomb_truck', type: 'bomb_truck', name: 'Bomb Truck', icon: '💣', iconPath: './assets/mechanics/shooter_bomb.png', category: 'SECONDARY', desc: 'ShooterBomb (Xe bom nổ phá huỷ block xung quanh)', tutLevel: 92, order: 8 },
-    'long_key': { id: 's_long_key', type: 'long_key', name: 'Long Key', icon: '🗝️', iconPath: './assets/mechanics/shooter_long_key.png', category: 'SECONDARY', desc: 'ShooterKeyLong (Xe chìa khóa dài mở cổng)', tutLevel: 108, order: 9 },
-    'pipe': { id: 's_pipe', type: 'pipe', name: 'Truck Pipe', icon: '🧪', iconPath: './assets/mechanics/shooter_pipe.png', category: 'SECONDARY', desc: 'ShooterPipe (Ống dẫn đoàn xe tiếp ứng)', tutLevel: 124, order: 10 },
-    'curtains': { id: 's_curtains', type: 'curtains', name: 'Curtains', icon: '🎪', iconPath: './assets/mechanics/shooter_curtains.png', category: 'SECONDARY', desc: 'ShooterCurtains (Rèm che khuất tầm nhìn xe)', tutLevel: 141, order: 11 },
-    'key_truck': { id: 's_key', type: 'key_truck', name: 'Key Hunt Truck', icon: '🔒', iconPath: './assets/mechanics/shooter_key_truck.png', category: 'SECONDARY', desc: 'ShooterLock (Xe khóa)', tutLevel: 163, order: 12 },
-    'tunnel': { id: 's_tunnel', type: 'tunnel', name: 'Truck Tunnel', icon: '🚇', iconPath: './assets/mechanics/shooter_tunnel.png', category: 'SITUATIONAL', desc: 'ShooterTunnel (Hầm xe bắn liên hoàn)', tutLevel: 201, order: 13 },
+    hidden: {
+      id: 's_hidden',
+      type: 'hidden',
+      name: 'Hidden Truck',
+      icon: '🕶️',
+      iconPath: './assets/mechanics/shooter_hidden.png',
+      category: 'CORE',
+      desc: 'ShooterHidden (Xe ẩn màu ban đầu)',
+      tutLevel: 8,
+      order: 1,
+    },
+    connected: {
+      id: 's_connected',
+      type: 'connected',
+      name: 'Connected Trucks',
+      icon: '⭐',
+      iconPath: './assets/mechanics/shooter_connected.png',
+      category: 'CORE',
+      desc: 'ShooterLinked (Xe liên kết di chuyển/bắn cùng nhau)',
+      tutLevel: 14,
+      order: 2,
+    },
+    frozen: {
+      id: 's_frozen',
+      type: 'frozen',
+      name: 'Frozen Truck',
+      icon: '❄️',
+      iconPath: './assets/mechanics/shooter_frozen.png',
+      category: 'SECONDARY',
+      desc: 'ShooterIce (Xe bị đóng băng cần giải cứu)',
+      tutLevel: 31,
+      order: 4,
+    },
+    bomb_truck: {
+      id: 's_bomb_truck',
+      type: 'bomb_truck',
+      name: 'Bomb Truck',
+      icon: '💣',
+      iconPath: './assets/mechanics/shooter_bomb.png',
+      category: 'SECONDARY',
+      desc: 'ShooterBomb (Xe bom nổ phá huỷ block xung quanh)',
+      tutLevel: 92,
+      order: 8,
+    },
+    long_key: {
+      id: 's_long_key',
+      type: 'long_key',
+      name: 'Long Key',
+      icon: '🗝️',
+      iconPath: './assets/mechanics/shooter_long_key.png',
+      category: 'SECONDARY',
+      desc: 'ShooterKeyLong (Xe chìa khóa dài mở cổng)',
+      tutLevel: 108,
+      order: 9,
+    },
+    pipe: {
+      id: 's_pipe',
+      type: 'pipe',
+      name: 'Truck Pipe',
+      icon: '🧪',
+      iconPath: './assets/mechanics/shooter_pipe.png',
+      category: 'SECONDARY',
+      desc: 'ShooterPipe (Ống dẫn đoàn xe tiếp ứng)',
+      tutLevel: 124,
+      order: 10,
+    },
+    curtains: {
+      id: 's_curtains',
+      type: 'curtains',
+      name: 'Curtains',
+      icon: '🎪',
+      iconPath: './assets/mechanics/shooter_curtains.png',
+      category: 'SECONDARY',
+      desc: 'ShooterCurtains (Rèm che khuất tầm nhìn xe)',
+      tutLevel: 141,
+      order: 11,
+    },
+    key_truck: {
+      id: 's_key',
+      type: 'key_truck',
+      name: 'Key Hunt Truck',
+      icon: '🔒',
+      iconPath: './assets/mechanics/shooter_key_truck.png',
+      category: 'SECONDARY',
+      desc: 'ShooterLock (Xe khóa)',
+      tutLevel: 163,
+      order: 12,
+    },
+    tunnel: {
+      id: 's_tunnel',
+      type: 'tunnel',
+      name: 'Truck Tunnel',
+      icon: '🚇',
+      iconPath: './assets/mechanics/shooter_tunnel.png',
+      category: 'SITUATIONAL',
+      desc: 'ShooterTunnel (Hầm xe bắn liên hoàn)',
+      tutLevel: 201,
+      order: 13,
+    },
   },
 };
-
 
 export const MECHANIC_COLORS = {
   // Block mechanics
-  'b_7':         { dot: '#f97316', bar: 'rgba(249, 115, 22, 0.85)' },    // Orange — Loader Stack
-  'b_1':         { dot: '#8b5cf6', bar: 'rgba(139, 92, 246, 0.85)' },    // Purple — Hard Parcel
-  'b_8':         { dot: '#64748b', bar: 'rgba(100, 116, 139, 0.85)' },   // Slate — Wood Wall
-  'b_6':         { dot: '#a855f7', bar: 'rgba(168, 85, 247, 0.85)' },    // Violet — Mystery
-  'b_5':         { dot: '#eab308', bar: 'rgba(234, 179, 8, 0.85)' },     // Yellow — Key Block
-  'pair_key_hunt': { dot: '#f59e0b', bar: 'rgba(245, 158, 11, 0.85)' }, // Amber — Key Hunt (Lock & Key Pair)
+  b_7: { dot: '#f97316', bar: 'rgba(249, 115, 22, 0.85)' }, // Orange — Loader Stack
+  b_1: { dot: '#8b5cf6', bar: 'rgba(139, 92, 246, 0.85)' }, // Purple — Hard Parcel
+  b_8: { dot: '#64748b', bar: 'rgba(100, 116, 139, 0.85)' }, // Slate — Wood Wall
+  b_6: { dot: '#a855f7', bar: 'rgba(168, 85, 247, 0.85)' }, // Violet — Mystery
+  b_5: { dot: '#eab308', bar: 'rgba(234, 179, 8, 0.85)' }, // Yellow — Key Block
+  pair_key_hunt: { dot: '#f59e0b', bar: 'rgba(245, 158, 11, 0.85)' }, // Amber — Key Hunt (Lock & Key Pair)
   // Shooter mechanics
-  's_connected': { dot: '#3b82f6', bar: 'rgba(59, 130, 246, 0.85)' },    // Blue — Connected
-  's_hidden':    { dot: '#06b6d4', bar: 'rgba(6, 182, 212, 0.85)' },     // Cyan — Hidden
-  's_frozen':    { dot: '#67e8f9', bar: 'rgba(103, 232, 249, 0.85)' },   // Light Cyan — Frozen
-  's_bomb_truck':{ dot: '#ef4444', bar: 'rgba(239, 68, 68, 0.85)' },     // Red — Bomb Truck
-  's_long_key':  { dot: '#f59e0b', bar: 'rgba(245, 158, 11, 0.85)' },    // Amber — Long Key
-  's_curtains':  { dot: '#ec4899', bar: 'rgba(236, 72, 153, 0.85)' },    // Pink — Curtains
-  's_pipe':      { dot: '#10b981', bar: 'rgba(16, 185, 129, 0.85)' },    // Emerald — Pipe
-  's_key':       { dot: '#d97706', bar: 'rgba(217, 119, 6, 0.85)' },     // Amber dark — Key Truck
-  's_tunnel':    { dot: '#6366f1', bar: 'rgba(99, 102, 241, 0.85)' },    // Indigo — Tunnel
+  s_connected: { dot: '#3b82f6', bar: 'rgba(59, 130, 246, 0.85)' }, // Blue — Connected
+  s_hidden: { dot: '#06b6d4', bar: 'rgba(6, 182, 212, 0.85)' }, // Cyan — Hidden
+  s_frozen: { dot: '#67e8f9', bar: 'rgba(103, 232, 249, 0.85)' }, // Light Cyan — Frozen
+  s_bomb_truck: { dot: '#ef4444', bar: 'rgba(239, 68, 68, 0.85)' }, // Red — Bomb Truck
+  s_long_key: { dot: '#f59e0b', bar: 'rgba(245, 158, 11, 0.85)' }, // Amber — Long Key
+  s_curtains: { dot: '#ec4899', bar: 'rgba(236, 72, 153, 0.85)' }, // Pink — Curtains
+  s_pipe: { dot: '#10b981', bar: 'rgba(16, 185, 129, 0.85)' }, // Emerald — Pipe
+  s_key: { dot: '#d97706', bar: 'rgba(217, 119, 6, 0.85)' }, // Amber dark — Key Truck
+  s_tunnel: { dot: '#6366f1', bar: 'rgba(99, 102, 241, 0.85)' }, // Indigo — Tunnel
 };
 
 export const BOOSTER_DEFINITIONS = {
-  7:  { id: 'b_claw', name: 'Claw Booster', icon: '🧲', iconPath: './assets/mechanics/booster_claw.png', tutLevel: 7, desc: 'Gắp 1 block khẩn cấp khỏi bàn chơi' },
-  13: { id: 'b_hand', name: 'Hand Booster', icon: '🖐️', iconPath: './assets/mechanics/booster_hand.png', tutLevel: 13, desc: 'Đổi vị trí 2 xe súng' },
-  15: { id: 'b_shuffle', name: 'Shuffle Booster', icon: '🔀', iconPath: './assets/mechanics/booster_shuffle.png', tutLevel: 15, desc: 'Xáo trộn lại toàn bộ màu súng' },
-  18: { id: 'b_super', name: 'Super Shooter Booster', icon: '🚀', iconPath: './assets/mechanics/booster_super.png', tutLevel: 18, desc: 'Biến 1 súng thành Súng Siêu Cấp bắn liên hoàn' }
+  7: {
+    id: 'b_claw',
+    name: 'Claw Booster',
+    icon: '🧲',
+    iconPath: './assets/mechanics/booster_claw.png',
+    tutLevel: 7,
+    desc: 'Gắp 1 block khẩn cấp khỏi bàn chơi',
+  },
+  13: {
+    id: 'b_hand',
+    name: 'Hand Booster',
+    icon: '🖐️',
+    iconPath: './assets/mechanics/booster_hand.png',
+    tutLevel: 13,
+    desc: 'Đổi vị trí 2 xe súng',
+  },
+  15: {
+    id: 'b_shuffle',
+    name: 'Shuffle Booster',
+    icon: '🔀',
+    iconPath: './assets/mechanics/booster_shuffle.png',
+    tutLevel: 15,
+    desc: 'Xáo trộn lại toàn bộ màu súng',
+  },
+  18: {
+    id: 'b_super',
+    name: 'Super Shooter Booster',
+    icon: '🚀',
+    iconPath: './assets/mechanics/booster_super.png',
+    tutLevel: 18,
+    desc: 'Biến 1 súng thành Súng Siêu Cấp bắn liên hoàn',
+  },
 };
 
 export const MICRO_CLUSTERS = {
-  A: { id: 'A', name: 'Áp lực không gian & Định tuyến', mechs: ['s_hidden', 's_connected', 'b_8', 's_curtains'] },
+  A: {
+    id: 'A',
+    name: 'Áp lực không gian & Định tuyến',
+    mechs: ['s_hidden', 's_connected', 'b_8', 's_curtains'],
+  },
   B: { id: 'B', name: 'Xả đạn & Xúc giác giải tỏa', mechs: ['b_7', 's_frozen', 'b_6'] },
-  C: { id: 'C', name: 'Chuỗi phụ thuộc & Tích lũy tài nguyên', mechs: ['s_connected', 'b_1', 's_long_key', 's_key', 'b_5'] },
-  D: { id: 'D', name: 'Khẩn cấp & Quản lý hàng đợi', mechs: ['s_bomb_truck', 's_pipe', 's_frozen', 's_tunnel'] }
+  C: {
+    id: 'C',
+    name: 'Chuỗi phụ thuộc & Tích lũy tài nguyên',
+    mechs: ['s_connected', 'b_1', 's_long_key', 's_key', 'b_5'],
+  },
+  D: {
+    id: 'D',
+    name: 'Khẩn cấp & Quản lý hàng đợi',
+    mechs: ['s_bomb_truck', 's_pipe', 's_frozen', 's_tunnel'],
+  },
 };
 
 /**
@@ -74,17 +254,17 @@ export function getActiveClusterForLevel(levelNum) {
 
   // Macro Cycle 1 (L20 - L50): Alternating A (Spatial) vs B (Tactile Burst)
   if (levelNum <= 50) {
-    return (Math.floor(levelNum / 5) % 2 === 0) ? MICRO_CLUSTERS.A : MICRO_CLUSTERS.B;
+    return Math.floor(levelNum / 5) % 2 === 0 ? MICRO_CLUSTERS.A : MICRO_CLUSTERS.B;
   }
   // Macro Cycle 2 (L51 - L90): Alternating B (Tactile) vs C (Dependency) vs A
   if (levelNum <= 90) {
     const step = Math.floor(levelNum / 6) % 3;
-    return step === 0 ? MICRO_CLUSTERS.B : (step === 1 ? MICRO_CLUSTERS.C : MICRO_CLUSTERS.A);
+    return step === 0 ? MICRO_CLUSTERS.B : step === 1 ? MICRO_CLUSTERS.C : MICRO_CLUSTERS.A;
   }
   // Macro Cycle 3 (L91 - L140): Alternating D (Emergency Queue) vs C (Dependency) vs B
   if (levelNum <= 140) {
     const step = Math.floor(levelNum / 7) % 3;
-    return step === 0 ? MICRO_CLUSTERS.D : (step === 1 ? MICRO_CLUSTERS.C : MICRO_CLUSTERS.B);
+    return step === 0 ? MICRO_CLUSTERS.D : step === 1 ? MICRO_CLUSTERS.C : MICRO_CLUSTERS.B;
   }
   // Macro Cycle 4 (L141 - L200+): Rotating D -> A -> C -> B (Veteran Full Variety)
   const step = Math.floor(levelNum / 8) % 4;
@@ -103,7 +283,7 @@ export const PROPOSED_BOOSTER_BLUEPRINT = [
     tier: 'BOOSTER',
     teachLevel: 7,
     intent: 'Cho phép gắp 1 khối bưu kiện khẩn cấp khỏi bàn chơi khi kẹt đường bắn.',
-    behaviorChange: 'Hành vi Cứu nguy (Emergency Rescue): Giải tỏa tức thì tình huống bế tắc.'
+    behaviorChange: 'Hành vi Cứu nguy (Emergency Rescue): Giải tỏa tức thì tình huống bế tắc.',
   },
   {
     id: 'bst_hand',
@@ -113,7 +293,7 @@ export const PROPOSED_BOOSTER_BLUEPRINT = [
     tier: 'BOOSTER',
     teachLevel: 13,
     intent: 'Đổi vị trí giữa 2 xe súng để thay đổi thứ tự ưu tiên xả đạn.',
-    behaviorChange: 'Hành vi Điều chỉnh Vị trí (Positional Swap): Sắp xếp lại luồng xe.'
+    behaviorChange: 'Hành vi Điều chỉnh Vị trí (Positional Swap): Sắp xếp lại luồng xe.',
   },
   {
     id: 'bst_shuffle',
@@ -123,7 +303,7 @@ export const PROPOSED_BOOSTER_BLUEPRINT = [
     tier: 'BOOSTER',
     teachLevel: 15,
     intent: 'Xáo trộn ngẫu nhiên màu sắc của các súng chờ khi bị kẹt hết màu khớp.',
-    behaviorChange: 'Hành vi Xóa cờ kẹt (Reroll State): Làm mới lựa chọn đạn.'
+    behaviorChange: 'Hành vi Xóa cờ kẹt (Reroll State): Làm mới lựa chọn đạn.',
   },
   {
     id: 'bst_super',
@@ -133,8 +313,8 @@ export const PROPOSED_BOOSTER_BLUEPRINT = [
     tier: 'BOOSTER',
     teachLevel: 18,
     intent: 'Kích hoạt Súng Siêu Cấp bắn dọn hàng loạt block không phân biệt màu.',
-    behaviorChange: 'Hành vi Công phá Đỉnh cao (Mega Clear): Dọn dẹp diện rộng cho màn PEAK.'
-  }
+    behaviorChange: 'Hành vi Công phá Đỉnh cao (Mega Clear): Dọn dẹp diện rộng cho màn PEAK.',
+  },
 ];
 
 export const PROPOSED_MECHANIC_BLUEPRINT = [
@@ -147,14 +327,17 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     groupType: 'shooter',
     type: 'hidden',
     coreComboPartner: 's_connected',
-    intent: 'Buộc player quan sát viền/pattern màu cần tìm, cân nhắc rủi ro (risk vs reward), ghi nhớ đường chọn xe.',
-    behaviorChange: 'Hành vi A (Suy đoán & Quan sát viền): Chọn xe có suy tính thay vì click tự do; học cách suy đoán màu.',
+    intent:
+      'Buộc player quan sát viền/pattern màu cần tìm, cân nhắc rủi ro (risk vs reward), ghi nhớ đường chọn xe.',
+    behaviorChange:
+      'Hành vi A (Suy đoán & Quan sát viền): Chọn xe có suy tính thay vì click tự do; học cách suy đoán màu.',
     teachLevel: 8,
     practiceLevels: [9, 10, 11],
     testLevel: 12,
     combineStartLevel: 14,
-    pacingNote: 'Dạy tại L8 (ngay trước mốc D1 retention risk L10), rèn luyện kỹ năng quan sát viền màu.',
-    riskMitigation: 'Giúp player hình thành thói quen quan sát ngay trước điểm rớt D1 (L10).'
+    pacingNote:
+      'Dạy tại L8 (ngay trước mốc D1 retention risk L10), rèn luyện kỹ năng quan sát viền màu.',
+    riskMitigation: 'Giúp player hình thành thói quen quan sát ngay trước điểm rớt D1 (L10).',
   },
   {
     id: 's_connected',
@@ -165,14 +348,17 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     groupType: 'shooter',
     type: 'connected',
     coreComboPartner: 's_hidden',
-    intent: '2 xe liên kết di chuyển cùng lúc, chiếm slot kép, dễ gây kẹt lane (stuck) nếu không nhìn trước 1 nước.',
-    behaviorChange: 'Hành vi C (Quản lý slot & Nước đi đôi): Quan sát slot và không gian chờ trước khi click; tính toán nước đi đôi.',
+    intent:
+      '2 xe liên kết di chuyển cùng lúc, chiếm slot kép, dễ gây kẹt lane (stuck) nếu không nhìn trước 1 nước.',
+    behaviorChange:
+      'Hành vi C (Quản lý slot & Nước đi đôi): Quan sát slot và không gian chờ trước khi click; tính toán nước đi đôi.',
     teachLevel: 14,
     practiceLevels: [15, 16, 17],
     testLevel: 18,
     combineStartLevel: 20,
-    pacingNote: 'Dạy tại L14 sau khi đã test xong Hidden ở L12. Climax Core Combine tại Super Hard L20.',
-    riskMitigation: 'Tạo thử thách thú vị trước mốc D7 (L15-L20).'
+    pacingNote:
+      'Dạy tại L14 sau khi đã test xong Hidden ở L12. Climax Core Combine tại Super Hard L20.',
+    riskMitigation: 'Tạo thử thách thú vị trước mốc D7 (L15-L20).',
   },
   {
     id: 'b_7',
@@ -182,14 +368,17 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     tier: 'SECONDARY',
     groupType: 'block',
     type: 7,
-    intent: 'Bắn trúng phát sinh block mới, tạo cảm giác tactile "xả đạn" liên tục đã tai đã mắt, giải tỏa áp lực đạn.',
-    behaviorChange: 'Hành vi B (Xả đạn & Xúc giác thỏa mãn): Tận hưởng nhịp xả đạn nhanh, giải tỏa căng thẳng sau màn khó.',
+    intent:
+      'Bắn trúng phát sinh block mới, tạo cảm giác tactile "xả đạn" liên tục đã tai đã mắt, giải tỏa áp lực đạn.',
+    behaviorChange:
+      'Hành vi B (Xả đạn & Xúc giác thỏa mãn): Tận hưởng nhịp xả đạn nhanh, giải tỏa căng thẳng sau màn khó.',
     teachLevel: 21,
     practiceLevels: [22, 23, 24],
     testLevel: 25,
     combineStartLevel: 28,
-    pacingNote: 'Dạy tại L21 (Relief level ngay sau SuperHard L20) đóng vai trò Wow / Relief Mechanic. Test tại Hard L25.',
-    riskMitigation: 'Cứu drop rate sau màn SuperHard đầu tiên (L20).'
+    pacingNote:
+      'Dạy tại L21 (Relief level ngay sau SuperHard L20) đóng vai trò Wow / Relief Mechanic. Test tại Hard L25.',
+    riskMitigation: 'Cứu drop rate sau màn SuperHard đầu tiên (L20).',
   },
   {
     id: 's_frozen',
@@ -199,14 +388,17 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     tier: 'SECONDARY',
     groupType: 'shooter',
     type: 'frozen',
-    intent: 'Xe bị đóng băng cần giải cứu trước khi dùng được; chiếm dụng slot chờ tạm thời tạo bài toán nhịp độ.',
-    behaviorChange: 'Hành vi B\' (Mục tiêu phụ & Xúc giác băng vỡ): Phân chia mục tiêu giải cứu xe đóng băng trước khi bắn target chính.',
-    teachLevel: 32,
-    practiceLevels: [33, 34],
+    intent:
+      'Xe bị đóng băng cần giải cứu trước khi dùng được; chiếm dụng slot chờ tạm thời tạo bài toán nhịp độ.',
+    behaviorChange:
+      "Hành vi B' (Mục tiêu phụ & Xúc giác băng vỡ): Phân chia mục tiêu giải cứu xe đóng băng trước khi bắn target chính.",
+    teachLevel: 31,
+    practiceLevels: [32, 33, 34],
     testLevel: 35,
     combineStartLevel: 38,
-    pacingNote: 'Dạy tại L32 (Relief sau SuperHard L30), practice 33-34, test tại Hard L35, combine từ L38+.',
-    riskMitigation: 'Tạo thử thách nhịp độ slot nhẹ nhàng, giải tỏa xúc giác băng vỡ.'
+    pacingNote:
+      'Dạy tại L31 (Relief sau SuperHard L30), practice 32-34, test tại Hard L35, combine từ L38+.',
+    riskMitigation: 'Tạo thử thách nhịp độ slot nhẹ nhàng, giải tỏa xúc giác băng vỡ.',
   },
   {
     id: 'b_8',
@@ -216,14 +408,17 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     tier: 'SECONDARY',
     groupType: 'block',
     type: 8,
-    intent: 'Tường gỗ bất hoại chặn đường đạn trực diện, ép player tìm hướng tiếp cận vòng từ bên hông hoặc phía sau.',
-    behaviorChange: 'Hành vi D (Định tuyến không gian): Thay đổi tư duy định tuyến không gian (Spatial Routing).',
+    intent:
+      'Tường gỗ bất hoại chặn đường đạn trực diện, ép player tìm hướng tiếp cận vòng từ bên hông hoặc phía sau.',
+    behaviorChange:
+      'Hành vi D (Định tuyến không gian): Thay đổi tư duy định tuyến không gian (Spatial Routing).',
     teachLevel: 51,
     practiceLevels: [52, 53, 54],
     testLevel: 55,
     combineStartLevel: 58,
-    pacingNote: 'Dạy tại L51 (Relief level ngay sau SuperHard L50) thay đổi tư duy sang Spatial Routing. Test tại Hard L55.',
-    riskMitigation: 'Làm mới trải nghiệm giữa game, tạo nhịp thở mở đầu Act 2 ngay sau mốc L50.'
+    pacingNote:
+      'Dạy tại L51 (Relief level ngay sau SuperHard L50) thay đổi tư duy sang Spatial Routing. Test tại Hard L55.',
+    riskMitigation: 'Làm mới trải nghiệm giữa game, tạo nhịp thở mở đầu Act 2 ngay sau mốc L50.',
   },
   {
     id: 'b_6',
@@ -233,14 +428,17 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     tier: 'SECONDARY',
     groupType: 'block',
     type: 6,
-    intent: 'Che giấu màu pixel bên trong, buộc người chơi dọn các pixel xung quanh để "lật mở" thông tin.',
-    behaviorChange: 'Hành vi A\' (Suy đoán & Mở vùng biên): Khám phá và giải tỏa vùng biên trước khi chạm vào lõi bí ẩn.',
+    intent:
+      'Che giấu màu pixel bên trong, buộc người chơi dọn các pixel xung quanh để "lật mở" thông tin.',
+    behaviorChange:
+      "Hành vi A' (Suy đoán & Mở vùng biên): Khám phá và giải tỏa vùng biên trước khi chạm vào lõi bí ẩn.",
     teachLevel: 63,
     practiceLevels: [64, 65, 66],
     testLevel: 68,
     combineStartLevel: 70,
-    pacingNote: 'Dạy tại L63 (giãn 12 level sau Wood Wall), luyện 64-66, test tại Hard L68, Combine Climax tại SH L70.',
-    riskMitigation: 'Kích thích tính tò mò và bất ngờ mà không làm ngợp não.'
+    pacingNote:
+      'Dạy tại L63 (giãn 12 level sau Wood Wall), luyện 64-66, test tại Hard L68, Combine Climax tại SH L70.',
+    riskMitigation: 'Kích thích tính tò mò và bất ngờ mà không làm ngợp não.',
   },
   {
     id: 'b_1',
@@ -251,14 +449,18 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     groupType: 'block',
     type: 1,
     aliasTypes: [2, 3, 4],
-    intent: 'Khối bưu kiện lớn nhiều hit (2x2, 3x3), đòi hỏi dồn nhiều lượt bắn cùng màu để phá vỡ.',
-    behaviorChange: 'Hành vi C\' (Dồn tài nguyên & Tích trữ): Lên kế hoạch tích trữ đạn cùng màu để phá khối kiên cố.',
+    intent:
+      'Khối bưu kiện lớn nhiều hit (2x2, 3x3), đòi hỏi dồn nhiều lượt bắn cùng màu để phá vỡ.',
+    behaviorChange:
+      "Hành vi C' (Dồn tài nguyên & Tích trữ): Lên kế hoạch tích trữ đạn cùng màu để phá khối kiên cố.",
     teachLevel: 76,
     practiceLevels: [77, 78, 79],
     testLevel: 80,
     combineStartLevel: 84,
-    pacingNote: 'Dạy tại L76 (tăng tải dần từ 2x2 lên 3x3), test tại SuperHard L80 trước khi bước vào Bomb.',
-    riskMitigation: 'Rèn luyện kỹ năng dồn tài nguyên đạn trước khi gặp cơ chế áp lực thời gian Bomb.'
+    pacingNote:
+      'Dạy tại L76 (tăng tải dần từ 2x2 lên 3x3), test tại SuperHard L80 trước khi bước vào Bomb.',
+    riskMitigation:
+      'Rèn luyện kỹ năng dồn tài nguyên đạn trước khi gặp cơ chế áp lực thời gian Bomb.',
   },
   {
     id: 's_bomb_truck',
@@ -268,14 +470,17 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     tier: 'SECONDARY',
     groupType: 'shooter',
     type: 'bomb_truck',
-    intent: 'Chế độ khẩn cấp (Emergency Protocol): tìm đường tiếp cận và giải nổ bom trước khi hết lượt.',
-    behaviorChange: 'Hành vi E (Ưu tiên khẩn cấp): Đảo lộn hoàn toàn thứ tự ưu tiên: từ thong thả sang tập trung tuyệt đối vào quả bom.',
+    intent:
+      'Chế độ khẩn cấp (Emergency Protocol): tìm đường tiếp cận và giải nổ bom trước khi hết lượt.',
+    behaviorChange:
+      'Hành vi E (Ưu tiên khẩn cấp): Đảo lộn hoàn toàn thứ tự ưu tiên: từ thong thả sang tập trung tuyệt đối vào quả bom.',
     teachLevel: 92,
     practiceLevels: [93, 94, 95],
     testLevel: 98,
     combineStartLevel: 100,
-    pacingNote: 'Dạy tại L92 (gap 16 level sau Hard Block) -> Practice 93-95 -> Test 98. Climax kết hợp Bomb tại Mega PEAK L100.',
-    riskMitigation: 'Tạo khoảng cách xa để tạo hiệu ứng Wow bất ngờ cho Emergency Protocol.'
+    pacingNote:
+      'Dạy tại L92 (gap 16 level sau Hard Block) -> Practice 93-95 -> Test 98. Climax kết hợp Bomb tại Mega PEAK L100.',
+    riskMitigation: 'Tạo khoảng cách xa để tạo hiệu ứng Wow bất ngờ cho Emergency Protocol.',
   },
   {
     id: 's_long_key',
@@ -285,14 +490,17 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     tier: 'SECONDARY',
     groupType: 'shooter',
     type: 'long_key',
-    intent: 'Giải phóng then cài: thu thập xe ở đầu chốt (Key Head) để rút thanh khóa mở đường cho các xe bị chặn.',
-    behaviorChange: 'Hành vi E\' (Chuỗi phụ thuộc cơ học): Phân tích chuỗi phụ thuộc (dependency chain) của các hàng xe.',
+    intent:
+      'Giải phóng then cài: thu thập xe ở đầu chốt (Key Head) để rút thanh khóa mở đường cho các xe bị chặn.',
+    behaviorChange:
+      "Hành vi E' (Chuỗi phụ thuộc cơ học): Phân tích chuỗi phụ thuộc (dependency chain) của các hàng xe.",
     teachLevel: 108,
     practiceLevels: [109, 110, 111, 112],
     testLevel: 113,
     combineStartLevel: 114,
-    pacingNote: 'Dạy tại L108 (Long Key), test tại Hard L113 (phá nhịp đuôi .5), Climax tại SH L119.',
-    riskMitigation: 'Phá nhịp 5/10 sau L100, kích thích tư duy giải đố cho player veteran.'
+    pacingNote:
+      'Dạy tại L108 (Long Key), test tại Hard L113 (phá nhịp đuôi .5), Climax tại SH L119.',
+    riskMitigation: 'Phá nhịp 5/10 sau L100, kích thích tư duy giải đố cho player veteran.',
   },
   {
     id: 's_pipe',
@@ -302,14 +510,16 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     tier: 'SECONDARY',
     groupType: 'shooter',
     type: 'pipe',
-    intent: 'Đoàn xe tiếp tế trong ống dạng hàng đợi (FIFO), thu gọn số xe trên bàn chơi, tăng kích thước xe hiển thị.',
-    behaviorChange: 'Hành vi D\' (Quản lý hàng đợi FIFO): Lập kế hoạch tiêu thụ đạn theo thứ tự tiếp ứng trong ống.',
+    intent:
+      'Đoàn xe tiếp tế trong ống dạng hàng đợi (FIFO), thu gọn số xe trên bàn chơi, tăng kích thước xe hiển thị.',
+    behaviorChange:
+      "Hành vi D' (Quản lý hàng đợi FIFO): Lập kế hoạch tiêu thụ đạn theo thứ tự tiếp ứng trong ống.",
     teachLevel: 124,
     practiceLevels: [125, 126, 127],
     testLevel: 128,
     combineStartLevel: 130,
     pacingNote: 'Dạy tại L124 (Thở/Relief), test tại Hard L128, Climax tại SH L135.',
-    riskMitigation: 'Tạo nhịp thở dễ chịu ở L120 trước khi dạy Pipe ở L124.'
+    riskMitigation: 'Tạo nhịp thở dễ chịu ở L120 trước khi dạy Pipe ở L124.',
   },
   {
     id: 's_curtains',
@@ -320,13 +530,15 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     groupType: 'shooter',
     type: 'curtains',
     intent: 'Rèm che khuất tầm nhìn, tạo sự bất ngờ nhẹ nhàng và đổi gió thị giác.',
-    behaviorChange: 'Hành vi A\'\' (Khám phá & Thư giãn thị giác): Khám phá dần dần các xe phía sau rèm.',
+    behaviorChange:
+      "Hành vi A'' (Khám phá & Thư giãn thị giác): Khám phá dần dần các xe phía sau rèm.",
     teachLevel: 141,
     practiceLevels: [142, 143],
     testLevel: 144,
     combineStartLevel: 146,
-    pacingNote: 'Dạy tại L141 (Visual Relief), luyện 142-143, test tại Hard L144, Climax tại Mega PEAK L150.',
-    riskMitigation: 'Tạo nhịp nghỉ (breathing room) trước mốc Mega Climax L150.'
+    pacingNote:
+      'Dạy tại L141 (Visual Relief), luyện 142-143, test tại Hard L144, Climax tại Mega PEAK L150.',
+    riskMitigation: 'Tạo nhịp nghỉ (breathing room) trước mốc Mega Climax L150.',
   },
   {
     id: 's_key',
@@ -338,13 +550,14 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     type: 'key_truck',
     tutLevel: 163,
     intent: 'Thu thập chìa khóa để giải phóng xe khóa tương ứng.',
-    behaviorChange: 'Hành vi E\'\' (Mở khóa đa tầng): Tìm kiếm và dọn màu chìa khóa trước khi tiếp cận các pixel mục tiêu phía sau.',
+    behaviorChange:
+      "Hành vi E'' (Mở khóa đa tầng): Tìm kiếm và dọn màu chìa khóa trước khi tiếp cận các pixel mục tiêu phía sau.",
     teachLevel: 163,
     practiceLevels: [164, 165, 166],
     testLevel: 167,
     combineStartLevel: 169,
     pacingNote: 'Dạy tại L163 (Key Hunt), test tại Hard L167, Combine Climax tại SH L172.',
-    riskMitigation: 'Thử thách giải đố đa tầng cho player giai đoạn mid-late game.'
+    riskMitigation: 'Thử thách giải đố đa tầng cho player giai đoạn mid-late game.',
   },
   {
     id: 's_tunnel',
@@ -355,14 +568,16 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     groupType: 'shooter',
     type: 'tunnel',
     intent: 'Hầm xe di chuyển liên hoàn ngầm dưới sàn đấu, tạo biến thể không gian cấp cao.',
-    behaviorChange: 'Hành vi D\'\' (Dự đoán không gian ngầm): Phán đoán điểm xuất hiện và vòng lặp của đoàn xe hầm.',
+    behaviorChange:
+      "Hành vi D'' (Dự đoán không gian ngầm): Phán đoán điểm xuất hiện và vòng lặp của đoàn xe hầm.",
     teachLevel: 201,
     practiceLevels: [202, 203, 204],
     testLevel: 205,
     combineStartLevel: 208,
-    pacingNote: 'Dạy tại L201 (Relief level ngay sau Mega PEAK L200), luyện 202-204, test tại Hard L205, Combine tại L208+.',
-    riskMitigation: 'Đỉnh cao biến thể cho player đã master toàn bộ core & secondary.'
-  }
+    pacingNote:
+      'Dạy tại L201 (Relief level ngay sau Mega PEAK L200), luyện 202-204, test tại Hard L205, Combine tại L208+.',
+    riskMitigation: 'Đỉnh cao biến thể cho player đã master toàn bộ core & secondary.',
+  },
 ];
 
 /**
@@ -372,10 +587,37 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
  */
 export function getProposedLevelDifficultyInfo(levelNum) {
   if (levelNum <= 100) {
-    if (levelNum % 50 === 0) return { type: 'PEAK', isSuperHard: true, isHard: false, text: `⚡ PEAK Climax L${levelNum}` };
-    if (levelNum % 10 === 0) return { type: 'SUPER_HARD', isSuperHard: true, isHard: false, text: `💀 Super Hard L${levelNum}` };
-    if (levelNum % 10 === 5) return { type: 'HARD', isSuperHard: false, isHard: true, text: `🔥 Hard Level L${levelNum}` };
-    if (levelNum % 10 === 1 || levelNum === 21 || levelNum === 32 || levelNum === 51 || levelNum === 63 || levelNum === 76 || levelNum === 92) return { type: 'RELIEF', isSuperHard: false, isHard: false, text: `🟢 Normal (Teach / Relief)` };
+    if (levelNum % 50 === 0)
+      return {
+        type: 'PEAK',
+        isSuperHard: true,
+        isHard: false,
+        text: `⚡ PEAK Climax L${levelNum}`,
+      };
+    if (levelNum % 10 === 0)
+      return {
+        type: 'SUPER_HARD',
+        isSuperHard: true,
+        isHard: false,
+        text: `💀 Super Hard L${levelNum}`,
+      };
+    if (levelNum % 10 === 5)
+      return { type: 'HARD', isSuperHard: false, isHard: true, text: `🔥 Hard Level L${levelNum}` };
+    if (
+      levelNum % 10 === 1 ||
+      levelNum === 21 ||
+      levelNum === 32 ||
+      levelNum === 51 ||
+      levelNum === 63 ||
+      levelNum === 76 ||
+      levelNum === 92
+    )
+      return {
+        type: 'RELIEF',
+        isSuperHard: false,
+        isHard: false,
+        text: `🟢 Normal (Teach / Relief)`,
+      };
     return { type: 'NORMAL', isSuperHard: false, isHard: false, text: `🟢 Normal` };
   }
 
@@ -386,21 +628,48 @@ export function getProposedLevelDifficultyInfo(levelNum) {
   const reliefLevels = [101, 108, 120, 124, 141, 151, 163, 201];
 
   if (peakLevels.includes(levelNum) || (levelNum % 50 === 0 && levelNum > 200)) {
-    return { type: 'PEAK', isSuperHard: true, isHard: false, text: `⚡ PEAK L${levelNum} (Mega Challenge Sink)` };
+    return {
+      type: 'PEAK',
+      isSuperHard: true,
+      isHard: false,
+      text: `⚡ PEAK L${levelNum} (Mega Challenge Sink)`,
+    };
   }
   if (superHardLevels.includes(levelNum)) {
-    return { type: 'SUPER_HARD', isSuperHard: true, isHard: false, text: `💀 Super Hard L${levelNum} (Mechanic Climax)` };
+    return {
+      type: 'SUPER_HARD',
+      isSuperHard: true,
+      isHard: false,
+      text: `💀 Super Hard L${levelNum} (Mechanic Climax)`,
+    };
   }
   if (hardLevels.includes(levelNum)) {
-    return { type: 'HARD', isSuperHard: false, isHard: true, text: `🔥 Hard Level L${levelNum} (Mechanic Test — Pattern Break)` };
+    return {
+      type: 'HARD',
+      isSuperHard: false,
+      isHard: true,
+      text: `🔥 Hard Level L${levelNum} (Mechanic Test — Pattern Break)`,
+    };
   }
   if (reliefLevels.includes(levelNum)) {
-    return { type: 'RELIEF', isSuperHard: false, isHard: false, text: `🟢 Normal (Teach / Relief)` };
+    return {
+      type: 'RELIEF',
+      isSuperHard: false,
+      isHard: false,
+      text: `🟢 Normal (Teach / Relief)`,
+    };
   }
 
   // Generic fallback cho L101+ nếu không thuộc danh sách đặc biệt trên:
-  if (levelNum % 20 === 0) return { type: 'SUPER_HARD', isSuperHard: true, isHard: false, text: `💀 Super Hard L${levelNum}` };
-  if (levelNum % 7 === 0) return { type: 'HARD', isSuperHard: false, isHard: true, text: `🔥 Hard Level L${levelNum}` };
+  if (levelNum % 20 === 0)
+    return {
+      type: 'SUPER_HARD',
+      isSuperHard: true,
+      isHard: false,
+      text: `💀 Super Hard L${levelNum}`,
+    };
+  if (levelNum % 7 === 0)
+    return { type: 'HARD', isSuperHard: false, isHard: true, text: `🔥 Hard Level L${levelNum}` };
 
   return { type: 'NORMAL', isSuperHard: false, isHard: false, text: `🟢 Normal` };
 }
@@ -446,7 +715,8 @@ export class MechanicMapRenderer {
   scheduleHideTooltip(delay = 300) {
     this.cancelHideTooltip();
     this.tooltipHideTimer = setTimeout(() => {
-      const tooltip = this.container.querySelector('#mmapTooltip') || document.getElementById('mmapTooltip');
+      const tooltip =
+        this.container.querySelector('#mmapTooltip') || document.getElementById('mmapTooltip');
       if (tooltip) tooltip.style.display = 'none';
     }, delay);
   }
@@ -561,7 +831,12 @@ export class MechanicMapRenderer {
   }
 
   bindEvents() {
-    const tooltip = (this.container && this.container.querySelector) ? this.container.querySelector('#mmapTooltip') : (typeof document !== 'undefined' ? document.getElementById('mmapTooltip') : null);
+    const tooltip =
+      this.container && this.container.querySelector
+        ? this.container.querySelector('#mmapTooltip')
+        : typeof document !== 'undefined'
+          ? document.getElementById('mmapTooltip')
+          : null;
     if (tooltip) {
       tooltip.addEventListener('mouseenter', () => {
         this.cancelHideTooltip();
@@ -593,7 +868,8 @@ export class MechanicMapRenderer {
         this.activeView = btn.getAttribute('data-view') || 'actual';
 
         const isProposed = this.activeView === 'proposed';
-        if (btnToggleEditMode) btnToggleEditMode.style.display = isProposed ? 'inline-flex' : 'none';
+        if (btnToggleEditMode)
+          btnToggleEditMode.style.display = isProposed ? 'inline-flex' : 'none';
         if (btnExportCSV) btnExportCSV.style.display = isProposed ? 'inline-flex' : 'none';
 
         if (this.callbacks.onViewChange) {
@@ -698,7 +974,7 @@ export class MechanicMapRenderer {
     const validLevels = this.rawLevels
       .filter((l) => !l.isError && typeof l.level === 'number')
       .map((l) => l.level);
-    
+
     if (validLevels.length > 0) {
       this.minLevel = Math.min(...validLevels);
       this.maxLevel = Math.max(...validLevels);
@@ -823,7 +1099,10 @@ export class MechanicMapRenderer {
       let rowDots = '';
       let totalCountAll = 0;
       let levelsWithMech = 0;
-      const color = MECHANIC_COLORS[mech.id] || { dot: '#94a3b8', bar: 'rgba(148, 163, 184, 0.85)' };
+      const color = MECHANIC_COLORS[mech.id] || {
+        dot: '#94a3b8',
+        bar: 'rgba(148, 163, 184, 0.85)',
+      };
 
       validLevels.forEach((lvl) => {
         const occ = this.getMechanicOccurrence(lvl, mech);
@@ -831,7 +1110,7 @@ export class MechanicMapRenderer {
           totalCountAll += occ.count;
           levelsWithMech++;
 
-          const sizeClass = occ.count > 20 ? 'dot-lg' : (occ.count > 5 ? 'dot-md' : 'dot-sm');
+          const sizeClass = occ.count > 20 ? 'dot-lg' : occ.count > 5 ? 'dot-md' : 'dot-sm';
           const intensity = Math.min(1, 0.4 + (occ.count / 30) * 0.6);
 
           rowDots += `
@@ -896,7 +1175,7 @@ export class MechanicMapRenderer {
     validLevels.forEach((lvl, idx) => {
       const isFirst = idx === 0;
       const isLast = idx === totalCount - 1;
-      const isStep = (lvl.level % tickStep === 0);
+      const isStep = lvl.level % tickStep === 0;
       const showLabel = isFirst || isLast || isStep;
 
       levelHeaders += `
@@ -946,7 +1225,7 @@ export class MechanicMapRenderer {
    */
   computeProposedLevelPhases(levels) {
     // Mega-Challenge levels: Mỗi 50 level (L50, L100, L150, L200, L250...) làm mốc cao trào bào resource
-    const isMegaLevel = (lvl) => (lvl % 50 === 0);
+    const isMegaLevel = (lvl) => lvl % 50 === 0;
     const levelMap = new Map();
     const lastActiveLevel = new Map();
 
@@ -965,7 +1244,7 @@ export class MechanicMapRenderer {
             phaseClass: 'phase-teach',
             phaseText: 'T',
             phaseTitle: `Level ${lvl}: Pha TEACH — Giới thiệu cô lập ${mech.name}, độ khó thấp.`,
-            priority: 100
+            priority: 100,
           });
         } else if (mech.practiceLevels && mech.practiceLevels.includes(lvl)) {
           activeForLvl.push({
@@ -974,7 +1253,7 @@ export class MechanicMapRenderer {
             phaseClass: 'phase-practice',
             phaseText: 'P',
             phaseTitle: `Level ${lvl}: Pha PRACTICE — Luyện tập ${mech.name} một mình, tăng tải nhẹ nhàng.`,
-            priority: 90
+            priority: 90,
           });
         } else if (lvl === mech.testLevel) {
           activeForLvl.push({
@@ -983,7 +1262,7 @@ export class MechanicMapRenderer {
             phaseClass: 'phase-test',
             phaseText: 'Tst',
             phaseTitle: `Level ${lvl}: Pha TEST — Đo lường mastery của ${mech.name} trước khi combine.`,
-            priority: 80
+            priority: 80,
           });
         }
       });
@@ -991,7 +1270,7 @@ export class MechanicMapRenderer {
       // 2. Ứng viên Pha Combine
       const combineCandidates = [];
       PROPOSED_MECHANIC_BLUEPRINT.forEach((mech) => {
-        if (lvl >= mech.combineStartLevel && !activeForLvl.some(a => a.mech.id === mech.id)) {
+        if (lvl >= mech.combineStartLevel && !activeForLvl.some((a) => a.mech.id === mech.id)) {
           let isCandidate = false;
           if (mech.tier === 'CORE') {
             // Core mechanics (Hidden & Connected) luôn sẵn sàng làm nền tảng combine
@@ -1015,7 +1294,7 @@ export class MechanicMapRenderer {
               phaseClass: 'phase-combine',
               phaseText: 'C',
               phaseTitle: `Level ${lvl}: Pha COMBINE — Phối hợp ${mech.name} cùng mechanic đã học (đã vắng mặt ${idleTime} lvls).`,
-              idleTime
+              idleTime,
             });
           }
         }
@@ -1024,15 +1303,15 @@ export class MechanicMapRenderer {
       if (isMega) {
         // Mega-Challenge level: Cho phép combine đa tầng (4-8 mechanics) tạo đỉnh cao độ khó & bào sink tài nguyên
         combineCandidates.forEach((c) => activeForLvl.push(c));
-        PROPOSED_MECHANIC_BLUEPRINT.filter(m => m.tier === 'CORE').forEach((core) => {
-          if (lvl >= core.combineStartLevel && !activeForLvl.some(a => a.mech.id === core.id)) {
+        PROPOSED_MECHANIC_BLUEPRINT.filter((m) => m.tier === 'CORE').forEach((core) => {
+          if (lvl >= core.combineStartLevel && !activeForLvl.some((a) => a.mech.id === core.id)) {
             activeForLvl.push({
               mech: core,
               phase: 'combine',
               phaseClass: 'phase-combine',
               phaseText: 'C',
               phaseTitle: `Level ${lvl}: Pha COMBINE — Core Climax Combine (${core.name}).`,
-              idleTime: 0
+              idleTime: 0,
             });
           }
         });
@@ -1040,9 +1319,9 @@ export class MechanicMapRenderer {
         // Density Cap theo Pacing:
         // - Pha Teach / Practice / Test: Cách ly cô lập 1 mình để người chơi master cơ chế (0 combine slot)
         // - Pha Combine thông thường: Tối đa 4 mechanics (2 Cores + 2 Secondaries), màn Hard/SuperHard tối đa 5
-        const hasTeach = activeForLvl.some(a => a.phase === 'teach');
-        const hasPractice = activeForLvl.some(a => a.phase === 'practice');
-        const hasTest = activeForLvl.some(a => a.phase === 'test');
+        const hasTeach = activeForLvl.some((a) => a.phase === 'teach');
+        const hasPractice = activeForLvl.some((a) => a.phase === 'practice');
+        const hasTest = activeForLvl.some((a) => a.phase === 'test');
 
         let maxCombineSlots = 0;
         if (hasTeach || hasPractice || hasTest) {
@@ -1054,14 +1333,14 @@ export class MechanicMapRenderer {
         }
 
         if (maxCombineSlots > 0) {
-          const cores = combineCandidates.filter(c => c.mech.tier === 'CORE');
+          const cores = combineCandidates.filter((c) => c.mech.tier === 'CORE');
           const activeCluster = getActiveClusterForLevel(lvl);
 
           // Phân bổ Core Mechanics linh hoạt (Decoupled Core Rotation):
           // - Màn Hard / SuperHard / Pre-Hard (lvl % 5 === 4): Kết hợp cả 2 Cores (Dual Core Pressure)
           // - Màn Normal thông thường: Xoay vòng độc lập 1 Core theo Cụm chủ đề & Thời gian vắng mặt (Idle Time)
           let selectedCores = [];
-          if (isHardOrSuperHard || (lvl % 5 === 4)) {
+          if (isHardOrSuperHard || lvl % 5 === 4) {
             selectedCores = [...cores];
           } else {
             const sortedCores = [...cores].sort((a, b) => {
@@ -1076,12 +1355,14 @@ export class MechanicMapRenderer {
           }
 
           // Sắp xếp các mechanic secondary theo Cluster chủ đề (Micro Cluster) và thời gian vắng mặt (Fair Idle-Time)
-          const secondaries = combineCandidates.filter(c => c.mech.tier !== 'CORE').sort((a, b) => {
-            const inClusterA = activeCluster && activeCluster.mechs.includes(a.mech.id) ? 1 : 0;
-            const inClusterB = activeCluster && activeCluster.mechs.includes(b.mech.id) ? 1 : 0;
-            if (inClusterA !== inClusterB) return inClusterB - inClusterA; // Ưu tiên thuộc cụm chủ đề hiện tại
-            return b.idleTime - a.idleTime; // Tiêu chí phụ: vắng mặt lâu nhất
-          });
+          const secondaries = combineCandidates
+            .filter((c) => c.mech.tier !== 'CORE')
+            .sort((a, b) => {
+              const inClusterA = activeCluster && activeCluster.mechs.includes(a.mech.id) ? 1 : 0;
+              const inClusterB = activeCluster && activeCluster.mechs.includes(b.mech.id) ? 1 : 0;
+              if (inClusterA !== inClusterB) return inClusterB - inClusterA; // Ưu tiên thuộc cụm chủ đề hiện tại
+              return b.idleTime - a.idleTime; // Tiêu chí phụ: vắng mặt lâu nhất
+            });
 
           let added = 0;
           // 1. Thêm Core mechanics đã chọn
@@ -1101,9 +1382,8 @@ export class MechanicMapRenderer {
         }
       }
 
-
       // Cập nhật tracker lần xuất hiện cuối cùng của mỗi mechanic
-      activeForLvl.forEach(item => {
+      activeForLvl.forEach((item) => {
         lastActiveLevel.set(item.mech.id, lvl);
       });
 
@@ -1123,9 +1403,15 @@ export class MechanicMapRenderer {
 
     // Stats Bar động
     if (statsBarEl) {
-      const coreList = PROPOSED_MECHANIC_BLUEPRINT.filter(m => m.tier === 'CORE').map(m => `${m.name} (L${m.teachLevel})`).join(', ');
-      const secList = PROPOSED_MECHANIC_BLUEPRINT.filter(m => m.tier === 'SECONDARY').map(m => `${m.name} (L${m.teachLevel})`).join(', ');
-      const sitList = PROPOSED_MECHANIC_BLUEPRINT.filter(m => m.tier === 'SITUATIONAL').map(m => `${m.name} (L${m.teachLevel})`).join(', ');
+      const coreList = PROPOSED_MECHANIC_BLUEPRINT.filter((m) => m.tier === 'CORE')
+        .map((m) => `${m.name} (L${m.teachLevel})`)
+        .join(', ');
+      const secList = PROPOSED_MECHANIC_BLUEPRINT.filter((m) => m.tier === 'SECONDARY')
+        .map((m) => `${m.name} (L${m.teachLevel})`)
+        .join(', ');
+      const sitList = PROPOSED_MECHANIC_BLUEPRINT.filter((m) => m.tier === 'SITUATIONAL')
+        .map((m) => `${m.name} (L${m.teachLevel})`)
+        .join(', ');
 
       const editsCount = this.editsMap.size;
 
@@ -1168,26 +1454,58 @@ export class MechanicMapRenderer {
 
       if (boosterDef) {
         tag = `<span class="mmap-tag tag-d1" style="background: rgba(234, 179, 8, 0.2); color: #fbbf24; border: 1px solid #eab308;" title="Mở khóa Booster Tutorial: ${boosterDef.name}">${boosterDef.icon} ${boosterDef.name.split(' ')[0]}</span>`;
-      } else if (lvl === 8) tag = '<span class="mmap-tag tag-d1" title="D1 Retention Risk — Teach Core Mechanic Hidden Truck">🎯 Hidden</span>';
-      else if (lvl === 10) tag = '<span class="mmap-tag tag-superhard" title="SuperHard L10 (Solo Hidden Practice)">💀 SH L10</span>';
-      else if (lvl === 14) tag = '<span class="mmap-tag tag-d1" title="Mastering Core — Teach Connected Trucks">⭐ Connected</span>';
-      else if (lvl === 20) tag = '<span class="mmap-tag tag-superhard" title="SuperHard L20 Milestone — Core Combine Climax">💀 SH L20</span>';
-      else if (lvl === 21) tag = '<span class="mmap-tag tag-wow" title="D7 Retention Savior — Loader Stack Wow/Relief Teach">⭐ WOW</span>';
-      else if (lvl === 32) tag = '<span class="mmap-tag tag-wow" title="Teach Frozen Truck (Tactile Crunch)">❄️ Ice</span>';
-      else if (lvl === 51) tag = '<span class="mmap-tag tag-tier2" title="Teach Solid Wood Wall (Spatial Routing)">🛡️ Wood</span>';
-      else if (lvl === 63) tag = '<span class="mmap-tag tag-tier2" title="Teach Mystery Block">❓ Mystery</span>';
-      else if (lvl === 76) tag = '<span class="mmap-tag tag-tier2" title="Teach Hard Block (2x2/3x3)">🧱 HardBlk</span>';
-      else if (lvl === 92) tag = '<span class="mmap-tag tag-bomb" title="Teach Bomb Truck (Emergency Protocol)">💣 Bomb</span>';
-      else if (lvl === 108) tag = '<span class="mmap-tag tag-tier2" title="Teach Long Key (Dependency Chain)">🗝️ Key</span>';
-      else if (lvl === 124) tag = '<span class="mmap-tag tag-pipe" title="Teach Truck Pipe (FIFO Queue)">🧪 Pipe</span>';
-      else if (lvl === 141) tag = '<span class="mmap-tag tag-wow" title="Teach Curtains (Visual Relief)">🎪 Curtains</span>';
-      else if (lvl === 163) tag = '<span class="mmap-tag tag-tier2" title="Teach Key Hunt (Lock & Key Pair)">🔑 Hunt</span>';
-      else if (lvl === 201) tag = '<span class="mmap-tag tag-tier2" title="Teach Truck Tunnel (Underground Routing)">🚇 Tunnel</span>';
+      } else if (lvl === 8)
+        tag =
+          '<span class="mmap-tag tag-d1" title="D1 Retention Risk — Teach Core Mechanic Hidden Truck">🎯 Hidden</span>';
+      else if (lvl === 10)
+        tag =
+          '<span class="mmap-tag tag-superhard" title="SuperHard L10 (Solo Hidden Practice)">💀 SH L10</span>';
+      else if (lvl === 14)
+        tag =
+          '<span class="mmap-tag tag-d1" title="Mastering Core — Teach Connected Trucks">⭐ Connected</span>';
+      else if (lvl === 20)
+        tag =
+          '<span class="mmap-tag tag-superhard" title="SuperHard L20 Milestone — Core Combine Climax">💀 SH L20</span>';
+      else if (lvl === 21)
+        tag =
+          '<span class="mmap-tag tag-wow" title="D7 Retention Savior — Loader Stack Wow/Relief Teach">⭐ WOW</span>';
+      else if (lvl === 31)
+        tag =
+          '<span class="mmap-tag tag-wow" title="Teach Frozen Truck (Tactile Crunch)">❄️ Ice</span>';
+      else if (lvl === 51)
+        tag =
+          '<span class="mmap-tag tag-tier2" title="Teach Solid Wood Wall (Spatial Routing)">🛡️ Wood</span>';
+      else if (lvl === 63)
+        tag = '<span class="mmap-tag tag-tier2" title="Teach Mystery Block">❓ Mystery</span>';
+      else if (lvl === 76)
+        tag =
+          '<span class="mmap-tag tag-tier2" title="Teach Hard Block (2x2/3x3)">🧱 HardBlk</span>';
+      else if (lvl === 92)
+        tag =
+          '<span class="mmap-tag tag-bomb" title="Teach Bomb Truck (Emergency Protocol)">💣 Bomb</span>';
+      else if (lvl === 108)
+        tag =
+          '<span class="mmap-tag tag-tier2" title="Teach Long Key (Dependency Chain)">🗝️ Key</span>';
+      else if (lvl === 124)
+        tag =
+          '<span class="mmap-tag tag-pipe" title="Teach Truck Pipe (FIFO Queue)">🧪 Pipe</span>';
+      else if (lvl === 141)
+        tag =
+          '<span class="mmap-tag tag-wow" title="Teach Curtains (Visual Relief)">🎪 Curtains</span>';
+      else if (lvl === 163)
+        tag =
+          '<span class="mmap-tag tag-tier2" title="Teach Key Hunt (Lock & Key Pair)">🔑 Hunt</span>';
+      else if (lvl === 201)
+        tag =
+          '<span class="mmap-tag tag-tier2" title="Teach Truck Tunnel (Underground Routing)">🚇 Tunnel</span>';
       else {
         const diffInfo = getProposedLevelDifficultyInfo(lvl);
-        if (diffInfo.type === 'PEAK') tag = `<span class="mmap-tag tag-peak" title="⚡ PEAK Mega-Challenge Climax L${lvl}">⚡ PEAK L${lvl}</span>`;
-        else if (diffInfo.isSuperHard) tag = `<span class="mmap-tag tag-superhard" title="SuperHard L${lvl}">💀 SH</span>`;
-        else if (diffInfo.isHard) tag = `<span class="mmap-tag tag-hard" title="Hard L${lvl}">🔥 Hard</span>`;
+        if (diffInfo.type === 'PEAK')
+          tag = `<span class="mmap-tag tag-peak" title="⚡ PEAK Mega-Challenge Climax L${lvl}">⚡ PEAK L${lvl}</span>`;
+        else if (diffInfo.isSuperHard)
+          tag = `<span class="mmap-tag tag-superhard" title="SuperHard L${lvl}">💀 SH</span>`;
+        else if (diffInfo.isHard)
+          tag = `<span class="mmap-tag tag-hard" title="Hard L${lvl}">🔥 Hard</span>`;
       }
 
       retentionHeaderCells += `<div class="mmap-header-cell blueprint-header-cell" data-level="${lvl}">${tag}</div>`;
@@ -1202,7 +1520,7 @@ export class MechanicMapRenderer {
     levels.forEach((lvl, idx) => {
       const isFirst = idx === 0;
       const isLast = idx === levels.length - 1;
-      const isStep = (lvl % tickStep === 0);
+      const isStep = lvl % tickStep === 0;
       const showLabel = isFirst || isLast || isStep;
       const hasComment = Boolean(this.getLevelComment(lvl));
 
@@ -1233,7 +1551,9 @@ export class MechanicMapRenderer {
 
         if (userEdit.overrideType === 'removed') {
           extraCellClass += ' user-removed';
-          phaseTitle = `Level ${lvl}: [USER LOẠI BỎ] ${mech.name}` + (userEdit.comment ? `\n💬 Note: ${userEdit.comment}` : '');
+          phaseTitle =
+            `Level ${lvl}: [USER LOẠI BỎ] ${mech.name}` +
+            (userEdit.comment ? `\n💬 Note: ${userEdit.comment}` : '');
         } else if (userEdit.overrideType === 'added' || userEdit.overrideType === 'phase_changed') {
           extraCellClass += ' user-added';
           phase = userEdit.overridePhase || phase || 'combine';
@@ -1241,12 +1561,14 @@ export class MechanicMapRenderer {
             teach: { text: 'T', cls: 'phase-teach' },
             practice: { text: 'P', cls: 'phase-practice' },
             test: { text: 'Tst', cls: 'phase-test' },
-            combine: { text: 'C', cls: 'phase-combine' }
+            combine: { text: 'C', cls: 'phase-combine' },
           };
           const pInfo = phaseMapInfo[phase] || { text: 'C', cls: 'phase-combine' };
           phaseText = pInfo.text;
           phaseClass = pInfo.cls;
-          phaseTitle = `Level ${lvl}: [USER THÊM/SỬA] ${mech.name} (${phase.toUpperCase()})` + (userEdit.comment ? `\n💬 Note: ${userEdit.comment}` : '');
+          phaseTitle =
+            `Level ${lvl}: [USER THÊM/SỬA] ${mech.name} (${phase.toUpperCase()})` +
+            (userEdit.comment ? `\n💬 Note: ${userEdit.comment}` : '');
         }
       }
 
@@ -1299,7 +1621,7 @@ export class MechanicMapRenderer {
             phase: 'teach',
             phaseClass: 'phase-booster-teach',
             phaseText: 'B',
-            phaseTitle: `Level ${lvl}: Pha BOOSTER TUTORIAL — Giới thiệu ${booster.name}`
+            phaseTitle: `Level ${lvl}: Pha BOOSTER TUTORIAL — Giới thiệu ${booster.name}`,
           };
         }
         rowCells += renderCell(lvl, booster, entry, color, true);
@@ -1335,11 +1657,14 @@ export class MechanicMapRenderer {
     // 2. Render Gameplay Mechanics Rows Section
     PROPOSED_MECHANIC_BLUEPRINT.forEach((mech) => {
       let rowCells = '';
-      const color = MECHANIC_COLORS[mech.id] || { dot: '#94a3b8', bar: 'rgba(148, 163, 184, 0.85)' };
+      const color = MECHANIC_COLORS[mech.id] || {
+        dot: '#94a3b8',
+        bar: 'rgba(148, 163, 184, 0.85)',
+      };
 
       levels.forEach((lvl) => {
         const activeList = levelPhaseMap.get(lvl) || [];
-        const entry = activeList.find(a => a.mech.id === mech.id);
+        const entry = activeList.find((a) => a.mech.id === mech.id);
         rowCells += renderCell(lvl, mech, entry, color.dot, false);
       });
 
@@ -1475,7 +1800,8 @@ export class MechanicMapRenderer {
               </tr>
             </thead>
             <tbody>
-              ${PROPOSED_MECHANIC_BLUEPRINT.map((m) => `
+              ${PROPOSED_MECHANIC_BLUEPRINT.map(
+                (m) => `
                 <tr>
                   <td>
                     <div style="display: flex; align-items: center; gap: 8px;">
@@ -1500,7 +1826,8 @@ export class MechanicMapRenderer {
                     <div class="audit-subnote">💡 ${m.pacingNote}</div>
                   </td>
                 </tr>
-              `).join('')}
+              `
+              ).join('')}
             </tbody>
           </table>
         </div>
@@ -1538,14 +1865,17 @@ export class MechanicMapRenderer {
         }
       }
       if (totalCount > 0) {
-        const coverage = lvlData.total_cells > 0 ? ((totalCount / lvlData.total_cells) * 100).toFixed(1) + '%' : '-';
+        const coverage =
+          lvlData.total_cells > 0
+            ? ((totalCount / lvlData.total_cells) * 100).toFixed(1) + '%'
+            : '-';
         activeMechs.push({
           ...def,
           groupType: 'block',
           count: totalCount,
           firstRow,
           coverage,
-          unit: 'blocks'
+          unit: 'blocks',
         });
       }
     });
@@ -1569,7 +1899,7 @@ export class MechanicMapRenderer {
           count: totalCount,
           firstRow: null,
           coverage: null,
-          unit: 'slots xe'
+          unit: 'slots xe',
         });
       }
     });
@@ -1592,7 +1922,7 @@ export class MechanicMapRenderer {
         detailText: `${blockMech.count} blocks chìa + ${truckMech.count} xe khóa`,
         coverage: blockMech.coverage,
         firstRow: blockMech.firstRow,
-        unit: 'items'
+        unit: 'items',
       };
       const minIdx = Math.min(keyBlockIdx, keyTruckIdx);
       const maxIdx = Math.max(keyBlockIdx, keyTruckIdx);
@@ -1660,7 +1990,7 @@ export class MechanicMapRenderer {
           desc: 'Key Hunt: Khối Chìa Khóa (BlockKey 5) & Xe Ổ Khóa (ShooterLock 1)',
           tutLevel: 120,
           order: 12,
-          groupType: 'paired'
+          groupType: 'paired',
         };
         const filtered = list.filter((m) => m.id !== 'b_5' && m.id !== 's_key');
         filtered.push(pairedDef);
@@ -1699,7 +2029,10 @@ export class MechanicMapRenderer {
       }
       const totalCount = blockCount + truckCount;
       if (totalCount <= 0) return null;
-      const coverage = lvl.total_cells > 0 && blockCount > 0 ? ((blockCount / lvl.total_cells) * 100).toFixed(1) + '%' : '-';
+      const coverage =
+        lvl.total_cells > 0 && blockCount > 0
+          ? ((blockCount / lvl.total_cells) * 100).toFixed(1) + '%'
+          : '-';
       return {
         count: totalCount,
         blockCount,
@@ -1722,7 +2055,8 @@ export class MechanicMapRenderer {
         }
       }
       if (totalCount <= 0) return null;
-      const coverage = lvl.total_cells > 0 ? ((totalCount / lvl.total_cells) * 100).toFixed(1) + '%' : '-';
+      const coverage =
+        lvl.total_cells > 0 ? ((totalCount / lvl.total_cells) * 100).toFixed(1) + '%' : '-';
       return {
         count: totalCount,
         firstRow,
@@ -1751,7 +2085,8 @@ export class MechanicMapRenderer {
    * ATTACH CELL EVENTS (HOVER INSPECTOR & CLICK) TRÊN ACTUAL HEATMAP
    */
   attachCellEvents(containerEl) {
-    const tooltip = this.container.querySelector('#mmapTooltip') || document.getElementById('mmapTooltip');
+    const tooltip =
+      this.container.querySelector('#mmapTooltip') || document.getElementById('mmapTooltip');
 
     // Hover trên toàn bộ cột header hoặc cell
     const cellsAndHeaders = containerEl.querySelectorAll('.mmap-cell, .mmap-header-cell');
@@ -1767,12 +2102,15 @@ export class MechanicMapRenderer {
 
         let mechsListHtml = '';
         if (allMechs.length > 0) {
-          mechsListHtml = allMechs.map((m) => {
-            const color = MECHANIC_COLORS[m.id]?.dot || '#3b82f6';
-            const iconImg = this.renderMechIcon(m, true);
-            const countText = m.detailText ? `<strong>${m.detailText}</strong>` : `<strong>${m.count} ${m.unit}</strong>`;
+          mechsListHtml = allMechs
+            .map((m) => {
+              const color = MECHANIC_COLORS[m.id]?.dot || '#3b82f6';
+              const iconImg = this.renderMechIcon(m, true);
+              const countText = m.detailText
+                ? `<strong>${m.detailText}</strong>`
+                : `<strong>${m.count} ${m.unit}</strong>`;
 
-            return `
+              return `
               <div class="tip-mech-row">
                 <span class="tip-mech-dot" style="background: ${color};"></span>
                 ${iconImg}
@@ -1781,15 +2119,30 @@ export class MechanicMapRenderer {
                 ${m.coverage && m.coverage !== '-' ? `<span class="tip-mech-cov">(${m.coverage})</span>` : ''}
               </div>
             `;
-          }).join('');
+            })
+            .join('');
         } else {
-          mechsListHtml = '<div class="tip-mech-empty">Standard Core Level (Không chứa gimmick mechanic đặc biệt)</div>';
+          mechsListHtml =
+            '<div class="tip-mech-empty">Standard Core Level (Không chứa gimmick mechanic đặc biệt)</div>';
         }
 
-        const actualDiffBadge = lvlData?.isSuperHard ? '🔴 Super Hard' : (lvlData?.isHard ? '🟠 Hard' : '🟢 Normal');
-        const proposedDiff = (levelNum % 10 === 0) ? '🔴 Đề xuất: Super Hard (..0)' : ((levelNum % 10 === 5) ? '🟠 Đề xuất: Hard (..5)' : '🟢 Đề xuất: Normal');
-        const activeBlocks = lvlData ? `${lvlData.active_blocks} blocks (${lvlData.fill_ratio_pct}%)` : '-';
-        const shooters = lvlData ? `${lvlData.num_shooters} cols (${lvlData.active_slots || lvlData.total_slots} slots)` : '-';
+        const actualDiffBadge = lvlData?.isSuperHard
+          ? '🔴 Super Hard'
+          : lvlData?.isHard
+            ? '🟠 Hard'
+            : '🟢 Normal';
+        const proposedDiff =
+          levelNum % 10 === 0
+            ? '🔴 Đề xuất: Super Hard (..0)'
+            : levelNum % 10 === 5
+              ? '🟠 Đề xuất: Hard (..5)'
+              : '🟢 Đề xuất: Normal';
+        const activeBlocks = lvlData
+          ? `${lvlData.active_blocks} blocks (${lvlData.fill_ratio_pct}%)`
+          : '-';
+        const shooters = lvlData
+          ? `${lvlData.num_shooters} cols (${lvlData.active_slots || lvlData.total_slots} slots)`
+          : '-';
 
         let tooltipHtml = `
           <div class="tip-header">
@@ -1861,7 +2214,7 @@ export class MechanicMapRenderer {
         phase: entry.phase,
         phaseLabel,
         phaseClass: entry.phaseClass,
-        phaseBadge: entry.phaseText
+        phaseBadge: entry.phaseText,
       };
     });
   }
@@ -1870,8 +2223,11 @@ export class MechanicMapRenderer {
    * ATTACH BLUEPRINT EVENTS (HOVER INSPECTOR & CLICK) TRÊN PROPOSED BLUEPRINT
    */
   attachBlueprintEvents(containerEl) {
-    const tooltip = this.container.querySelector('#mmapTooltip') || document.getElementById('mmapTooltip');
-    const cellsAndHeaders = containerEl.querySelectorAll('.blueprint-cell, .blueprint-header-cell, .blueprint-num-cell');
+    const tooltip =
+      this.container.querySelector('#mmapTooltip') || document.getElementById('mmapTooltip');
+    const cellsAndHeaders = containerEl.querySelectorAll(
+      '.blueprint-cell, .blueprint-header-cell, .blueprint-num-cell'
+    );
 
     // Nút Reset tất cả edits trên banner
     const btnResetAll = containerEl.querySelector('#btnResetAllEdits');
@@ -1900,7 +2256,7 @@ export class MechanicMapRenderer {
 
           // Tìm mechanic definition
           const allMechs = [...PROPOSED_MECHANIC_BLUEPRINT, ...PROPOSED_BOOSTER_BLUEPRINT];
-          const mech = allMechs.find(m => m.id === mechId);
+          const mech = allMechs.find((m) => m.id === mechId);
           const mechName = mech ? mech.name : mechId;
 
           this.openCommentModal(levelNum, mechId, mechName);
@@ -1920,13 +2276,17 @@ export class MechanicMapRenderer {
         const diffInfo = getProposedLevelDifficultyInfo(levelNum);
         let proposedDiffBadge = '';
         if (diffInfo.type === 'PEAK' || diffInfo.isSuperHard) {
-          proposedDiffBadge = '<span class="tip-badge" style="background: rgba(239, 68, 68, 0.25); color: #f87171; border: 1px solid #ef4444; font-weight: 800;">🔴 SUPER HARD</span>';
+          proposedDiffBadge =
+            '<span class="tip-badge" style="background: rgba(239, 68, 68, 0.25); color: #f87171; border: 1px solid #ef4444; font-weight: 800;">🔴 SUPER HARD</span>';
         } else if (diffInfo.isHard) {
-          proposedDiffBadge = '<span class="tip-badge" style="background: rgba(245, 158, 11, 0.25); color: #fbbf24; border: 1px solid #f59e0b; font-weight: 700;">🟠 HARD</span>';
+          proposedDiffBadge =
+            '<span class="tip-badge" style="background: rgba(245, 158, 11, 0.25); color: #fbbf24; border: 1px solid #f59e0b; font-weight: 700;">🟠 HARD</span>';
         } else if (diffInfo.type === 'RELIEF') {
-          proposedDiffBadge = '<span class="tip-badge" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #10b981;">🟢 NORMAL (Teach / Relief)</span>';
+          proposedDiffBadge =
+            '<span class="tip-badge" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #10b981;">🟢 NORMAL (Teach / Relief)</span>';
         } else {
-          proposedDiffBadge = '<span class="tip-badge" style="background: rgba(255, 255, 255, 0.1); color: #cbd5e1; border: 1px solid rgba(255, 255, 255, 0.2);">🟢 NORMAL</span>';
+          proposedDiffBadge =
+            '<span class="tip-badge" style="background: rgba(255, 255, 255, 0.1); color: #cbd5e1; border: 1px solid rgba(255, 255, 255, 0.2);">🟢 NORMAL</span>';
         }
 
         // Xác định Milestone / Pacing Tag cho Level này
@@ -1940,7 +2300,7 @@ export class MechanicMapRenderer {
         else if (levelNum === 21) milestoneTag = '⭐ D7 WOW / Relief (Loader Stack Teach)';
         else if (levelNum === 25) milestoneTag = '🔥 Hard Level L25 (Loader Test)';
         else if (levelNum === 30) milestoneTag = '💀 Super Hard L30 (Loader Climax)';
-        else if (levelNum === 32) milestoneTag = '❄️ Frozen Truck Debut (Tactile Crunch)';
+        else if (levelNum === 31) milestoneTag = '❄️ Frozen Truck Debut (Tactile Crunch)';
         else if (levelNum === 35) milestoneTag = '🔥 Hard Level L35 (Frozen Truck Test)';
         else if (levelNum === 40) milestoneTag = '💀 Super Hard L40 (Frozen Climax)';
         else if (levelNum === 50) milestoneTag = '⚡ PEAK L50 Mega-Challenge Climax (Act 1 Finale)';
@@ -1956,8 +2316,10 @@ export class MechanicMapRenderer {
         else if (levelNum === 98) milestoneTag = '🔥 Hard Level L98 (Bomb Test)';
         else if (levelNum === 100) milestoneTag = '💀 Super Hard L100 CLIMAX (Pipe + Bomb)';
         else if (levelNum === 108) milestoneTag = '🗝️ Long Key Debut (Dependency Chain)';
-        else if (levelNum === 113) milestoneTag = '🔥 Hard Level L113 (Long Key Test — Pattern Break)';
-        else if (levelNum === 119) milestoneTag = '💀 Super Hard L119 (Long Key Climax — Pattern Break)';
+        else if (levelNum === 113)
+          milestoneTag = '🔥 Hard Level L113 (Long Key Test — Pattern Break)';
+        else if (levelNum === 119)
+          milestoneTag = '💀 Super Hard L119 (Long Key Climax — Pattern Break)';
         else if (levelNum === 120) milestoneTag = '🟢 Relief Level L120 (Breathing Space)';
         else if (levelNum === 124) milestoneTag = '🧪 Truck Pipe Debut (FIFO Queue Stream)';
         else if (levelNum === 128) milestoneTag = '🔥 Hard Level L128 (Truck Pipe Test)';
@@ -1971,11 +2333,13 @@ export class MechanicMapRenderer {
         else if (levelNum === 172) milestoneTag = '💀 Super Hard L172 (Key Hunt Climax)';
         else if (levelNum === 197) milestoneTag = '🔥 Hard Level L197 (Pre-Climax Spike)';
         else if (levelNum === 200) milestoneTag = '⚡ MEGA PEAK L200 Mega-Challenge (Act 2 Finale)';
-        else if (levelNum === 201) milestoneTag = '🚇 Truck Tunnel Debut (Underground Routing Teach)';
+        else if (levelNum === 201)
+          milestoneTag = '🚇 Truck Tunnel Debut (Underground Routing Teach)';
         else if (levelNum === 205) milestoneTag = '🔥 Hard Level L205 (Truck Tunnel Test)';
         else if (diffInfo.isSuperHard) milestoneTag = `💀 Super Hard L${levelNum}`;
         else if (diffInfo.isHard) milestoneTag = `🔥 Hard Level L${levelNum}`;
-        else if (diffInfo.type === 'RELIEF') milestoneTag = `🌱 Teach / Relief Window (L${levelNum})`;
+        else if (diffInfo.type === 'RELIEF')
+          milestoneTag = `🌱 Teach / Relief Window (L${levelNum})`;
         else if (levelNum < 8) milestoneTag = '🌱 Standard Onboarding (1-7)';
 
         // Spotlight nếu trỏ trực tiếp vào 1 Badge cụ thể
@@ -1986,7 +2350,14 @@ export class MechanicMapRenderer {
           const mIntent = targetBadge.getAttribute('data-intent');
           const mBehavior = targetBadge.getAttribute('data-behavior');
           const mPacing = targetBadge.getAttribute('data-pacing');
-          const phaseName = mPhase === 'teach' ? '📘 TEACH (Giới thiệu)' : (mPhase === 'practice' ? '📗 PRACTICE (Luyện tập)' : (mPhase === 'test' ? '📙 TEST (Kiểm tra Mastery)' : '🔮 COMBINE (Phối hợp)'));
+          const phaseName =
+            mPhase === 'teach'
+              ? '📘 TEACH (Giới thiệu)'
+              : mPhase === 'practice'
+                ? '📗 PRACTICE (Luyện tập)'
+                : mPhase === 'test'
+                  ? '📙 TEST (Kiểm tra Mastery)'
+                  : '🔮 COMBINE (Phối hợp)';
 
           spotlightHtml = `
             <div class="tip-spotlight-card">
@@ -2002,35 +2373,37 @@ export class MechanicMapRenderer {
         }
 
         const allAvailableMechs = [...PROPOSED_MECHANIC_BLUEPRINT, ...PROPOSED_BOOSTER_BLUEPRINT];
-        
+
         let tooltipHtml = '';
 
         if (this.editMode) {
           // --- KHI EDIT MODE BẬT: Render Quick Level Checklist Editor ---
-          const checklistRowsHtml = allAvailableMechs.map((m) => {
-            const compositeKey = `${levelNum}_${m.id}`;
-            const userEdit = this.editsMap.get(compositeKey);
-            const computedEntry = proposedMechs.find((p) => p.id === m.id);
+          const checklistRowsHtml = allAvailableMechs
+            .map((m) => {
+              const compositeKey = `${levelNum}_${m.id}`;
+              const userEdit = this.editsMap.get(compositeKey);
+              const computedEntry = proposedMechs.find((p) => p.id === m.id);
 
-            let isChecked = false;
-            let currentPhase = 'combine';
+              let isChecked = false;
+              let currentPhase = 'combine';
 
-            if (userEdit) {
-              if (userEdit.overrideType === 'removed') {
-                isChecked = false;
-                currentPhase = computedEntry ? computedEntry.phase : 'combine';
-              } else {
+              if (userEdit) {
+                if (userEdit.overrideType === 'removed') {
+                  isChecked = false;
+                  currentPhase = computedEntry ? computedEntry.phase : 'combine';
+                } else {
+                  isChecked = true;
+                  currentPhase =
+                    userEdit.overridePhase || (computedEntry ? computedEntry.phase : 'combine');
+                }
+              } else if (computedEntry) {
                 isChecked = true;
-                currentPhase = userEdit.overridePhase || (computedEntry ? computedEntry.phase : 'combine');
+                currentPhase = computedEntry.phase;
               }
-            } else if (computedEntry) {
-              isChecked = true;
-              currentPhase = computedEntry.phase;
-            }
 
-            const iconImg = this.renderMechIcon(m, true);
+              const iconImg = this.renderMechIcon(m, true);
 
-            return `
+              return `
               <div class="tip-chk-item">
                 <input type="checkbox" class="tip-mech-chk" id="chk_${levelNum}_${m.id}" data-mech-id="${m.id}" data-mech-name="${m.name}" ${isChecked ? 'checked' : ''}>
                 <label for="chk_${levelNum}_${m.id}" class="tip-chk-label ${isChecked ? 'checked' : 'unchecked'}" id="lbl_${levelNum}_${m.id}">
@@ -2046,12 +2419,13 @@ export class MechanicMapRenderer {
                 </select>
               </div>
             `;
-          }).join('');
+            })
+            .join('');
 
           // Lấy comment hiện tại của level này (nếu có)
           const currentLevelNote = this.getLevelComment(levelNum);
 
-            tooltipHtml = `
+          tooltipHtml = `
             <div class="tip-header edit-mode-header" style="background: rgba(234, 179, 8, 0.15); margin: -12px -16px 8px -16px; padding: 8px 12px; border-bottom: 1px solid rgba(234, 179, 8, 0.3); display: flex; justify-content: space-between; align-items: center;">
               <div>
                 <strong style="color: #fbbf24; font-size: 13px;">✏️ Quick Edit Mechanics — Level ${levelNum}</strong>
@@ -2081,13 +2455,14 @@ export class MechanicMapRenderer {
           // --- KHI EDIT MODE TẮT: Render Read-Only Inspector Thuần Túy ---
           let proposedListHtml = '';
           if (proposedMechs.length > 0) {
-            proposedListHtml = proposedMechs.map((m) => {
-              const color = MECHANIC_COLORS[m.id]?.dot || '#3b82f6';
-              const iconImg = this.renderMechIcon(m, true);
-              const tierBadge = `<span class="mmap-cat-pill ${m.tier.toLowerCase()}" style="font-size: 9px; padding: 1px 4px;">${m.tier}</span>`;
-              const phaseBadge = `<span class="blueprint-phase-badge ${m.phaseClass}" style="width: 16px; height: 16px; font-size: 9px; display: inline-flex; align-items: center; justify-content: center;">${m.phaseBadge}</span>`;
+            proposedListHtml = proposedMechs
+              .map((m) => {
+                const color = MECHANIC_COLORS[m.id]?.dot || '#3b82f6';
+                const iconImg = this.renderMechIcon(m, true);
+                const tierBadge = `<span class="mmap-cat-pill ${m.tier.toLowerCase()}" style="font-size: 9px; padding: 1px 4px;">${m.tier}</span>`;
+                const phaseBadge = `<span class="blueprint-phase-badge ${m.phaseClass}" style="width: 16px; height: 16px; font-size: 9px; display: inline-flex; align-items: center; justify-content: center;">${m.phaseBadge}</span>`;
 
-              return `
+                return `
                 <div class="tip-mech-row blueprint-tip-row">
                   <span class="tip-mech-dot" style="background: ${color};"></span>
                   ${iconImg}
@@ -2096,7 +2471,8 @@ export class MechanicMapRenderer {
                   ${tierBadge}
                 </div>
               `;
-            }).join('');
+              })
+              .join('');
           } else {
             proposedListHtml = '<div class="tip-mech-empty">🌱 Màn chơi Onboarding cơ bản</div>';
           }
@@ -2249,7 +2625,8 @@ export class MechanicMapRenderer {
                   if (chk && chk.checked) {
                     const phaseVal = sel ? sel.value : 'combine';
                     if (computedEntry && computedEntry.phase === phaseVal) {
-                      if (this.callbacks.onRemoveEdit) await this.callbacks.onRemoveEdit(compositeKey);
+                      if (this.callbacks.onRemoveEdit)
+                        await this.callbacks.onRemoveEdit(compositeKey);
                       else this.editsMap.delete(compositeKey);
                     } else {
                       const record = {
@@ -2259,7 +2636,7 @@ export class MechanicMapRenderer {
                         mechName: m.name,
                         overrideType: computedEntry ? 'phase_changed' : 'added',
                         overridePhase: phaseVal,
-                        comment: ''
+                        comment: '',
                       };
                       if (this.callbacks.onSaveEdit) await this.callbacks.onSaveEdit(record);
                       else this.editsMap.set(compositeKey, record);
@@ -2273,12 +2650,13 @@ export class MechanicMapRenderer {
                         mechName: m.name,
                         overrideType: 'removed',
                         overridePhase: null,
-                        comment: ''
+                        comment: '',
                       };
                       if (this.callbacks.onSaveEdit) await this.callbacks.onSaveEdit(record);
                       else this.editsMap.set(compositeKey, record);
                     } else {
-                      if (this.callbacks.onRemoveEdit) await this.callbacks.onRemoveEdit(compositeKey);
+                      if (this.callbacks.onRemoveEdit)
+                        await this.callbacks.onRemoveEdit(compositeKey);
                       else this.editsMap.delete(compositeKey);
                     }
                   }
@@ -2292,7 +2670,7 @@ export class MechanicMapRenderer {
                     key: noteKey,
                     levelNum,
                     overrideType: 'comment',
-                    comment: noteVal
+                    comment: noteVal,
                   };
                   if (this.callbacks.onSaveEdit) await this.callbacks.onSaveEdit(record);
                   else this.editsMap.set(noteKey, record);
@@ -2313,7 +2691,7 @@ export class MechanicMapRenderer {
           const rect = el.getBoundingClientRect();
           let left = rect.left + window.scrollX + rect.width / 2;
           let top = rect.top + window.scrollY - 10;
-          
+
           if (rect.top < 380 && this.editMode) {
             tooltip.style.transform = 'translate(-50%, 10px)';
             tooltip.style.top = `${rect.bottom + window.scrollY}px`;
@@ -2370,17 +2748,19 @@ export class MechanicMapRenderer {
 
     let mechsBreakdown = '';
     if (allMechs.length > 0) {
-      mechsBreakdown = allMechs.map((m) => {
-        const iconImg = this.renderMechIcon(m, true);
-        const countText = m.detailText ? m.detailText : `${m.count} ${m.unit}`;
+      mechsBreakdown = allMechs
+        .map((m) => {
+          const iconImg = this.renderMechIcon(m, true);
+          const countText = m.detailText ? m.detailText : `${m.count} ${m.unit}`;
 
-        return `
+          return `
           <div class="preview-stat-item" style="border-left: 3px solid ${MECHANIC_COLORS[m.id]?.dot || '#3b82f6'}; padding-left: 8px;">
             <span class="stat-name" style="display: flex; align-items: center; gap: 6px;">${iconImg} ${m.name}</span>
             <span class="stat-count">${countText}</span>
           </div>
         `;
-      }).join('');
+        })
+        .join('');
     } else {
       mechsBreakdown = `
         <div class="preview-stat-item">
@@ -2441,7 +2821,7 @@ export class MechanicMapRenderer {
         const cell = col[y];
         const type = cell?.type;
         const px = offsetX + (x - minX) * cellSize;
-          const py = offsetY + (maxY - y) * cellSize;
+        const py = offsetY + (maxY - y) * cellSize;
 
         if (type !== undefined && type !== -1 && type !== null) {
           ctx.fillStyle = getColor(type);
@@ -2477,7 +2857,7 @@ export class MechanicMapRenderer {
 
     if (titleEl) titleEl.innerHTML = `💬 Edit & Comment — Level ${levelNum}`;
     if (metaEl) metaEl.innerHTML = `<strong>${mechName}</strong> (ID: <code>${mechId}</code>)`;
-    if (inputEl) inputEl.value = existingEdit ? (existingEdit.comment || '') : '';
+    if (inputEl) inputEl.value = existingEdit ? existingEdit.comment || '' : '';
 
     if (selectEl) {
       if (existingEdit) {
@@ -2533,7 +2913,7 @@ export class MechanicMapRenderer {
             mechName,
             overrideType,
             overridePhase,
-            comment: commentVal
+            comment: commentVal,
           };
 
           if (this.callbacks.onSaveEdit) {
@@ -2566,4 +2946,3 @@ export class MechanicMapRenderer {
     this.container.innerHTML = '';
   }
 }
-

@@ -7,7 +7,7 @@
 export const LOCAL_LEVEL_CONFIG = {
   name: 'Default',
   totalLevel: 360,
-  MechanicUnlockedLevel: [8, 14, 76, 163, 21, 63, 51, 124, 108, 32, 201, 141, 92, -1],
+  MechanicUnlockedLevel: [8, 14, 76, 163, 21, 63, 51, 124, 108, 31, 201, 141, 92, -1],
   BoosterUnlockedLevel: [7, 13, 15, 18, 0],
   LevelHards: [
     5, 11, 16, 25, 35, 40, 44, 48, 52, 59, 64, 69, 81, 85, 95, 105, 115, 118, 123, 127, 136, 140,

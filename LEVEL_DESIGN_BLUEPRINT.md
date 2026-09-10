@@ -82,7 +82,7 @@ L101 - L200+     Veteran Progression: Advanced Mechanics (Long Key, Pipe, Curtai
 | **TIER 1 CORE** | 1. Hidden Truck | Shooter | 🕶️ | Level 8 | **Hành vi A (Suy đoán & Quan sát viền):** Ẩn màu đạn, buộc soi viền màu |
 | **TIER 1 CORE** | 2. Connected Trucks | Shooter | ⭐ | Level 14 | **Hành vi C (Quản lý Slot & Nước đi đôi):** 2 xe dính liền di chuyển cùng lúc |
 | **TIER 2 SECONDARY**| 3. Loader Stack | Block | 🔫 | Level 21 | **Hành vi B (Xả đạn & Relief):** Bắn trúng sinh ra khối mới, thỏa mãn xúc giác |
-| **TIER 2 SECONDARY**| 4. Frozen Truck | Shooter | ❄️ | Level 32 | **Hành vi B' (Mục tiêu phụ & Băng vỡ):** Xe bị đóng băng cần giải cứu |
+| **TIER 2 SECONDARY**| 4. Frozen Truck | Shooter | ❄️ | Level 31 | **Hành vi B' (Mục tiêu phụ & Băng vỡ):** Xe bị đóng băng cần giải cứu |
 | **TIER 2 SECONDARY**| 5. Solid Wood Parcel | Block | 🛡️ | Level 51 | **Hành vi D (Định tuyến không gian):** Tường gỗ chặn đạn, ép bắn vòng hông |
 | **TIER 2 SECONDARY**| 6. Mystery Parcel | Block | ❓ | Level 63 | **Hành vi A' (Suy đoán & Mở lõi):** Ẩn màu pixel bên trong, mở biên để lật |
 | **TIER 2 SECONDARY**| 7. Hard Parcel Block | Block | 🧱 | Level 76 | **Hành vi C' (Dồn đạn tích trữ):** Khối bưu kiện 2x2, 3x3 nhiều máu |
@@ -138,7 +138,7 @@ L14: ⭐ 2. Connected Trucks (Teach) ➔ L15-17 (Practice) ➔ L18 (Test Hard) �
 L15: 🔀 Shuffle Booster (Reroll State Tutorial)
 L18: 🚀 Super Shooter Booster (Mega Clear Tutorial)
 L21: 🔫 3. Loader Stack (Teach WOW) ➔ L22-24 (Practice) ➔ L25 (Test Hard) ➔ L28+ (Combine)
-L32: ❄️ 4. Frozen Truck (Teach) ➔ L33-34 (Practice) ➔ L35 (Test Hard) ➔ L38+ (Combine)
+L31: ❄️ 4. Frozen Truck (Teach) ➔ L32-34 (Practice) ➔ L35 (Test Hard) ➔ L38+ (Combine)
 L51: 🛡️ 5. Solid Wood Parcel (Teach) ➔ L52-54 (Practice) ➔ L55 (Test Hard) ➔ L58+ (Combine)
 L63: ❓ 6. Mystery Parcel (Teach) ➔ L64-66 (Practice) ➔ L68 (Test Hard) ➔ L70+ (Combine Climax)
 L76: 🧱 7. Hard Parcel Block (Teach) ➔ L77-79 (Practice) ➔ L80 (Test SuperHard) ➔ L84+ (Combine)
