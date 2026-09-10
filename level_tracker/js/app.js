@@ -302,7 +302,7 @@ class App {
       },
       onExportCSV: (minLvl, maxLvl) => {
         const levels = [];
-        for (let l = minLvl; l <= maxLvl; l++) levels.push(l);
+        for (let l = 1; l <= maxLvl; l++) levels.push(l);
         const levelPhaseMap = this.mechanicMapRenderer.computeProposedLevelPhases(levels);
         exportProposedBlueprintCSV(levelPhaseMap, this.mechanicMapRenderer.editsMap, minLvl, maxLvl);
         this.showToast(`📥 Đã xuất CSV ma trận L${minLvl} - L${maxLvl}.`);

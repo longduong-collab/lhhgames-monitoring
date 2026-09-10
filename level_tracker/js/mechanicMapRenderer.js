@@ -1173,10 +1173,10 @@ export class MechanicMapRenderer {
       else if (lvl === 14) tag = '<span class="mmap-tag tag-d1" title="Mastering Core — Teach Connected Trucks">⭐ Connected</span>';
       else if (lvl === 20) tag = '<span class="mmap-tag tag-superhard" title="SuperHard L20 Milestone — Core Combine Climax">💀 SH L20</span>';
       else if (lvl === 21) tag = '<span class="mmap-tag tag-wow" title="D7 Retention Savior — Loader Stack Wow/Relief Teach">⭐ WOW</span>';
-      else if (lvl === 35) tag = '<span class="mmap-tag tag-tier2" title="Teach Hard Block (2x2)">🧱 HardBlk</span>';
+      else if (lvl === 32) tag = '<span class="mmap-tag tag-wow" title="Teach Frozen Truck (Tactile Crunch)">❄️ Ice</span>';
       else if (lvl === 51) tag = '<span class="mmap-tag tag-tier2" title="Teach Solid Wood Wall (Spatial Routing)">🛡️ Wood</span>';
       else if (lvl === 63) tag = '<span class="mmap-tag tag-tier2" title="Teach Mystery Block">❓ Mystery</span>';
-      else if (lvl === 76) tag = '<span class="mmap-tag tag-wow" title="Teach Frozen Truck (Tactile Crunch)">❄️ Ice</span>';
+      else if (lvl === 76) tag = '<span class="mmap-tag tag-tier2" title="Teach Hard Block (2x2/3x3)">🧱 HardBlk</span>';
       else if (lvl === 92) tag = '<span class="mmap-tag tag-bomb" title="Teach Bomb Truck (Emergency Protocol)">💣 Bomb</span>';
       else if (lvl === 108) tag = '<span class="mmap-tag tag-tier2" title="Teach Long Key (Dependency Chain)">🗝️ Key</span>';
       else if (lvl === 124) tag = '<span class="mmap-tag tag-pipe" title="Teach Truck Pipe (FIFO Queue)">🧪 Pipe</span>';
@@ -1274,6 +1274,9 @@ export class MechanicMapRenderer {
                  data-mech-id="${mech.id}"
                  data-mech-name="${mech.name}"
                  data-phase="${phase}"
+                 data-intent="${mech.intent || ''}"
+                 data-behavior="${mech.behaviorChange || ''}"
+                 data-pacing="${mech.pacingNote || ''}"
                  title="${phaseTitle}">
               ${phaseText}
             </div>
@@ -1841,7 +1844,10 @@ export class MechanicMapRenderer {
    * Đồng bộ 100% với logic computeProposedLevelPhases (bao gồm cả Density Cap & Core Combo).
    */
   getAllProposedMechanicsInLevel(levelNum) {
-    const map = this.computeProposedLevelPhases([levelNum]);
+    const maxLvl = Math.max(levelNum, this.maxLevel || 210);
+    const levels = [];
+    for (let l = 1; l <= maxLvl; l++) levels.push(l);
+    const map = this.computeProposedLevelPhases(levels);
     const activeList = map.get(levelNum) || [];
     return activeList.map((entry) => {
       let phaseLabel = '';
@@ -1934,8 +1940,9 @@ export class MechanicMapRenderer {
         else if (levelNum === 21) milestoneTag = '⭐ D7 WOW / Relief (Loader Stack Teach)';
         else if (levelNum === 25) milestoneTag = '🔥 Hard Level L25 (Loader Test)';
         else if (levelNum === 30) milestoneTag = '💀 Super Hard L30 (Loader Climax)';
-        else if (levelNum === 35) milestoneTag = '🧱 Hard Block Debut (2x2 Teach)';
-        else if (levelNum === 40) milestoneTag = '💀 Super Hard L40 (Hard Parcel Climax — 3x3 Test)';
+        else if (levelNum === 32) milestoneTag = '❄️ Frozen Truck Debut (Tactile Crunch)';
+        else if (levelNum === 35) milestoneTag = '🔥 Hard Level L35 (Frozen Truck Test)';
+        else if (levelNum === 40) milestoneTag = '💀 Super Hard L40 (Frozen Climax)';
         else if (levelNum === 50) milestoneTag = '⚡ PEAK L50 Mega-Challenge Climax (Act 1 Finale)';
         else if (levelNum === 51) milestoneTag = '🛡️ Solid Wood Wall Debut (Teach Spatial Routing)';
         else if (levelNum === 55) milestoneTag = '🔥 Hard Level L55 (Wood Wall Test)';
@@ -1943,8 +1950,8 @@ export class MechanicMapRenderer {
         else if (levelNum === 63) milestoneTag = '❓ Mystery Block Debut (Dọn biên mở lõi)';
         else if (levelNum === 68) milestoneTag = '🔥 Hard Level L68 (Mystery Test)';
         else if (levelNum === 70) milestoneTag = '💀 Super Hard L70 (Mystery Climax)';
-        else if (levelNum === 76) milestoneTag = '❄️ Frozen Truck Debut (Tactile Crunch)';
-        else if (levelNum === 80) milestoneTag = '💀 Super Hard L80 (Frozen Climax)';
+        else if (levelNum === 76) milestoneTag = '🧱 Hard Block Debut (Multi-hit 2x2/3x3 Teach)';
+        else if (levelNum === 80) milestoneTag = '💀 Super Hard L80 (Hard Block Climax — 3x3 Test)';
         else if (levelNum === 92) milestoneTag = '💣 Bomb Protocol Debut (Emergency Teach)';
         else if (levelNum === 98) milestoneTag = '🔥 Hard Level L98 (Bomb Test)';
         else if (levelNum === 100) milestoneTag = '💀 Super Hard L100 CLIMAX (Pipe + Bomb)';
