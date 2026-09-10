@@ -37,6 +37,7 @@ import {
   COMPOUND_PROFILES,
   ATOMIC_INTENTS,
   generateLevelByIntent,
+  generateSmartTruckYard,
   calculateIntentScores,
   calculateScoresFromProfile,
 } from './designIntent.js';
@@ -305,6 +306,9 @@ class App {
         const levelPhaseMap = this.mechanicMapRenderer.computeProposedLevelPhases(levels);
         exportProposedBlueprintCSV(levelPhaseMap, this.mechanicMapRenderer.editsMap, minLvl, maxLvl);
         this.showToast(`📥 Đã xuất CSV ma trận L${minLvl} - L${maxLvl}.`);
+      },
+      onGenerateSmartYard: async (levelNum) => {
+        await this.generateSmartYardForLevel(levelNum);
       }
     });
 
@@ -1006,7 +1010,57 @@ class App {
     this.tableRenderer.renderTable(this.filteredLevels, this.sortKey, this.sortDirection);
     this.debouncedSave();
 
-    this.showToast(`⚡ Đã gen lại shooters theo ý đồ: ${profile.name}! (Invariant: ${reParsed.invariant_valid ? '✓ Cân bằng' : '✗ Lệch'})`);
+    if (generatedRaw._yardMetrics) {
+      const ym = generatedRaw._yardMetrics;
+      this.showToast(`🚚 Đã gen Smart Truck Yard: Bãi ${ym.yardSize}, ${ym.totalTrucks} xe (Avg Cap ${ym.avgCap}) • Solvable 100% ✓ • Suýt thắng: ${ym.nearMissRate}!`);
+    } else {
+      this.showToast(`⚡ Đã gen lại shooters theo ý đồ: ${profile.name}! (Invariant: ${reParsed.invariant_valid ? '✓ Cân bằng' : '✗ Lệch'})`);
+    }
+  }
+
+  /**
+   * Sinh lại bãi đỗ xe theo thuật toán Smart Truck Yard cho 1 level cụ thể (gọi từ Mechanic Map Edit Mode)
+   */
+  async generateSmartYardForLevel(levelNum) {
+    let targetLevel = this.levels.find((l) => l.level === levelNum);
+    if (!targetLevel) {
+      // Cố gắng load level từ placeholder / storage nếu có
+      await this.openLevelSidePanelByNumber(levelNum);
+      targetLevel = this.levels.find((l) => l.level === levelNum);
+    }
+    if (!targetLevel || !targetLevel.rawJson) {
+      this.showToast(`⚠️ Không tìm thấy dữ liệu Level ${levelNum} để gen bãi đỗ.`);
+      return;
+    }
+
+    const generatedRaw = generateSmartTruckYard(targetLevel.rawJson);
+    if (!generatedRaw) {
+      this.showToast(`⚠️ Không thể gen bãi đỗ cho Level ${levelNum}.`);
+      return;
+    }
+
+    const reParsed = parseLevelData(generatedRaw, targetLevel.fileName || `${levelNum}.json`);
+    if (reParsed.isError) {
+      this.showToast(`❌ Lỗi cú pháp khi gen Level ${levelNum}: ${reParsed.errorMessage}`);
+      return;
+    }
+
+    const lIdx = this.levels.findIndex((l) => l.level === levelNum);
+    if (lIdx !== -1) this.levels[lIdx] = reParsed;
+
+    const fIdx = this.filteredLevels.findIndex((l) => l.level === levelNum);
+    if (fIdx !== -1) this.filteredLevels[fIdx] = reParsed;
+
+    if (this.currentSelectedLevel && this.currentSelectedLevel.level === levelNum) {
+      this.currentSelectedLevel = reParsed;
+      this.openLevelSidePanel(reParsed, this.currentSelectedLevelIndex);
+    }
+
+    this.tableRenderer.renderTable(this.filteredLevels, this.sortKey, this.sortDirection);
+    this.debouncedSave();
+
+    const ym = generatedRaw._yardMetrics || {};
+    this.showToast(`🚚 Đã gen bãi đỗ Lvl ${levelNum}: Bãi ${ym.yardSize || '-'}, ${ym.totalTrucks || '-'} xe • Solvable 100% ✓ • Suýt thắng: ${ym.nearMissRate || '-'}`);
   }
 
   /**

@@ -167,14 +167,17 @@ export function exportProposedBlueprintCSV(levelPhaseMap, editsMap = new Map(), 
   }
 
   const csvContent = '\uFEFF' + rows.join('\n');
-  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-  link.setAttribute('href', url);
-  link.setAttribute('download', `proposed_mechanic_blueprint_L${minLevel}-L${maxLevel}_${dateStr}.csv`);
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  URL.revokeObjectURL(url);
+  if (typeof document !== 'undefined') {
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+    link.setAttribute('href', url);
+    link.setAttribute('download', `proposed_mechanic_blueprint_L${minLevel}-L${maxLevel}_${dateStr}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+  return csvContent;
 }

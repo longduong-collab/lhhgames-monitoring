@@ -79,19 +79,19 @@ L101 - L200+     Veteran Progression: Advanced Mechanics (Long Key, Pipe, Curtai
 | **BOOSTER** | Hand Booster | Booster | 🖐️ | Level 13 | Đổi vị trí 2 xe súng để điều chỉnh luồng đạn |
 | **BOOSTER** | Shuffle Booster | Booster | 🔀 | Level 15 | Xáo trộn lại màu sắc đạn của dàn súng chờ |
 | **BOOSTER** | Super Shooter | Booster | 🚀 | Level 18 | Súng siêu cấp bắn dọn dẹp diện rộng cho màn PEAK |
-| **TIER 1 CORE** | Hidden Truck | Shooter | 🕶️ | Level 8 | **Hành vi A (Suy đoán & Mở biên):** Ẩn màu đạn, buộc soi viền màu |
-| **TIER 1 CORE** | Connected Trucks | Shooter | ⭐ | Level 14 | **Hành vi C (Quản lý Slot & Nước đi đôi):** 2 xe dính liền di chuyển cùng lúc |
-| **TIER 2 SECONDARY**| Loader Stack | Block | 🔫 | Level 21 | **Hành vi B (Xả đạn & Relief):** Bắn trúng sinh ra khối mới, thỏa mãn xúc giác |
-| **TIER 2 SECONDARY**| Hard Parcel Block | Block | 🧱 | Level 35 | **Hành vi C (Dồn đạn tích trữ):** Khối bưu kiện 2x2, 3x3 nhiều máu |
-| **TIER 2 SECONDARY**| Solid Wood Parcel | Block | 🛡️ | Level 50 | **Hành vi D (Định tuyến không gian):** Tường gỗ chặn đạn, ép bắn vòng hông |
-| **TIER 2 SECONDARY**| Mystery Parcel | Block | ❓ | Level 63 | **Hành vi A (Suy đoán & Mở lõi):** Ẩn màu pixel bên trong, mở biên để lật |
-| **TIER 2 SECONDARY**| Frozen Truck | Shooter | ❄️ | Level 76 | **Hành vi B (Mục tiêu phụ & Băng vỡ):** Xe bị đóng băng cần giải cứu |
-| **TIER 2 SECONDARY**| Shooter Bomb | Shooter | 💣 | Level 92 | **Hành vi E (Khẩn cấp Protocol):** Bom đếm ngược lượt bắn, ép xử lý ưu tiên |
-| **TIER 2 SECONDARY**| Long Key | Shooter | 🗝️ | Level 108 | **Hành vi E (Chuỗi phụ thuộc):** Rút then cài giải phóng xe bị chặn |
-| **TIER 2 SECONDARY**| Truck Pipe | Shooter | 🧪 | Level 124 | **Hành vi D (Quản lý hàng đợi FIFO):** Cấp xe liên tục qua ống tiếp ứng |
-| **TIER 2 SECONDARY**| Curtains | Shooter | 🎪 | Level 142 | **Hành vi A (Khám phá & Thư giãn thị giác):** Rèm che khuất tầm nhìn xe |
-| **TIER 2 SECONDARY**| Key Hunt | Paired | 🔑 | Level 163 | **Hành vi E (Mở khóa đa tầng):** Thu thập chìa khóa để mở xe khóa |
-| **TIER 3 SITUATIONAL**| Truck Tunnel | Shooter | 🚇 | Level 200 | **Hành vi D (Dự đoán không gian ngầm):** Đoàn xe chạy ngầm dưới sàn đấu |
+| **TIER 1 CORE** | 1. Hidden Truck | Shooter | 🕶️ | Level 8 | **Hành vi A (Suy đoán & Quan sát viền):** Ẩn màu đạn, buộc soi viền màu |
+| **TIER 1 CORE** | 2. Connected Trucks | Shooter | ⭐ | Level 14 | **Hành vi C (Quản lý Slot & Nước đi đôi):** 2 xe dính liền di chuyển cùng lúc |
+| **TIER 2 SECONDARY**| 3. Loader Stack | Block | 🔫 | Level 21 | **Hành vi B (Xả đạn & Relief):** Bắn trúng sinh ra khối mới, thỏa mãn xúc giác |
+| **TIER 2 SECONDARY**| 4. Frozen Truck | Shooter | ❄️ | Level 32 | **Hành vi B' (Mục tiêu phụ & Băng vỡ):** Xe bị đóng băng cần giải cứu |
+| **TIER 2 SECONDARY**| 5. Solid Wood Parcel | Block | 🛡️ | Level 51 | **Hành vi D (Định tuyến không gian):** Tường gỗ chặn đạn, ép bắn vòng hông |
+| **TIER 2 SECONDARY**| 6. Mystery Parcel | Block | ❓ | Level 63 | **Hành vi A' (Suy đoán & Mở lõi):** Ẩn màu pixel bên trong, mở biên để lật |
+| **TIER 2 SECONDARY**| 7. Hard Parcel Block | Block | 🧱 | Level 76 | **Hành vi C' (Dồn đạn tích trữ):** Khối bưu kiện 2x2, 3x3 nhiều máu |
+| **TIER 2 SECONDARY**| 8. Shooter Bomb | Shooter | 💣 | Level 92 | **Hành vi E (Khẩn cấp Protocol):** Bom đếm ngược lượt bắn, ép xử lý ưu tiên |
+| **TIER 2 SECONDARY**| 9. Long Key | Shooter | 🗝️ | Level 108 | **Hành vi E' (Chuỗi phụ thuộc):** Rút then cài giải phóng xe bị chặn |
+| **TIER 2 SECONDARY**| 10. Truck Pipe | Shooter | 🧪 | Level 124 | **Hành vi D' (Quản lý hàng đợi FIFO):** Cấp xe liên tục qua ống tiếp ứng |
+| **TIER 2 SECONDARY**| 11. Curtains | Shooter | 🎪 | Level 141 | **Hành vi A'' (Khám phá & Thư giãn thị giác):** Rèm che khuất tầm nhìn xe |
+| **TIER 2 SECONDARY**| 12. Key Hunt | Paired | 🔑 | Level 163 | **Hành vi E'' (Mở khóa đa tầng):** Thu thập chìa khóa để mở xe khóa |
+| **TIER 3 SITUATIONAL**| 13. Truck Tunnel | Shooter | 🚇 | Level 201 | **Hành vi D'' (Dự đoán không gian ngầm):** Đoàn xe chạy ngầm dưới sàn đấu |
 
 ---
 
@@ -105,10 +105,10 @@ L101 - L200+     Veteran Progression: Advanced Mechanics (Long Key, Pipe, Curtai
 └────────────────────────────────────────────────────────────────────────┘
 ┌────────────────────────────────────────────────────────────────────────┐
 │ CỤM B: XẢ ĐẠN & XÚC GIÁC GIẢI TỎA (Tactile Burst & Relief)            │
-│ Mechanics: Loader Stack (🔫), Mystery Parcel (❓), Frozen Truck (❄️)   │
+│ Mechanics: Loader Stack (🔫), Frozen Truck (❄️), Mystery Parcel (❓)   │
 └────────────────────────────────────────────────────────────────────────┘
 ┌────────────────────────────────────────────────────────────────────────┐
-│ CỤM C: CHUỖI PHỤ THUỘC & GIẢI ĐỐ KHÓA (Dependency & Puzzle)            │
+│ CỤM C: CHUỖI PHỤ THUỘC & TÍCH LŨY TÀI NGUYÊN (Dependency & Resource) │
 │ Mechanics: Connected (⭐), Hard Parcel (🧱), Long Key (🗝️), Key Hunt (🔑) │
 └────────────────────────────────────────────────────────────────────────┘
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -126,28 +126,28 @@ L101 - L200+     Veteran Progression: Advanced Mechanics (Long Key, Pipe, Curtai
 
 ## 3. LỘ TRÌNH DẠY VÀ PHÁT TRIỂN MECHANIC (TPTC PROGRESSION MAP)
 
-Dưới đây là chi tiết lộ trình TPTC thiết kế chuẩn cho toàn bộ 13 Gameplay Mechanics & 4 Booster Tutorials:
+Dưới đây là chi tiết lộ trình TPTC thiết kế chuẩn cho toàn bộ 13 Gameplay Mechanics & 4 Booster Tutorials (Tuyệt đối không dạy ở màn Hard/Super Hard):
 
 ```
 LEVEL PROGRESSION TIMELINE (L1 ➔ L200+)
 ════════════════════════════════════════════════════════════════════════════════════════════════
 L7: 🧲 Claw Booster (Emergency Rescue Tutorial)
-L8: 🕶️ Hidden Truck (Teach) ➔ L9-11 (Practice) ➔ L12 (Test) ➔ L15+ (Combine)
+L8: 🕶️ 1. Hidden Truck (Teach) ➔ L9-11 (Practice) ➔ L12 (Test Hard) ➔ L14+ (Combine)
 L13: 🖐️ Hand Booster (Positional Swap Tutorial)
-L14: ⭐ Connected Trucks (Teach) ➔ L15-17 (Practice) ➔ L18 (Test) ➔ L20+ (Combine Climax)
+L14: ⭐ 2. Connected Trucks (Teach) ➔ L15-17 (Practice) ➔ L18 (Test Hard) ➔ L20+ (Combine Climax)
 L15: 🔀 Shuffle Booster (Reroll State Tutorial)
 L18: 🚀 Super Shooter Booster (Mega Clear Tutorial)
-L21: 🔫 Loader Stack (Teach WOW) ➔ L22-24 (Practice) ➔ L25 (Test) ➔ L28+ (Combine)
-L35: 🧱 Hard Parcel Block (Teach) ➔ L36-38 (Practice) ➔ L40 (Test 3x3) ➔ L42+ (Combine)
-L50: 🛡️ Solid Wood Parcel (Teach Milestone) ➔ L51-53 (Practice) ➔ L55 (Test) ➔ L58+ (Combine)
-L63: ❓ Mystery Parcel (Teach) ➔ L64-66 (Practice) ➔ L68 (Test) ➔ L72+ (Combine)
-L76: ❄️ Frozen Truck (Teach) ➔ L77-79 (Practice) ➔ L80 (Test) ➔ L84+ (Combine)
-L92: 💣 Shooter Bomb (Teach) ➔ L93-95 (Practice) ➔ L98 (Test) ➔ L102+ (Combine PEAK L100)
-L108:🗝️ Long Key (Teach) ➔ L109-112 (Practice) ➔ L113 (Test) ➔ L114+ (Combine)
-L124:🧪 Truck Pipe (Teach) ➔ L125-127 (Practice) ➔ L128 (Test) ➔ L130+ (Combine)
-L142:🎪 Curtains (Teach) ➔ L143 (Practice) ➔ L144 (Test) ➔ L146+ (Combine)
-L163:🔑 Key Hunt (Teach) ➔ L164-166 (Practice) ➔ L167 (Test) ➔ L169+ (Combine)
-L200:🚇 Truck Tunnel (Teach Mega PEAK L200) ➔ L201-202 (Practice) ➔ L203 (Test) ➔ L205+ (Endgame)
+L21: 🔫 3. Loader Stack (Teach WOW) ➔ L22-24 (Practice) ➔ L25 (Test Hard) ➔ L28+ (Combine)
+L32: ❄️ 4. Frozen Truck (Teach) ➔ L33-34 (Practice) ➔ L35 (Test Hard) ➔ L38+ (Combine)
+L51: 🛡️ 5. Solid Wood Parcel (Teach) ➔ L52-54 (Practice) ➔ L55 (Test Hard) ➔ L58+ (Combine)
+L63: ❓ 6. Mystery Parcel (Teach) ➔ L64-66 (Practice) ➔ L68 (Test Hard) ➔ L70+ (Combine Climax)
+L76: 🧱 7. Hard Parcel Block (Teach) ➔ L77-79 (Practice) ➔ L80 (Test SuperHard) ➔ L84+ (Combine)
+L92: 💣 8. Shooter Bomb (Teach) ➔ L93-95 (Practice) ➔ L98 (Test Hard) ➔ L100+ (Combine PEAK L100)
+L108:🗝️ 9. Long Key (Teach) ➔ L109-112 (Practice) ➔ L113 (Test Hard) ➔ L114+ (Combine)
+L124:🧪 10. Truck Pipe (Teach) ➔ L125-127 (Practice) ➔ L128 (Test Hard) ➔ L130+ (Combine)
+L141:🎪 11. Curtains (Teach) ➔ L142-143 (Practice) ➔ L144 (Test Hard) ➔ L146+ (Combine PEAK L150)
+L163:🔑 12. Key Hunt (Teach) ➔ L164-166 (Practice) ➔ L167 (Test Hard) ➔ L169+ (Combine)
+L201:🚇 13. Truck Tunnel (Teach Endgame) ➔ L202-204 (Practice) ➔ L205 (Test Hard) ➔ L208+ (Endgame)
 ════════════════════════════════════════════════════════════════════════════════════════════════
 ```
 
@@ -156,7 +156,7 @@ L200:🚇 Truck Tunnel (Teach Mega PEAK L200) ➔ L201-202 (Practice) ➔ L203 (
 ### Chi tiết thiết kế từng Mechanic:
 
 #### 1. Hidden Truck (🕶️ Xe Ẩn Màu) — Tier 1 Core
-- **Teach:** Level 8 | **Practice:** Level 9, 10, 11 | **Test:** Level 12 (Hard) | **Combine Start:** Level 15
+- **Teach:** Level 8 | **Practice:** Level 9, 10, 11 | **Test:** Level 12 (Hard) | **Combine Start:** Level 14
 - **Ý đồ thiết kế (Intent):** Buộc người chơi hình thành thói quen quan sát viền/pattern màu của xe súng trước khi click chọn, tạo yếu tố suy đoán có căn cứ.
 - **Biến đổi hành vi (Behavioral Change):** Chuyển từ "click tự do ngẫu nhiên" sang "quan sát viền màu và suy tính rủi ro (risk vs reward)".
 - **Chiến lược Retention:** Đưa vào ngay Level 8 để giải quyết rủi ro rớt người chơi D1 (D1 Retention Risk) trước mốc Level 10.
@@ -173,32 +173,32 @@ L200:🚇 Truck Tunnel (Teach Mega PEAK L200) ➔ L201-202 (Practice) ➔ L203 (
 - **Biến đổi hành vi (Behavioral Change):** Tận hưởng nhịp xả đạn nhanh, nạp lại năng lượng tích cực sau màn khó.
 - **Chiến lược Retention:** Đặt tại Level 21 (ngay sau SuperHard L20) đóng vai trò **WOW / Relief Mechanic** giúp cứu drop-rate D7.
 
-#### 4. Hard Parcel Block (🧱 Khối Bưu Kiện Kiên Cố) — Tier 2 Secondary
-- **Teach:** Level 35 | **Practice:** Level 36, 37, 38 | **Test:** Level 40 (SuperHard 3x3) | **Combine Start:** Level 42
-- **Ý đồ thiết kế (Intent):** Khối bưu kiện lớn 2x2, 3x3 đòi hỏi dồn nhiều lượt bắn cùng màu để phá hủy hoàn toàn.
-- **Biến đổi hành vi (Behavioral Change):** Học cách tích trữ tài nguyên đạn cùng màu để chuẩn bị công phá khối lớn.
-- **Chiến lược Retention:** Tạo mốc độ khó hình học rõ ràng với bài test khối 3x3 tại SuperHard L40.
+#### 4. Frozen Truck (❄️ Xe Đóng Băng) — Tier 2 Secondary
+- **Teach:** Level 32 | **Practice:** Level 33, 34 | **Test:** Level 35 (Hard) | **Combine Start:** Level 38
+- **Ý đồ thiết kế (Intent):** Xe bị đóng băng cần bắn giải cứu trước khi dùng được; chiếm dụng slot chờ tạm thời tạo bài toán nhịp độ.
+- **Biến đổi hành vi (Behavioral Change):** Phân chia mục tiêu phụ (giải cứu xe) trước khi bắn mục tiêu chính; cảm nhận âm thanh băng vỡ giòn tan.
+- **Chiến lược Retention:** Tạo thử thách nhịp độ slot nhẹ nhàng, giải tỏa xúc giác băng vỡ.
 
 #### 5. Solid Wood Parcel (🛡️ Tường Gỗ Bất Hoại) — Tier 2 Secondary
-- **Teach:** Level 50 (Milestone) | **Practice:** Level 51, 52, 53 | **Test:** Level 55 (Hard) | **Combine Start:** Level 58
+- **Teach:** Level 51 | **Practice:** Level 52, 53, 54 | **Test:** Level 55 (Hard) | **Combine Start:** Level 58
 - **Ý đồ thiết kế (Intent):** Tường gỗ bất hoại chặn đường đạn trực diện, ép người chơi tìm hướng bắn vòng từ bên hông hoặc phía sau.
 - **Biến đổi hành vi (Behavioral Change):** Thay đổi tư duy định tuyến không gian (Spatial Routing).
-- **Chiến lược Retention:** Đặt tại cột mốc L50 làm đổi mới trải nghiệm giữa game (Mid-game Refresh).
+- **Chiến lược Retention:** Đặt tại Level 51 (ngay sau SuperHard L50) mở màn Act 2 tươi mới.
 
 #### 6. Mystery Parcel (❓ Khối Bí Ẩn) — Tier 2 Secondary
-- **Teach:** Level 63 | **Practice:** Level 64, 65, 66 | **Test:** Level 68 (Hard) | **Combine Start:** Level 72
+- **Teach:** Level 63 | **Practice:** Level 64, 65, 66 | **Test:** Level 68 (Hard) | **Combine Start:** Level 70
 - **Ý đồ thiết kế (Intent):** Che giấu màu pixel bên trong, buộc dọn các khối xung quanh để "lật mở" thông tin.
 - **Biến đổi hành vi (Behavioral Change):** Khám phá và dọn dẹp vùng biên trước khi chạm vào lõi bí ẩn.
-- **Chiến lược Retention:** Giãn cách 13 levels sau Wood Wall để tránh trùng lặp gánh nặng nhận thức.
+- **Chiến lược Retention:** Giãn cách 12 levels sau Wood Wall để tránh trùng lặp gánh nặng nhận thức.
 
-#### 7. Frozen Truck (❄️ Xe Đóng Băng) — Tier 2 Secondary
-- **Teach:** Level 76 | **Practice:** Level 77, 78, 79 | **Test:** Level 80 (SuperHard) | **Combine Start:** Level 84
-- **Ý đồ thiết kế (Intent):** Xe bị đóng băng cần bắn giải cứu trước khi dùng được; hiệu ứng âm thanh băng vỡ giòn tan thỏa mãn.
-- **Biến đổi hành vi (Behavioral Change):** Phân chia mục tiêu phụ (giải cứu xe) trước khi bắn mục tiêu chính.
-- **Chiến lược Retention:** Tạo nhịp thư giãn xúc giác trước khi bước vào cơ chế đếm ngược khẩn cấp (Bomb).
+#### 7. Hard Parcel Block (🧱 Khối Bưu Kiện Kiên Cố) — Tier 2 Secondary
+- **Teach:** Level 76 | **Practice:** Level 77, 78, 79 | **Test:** Level 80 (SuperHard 3x3) | **Combine Start:** Level 84
+- **Ý đồ thiết kế (Intent):** Khối bưu kiện lớn 2x2, 3x3 đòi hỏi dồn nhiều lượt bắn cùng màu để phá hủy hoàn toàn.
+- **Biến đổi hành vi (Behavioral Change):** Học cách tích trữ tài nguyên đạn cùng màu để chuẩn bị công phá khối lớn.
+- **Chiến lược Retention:** Rèn luyện kỹ năng dồn tài nguyên đạn trước khi bước vào cơ chế áp lực thời gian Bomb.
 
 #### 8. Shooter Bomb (💣 Xe Bom Khẩn Cấp) — Tier 2 Secondary
-- **Teach:** Level 92 | **Practice:** Level 93, 94, 95 | **Test:** Level 98 (Hard) | **Combine Start:** Level 102
+- **Teach:** Level 92 | **Practice:** Level 93, 94, 95 | **Test:** Level 98 (Hard) | **Combine Start:** Level 100
 - **Ý đồ thiết kế (Intent):** Chế độ khẩn cấp (Emergency Protocol): Tìm đường tiếp cận và giải nổ quả bom trước khi hết số lượt bắn.
 - **Biến đổi hành vi (Behavioral Change):** Đảo lộn hoàn toàn thứ tự ưu tiên: Chuyển từ thong thả sang tập trung tuyệt đối vào quả bom.
 - **Chiến lược Retention:** Tạo cao trào kịch tính cho cột mốc **PEAK L100 CLIMAX** (kết hợp Bomb + Pipe).
@@ -206,7 +206,7 @@ L200:🚇 Truck Tunnel (Teach Mega PEAK L200) ➔ L201-202 (Practice) ➔ L203 (
 #### 9. Long Key (🗝️ Xe Chìa Khóa Dài) — Tier 2 Secondary
 - **Teach:** Level 108 | **Practice:** Level 109-112 | **Test:** Level 113 (Hard - Pattern Break) | **Combine Start:** Level 114
 - **Ý đồ thiết kế (Intent):** Thu thập xe ở đầu chốt để rút thanh khóa dài mở đường cho các xe phía sau.
-- **Biến đổi hành vi (Behavioral Change):** Phân tích chuỗi phụ thuộc (Dependency Chain) của dàn xe.
+- **Biến đổi hành vi (Behavioral Change):** Phân tích chuỗi phụ thuộc cơ học (Dependency Chain) của dàn xe.
 - **Chiến lược Retention:** Phá nhịp chu kỳ .5 bằng màn Test L113, Climax tại SuperHard L119.
 
 #### 10. Truck Pipe (🧪 Ống Tiếp Ứng FIFO) — Tier 2 Secondary
@@ -216,7 +216,7 @@ L200:🚇 Truck Tunnel (Teach Mega PEAK L200) ➔ L201-202 (Practice) ➔ L203 (
 - **Chiến lược Retention:** Relief L120 ➔ Teach L124 ➔ Test L128 ➔ Climax SuperHard L135.
 
 #### 11. Curtains (🎪 Rèm Che Khuất) — Tier 2 Secondary
-- **Teach:** Level 142 | **Practice:** Level 143 | **Test:** Level 144 (Hard) | **Combine Start:** Level 146
+- **Teach:** Level 141 | **Practice:** Level 142-143 | **Test:** Level 144 (Hard) | **Combine Start:** Level 146
 - **Ý đồ thiết kế (Intent):** Rèm che khuất tầm nhìn xe, tạo sự bất ngờ nhẹ nhàng và đổi gió thị giác.
 - **Biến đổi hành vi (Behavioral Change):** Khám phá và thư giãn thị giác (Visual Relief).
 - **Chiến lược Retention:** Tạo khoảng thở (Breathing Room) ngay trước Mega PEAK L150.
@@ -227,10 +227,10 @@ L200:🚇 Truck Tunnel (Teach Mega PEAK L200) ➔ L201-202 (Practice) ➔ L203 (
 - **Biến đổi hành vi (Behavioral Change):** Giải đố mở khóa đa tầng cho giai đoạn Mid-Late game.
 
 #### 13. Truck Tunnel (🚇 Hầm Xe Liên Hoàn Ngầm) — Tier 3 Situational
-- **Teach:** Level 200 (Mega PEAK) | **Practice:** Level 201-202 | **Test:** Level 203 | **Combine Start:** Level 205
+- **Teach:** Level 201 (Endgame Relief) | **Practice:** Level 202-204 | **Test:** Level 205 (Hard) | **Combine Start:** Level 208
 - **Ý đồ thiết kế (Intent):** Đoàn xe di chuyển liên hoàn ngầm dưới sàn đấu, xuất hiện ở các cổng hầm khác nhau.
 - **Biến đổi hành vi (Behavioral Change):** Phán đoán điểm xuất hiện và lặp lại của đoàn xe ngầm.
-- **Chiến lược Retention:** Đỉnh cao thử thách Endgame Climax tại Level 200, hội tụ đủ 13 Mechanics.
+- **Chiến lược Retention:** Đỉnh cao thử thách Endgame Climax sau mốc Level 200, hội tụ đủ 13 Mechanics.
 
 ---
 
@@ -264,19 +264,19 @@ Dạy Truck Pipe (L101) và Truck Tunnel (L150) quá gần nhau khi cả hai đ�
 
 | Mechanic | Tier | Vị trí Cũ | Vị trí Đề Xuất | Chu trình TPTC Mới | Đánh giá thay đổi & Tác động Retention |
 |---|---|---|---|---|---|
-| **Hidden Truck** | Core | L23 | **L8** | **T:** L8 ➔ **P:** 9-11 ➔ **Tst:** 12 ➔ **C:** 15+ | **Đẩy sớm:** Giữ chân người chơi ngay mốc D1 retention risk (L8-L12). |
-| **Connected Trucks** | Core | L10 | **L14** | **T:** L14 ➔ **P:** 15-17 ➔ **Tst:** 18 ➔ **C:** 20+ | **Giãn nhẹ:** Cho người chơi 6 levels master Hidden trước khi học Connected. |
-| **Loader Stack** | Secondary | L8 | **L21** | **T:** L21 ➔ **P:** 22-24 ➔ **Tst:** 25 ➔ **C:** 28+ | **Tạo WOW:** Đặt ngay sau SuperHard L20 làm màn xả đạn cứu drop-rate D7. |
-| **Hard Parcel Block**| Secondary | L30 | **L35** | **T:** L35 ➔ **P:** 36-38 ➔ **Tst:** 40 ➔ **C:** 42+ | **Tăng tải từ từ:** Thêm 3 màn Practice (2x2) trước khi test khối 3x3 tại L40. |
-| **Solid Wood Parcel** | Secondary | L41 | **L50** | **T:** L50 ➔ **P:** 51-53 ➔ **Tst:** 55 ➔ **C:** 58+ | **Đặt đúng Milestone:** Đổi mới tư duy định tuyến không gian tại L50. |
-| **Mystery Parcel** | Secondary | L50 | **L63** | **T:** L63 ➔ **P:** 64-66 ➔ **Tst:** 68 ➔ **C:** 72+ | **Giãn cách:** Tránh đụng độ nhận thức với Wood Wall L50. |
-| **Frozen Truck** | Secondary | L60 | **L76** | **T:** L76 ➔ **P:** 77-79 ➔ **Tst:** 80 ➔ **C:** 84+ | **Thư giãn xúc giác:** Đặt làm vùng thở giòn tan trước khi vào Bomb Protocol. |
-| **Shooter Bomb** | Secondary | L70 | **L92** | **T:** L92 ➔ **P:** 93-95 ➔ **Tst:** 98 ➔ **C:** 102+ | **Khẩn cấp Climax:** Dời về L92 để phục vụ màn Climax PEAK L100. |
-| **Long Key** | Secondary | L80 | **L108** | **T:** L108 ➔ **P:** 109-112 ➔ **Tst:** 113 ➔ **C:** 114+ | **Phá nhịp Mid-game:** Phá chu kỳ .5 ở L113 cho người chơi Veteran. |
-| **Truck Pipe** | Secondary | L101 | **L124** | **T:** L124 ➔ **P:** 125-127 ➔ **Tst:** 128 ➔ **C:** 130+ | **Tạo khoảng thở:** Thở ở L120 ➔ Dạy L124 ➔ Climax SH L135. |
-| **Curtains** | Secondary | L90 | **L142** | **T:** L142 ➔ **P:** 143 ➔ **Tst:** 144 ➔ **C:** 146+ | **Visual Relief:** Đổi gió thị giác trước màn Mega PEAK L150. |
-| **Key Hunt** | Secondary | L120 | **L163** | **T:** L163 ➔ **P:** 164-166 ➔ **Tst:** 167 ➔ **C:** 169+ | **Thử thách Đa tầng:** Đặt ở Late-game thử thách giải đố sâu. |
-| **Truck Tunnel** | Situational | L150 | **L200** | **T:** L200 ➔ **P:** 201-202 ➔ **Tst:** 203 ➔ **C:** 205+ | **Endgame PEAK:** Mốc L200 ra mắt Mechanic cuối cùng hội tụ 13 Mechanics. |
+| **1. Hidden Truck** | Core | L23 | **L8** | **T:** L8 ➔ **P:** 9-11 ➔ **Tst:** 12 ➔ **C:** 14+ | **Đẩy sớm:** Giữ chân người chơi ngay mốc D1 retention risk (L8-L12). |
+| **2. Connected Trucks** | Core | L10 | **L14** | **T:** L14 ➔ **P:** 15-17 ➔ **Tst:** 18 ➔ **C:** 20+ | **Giãn nhẹ:** Cho người chơi 6 levels master Hidden trước khi học Connected. |
+| **3. Loader Stack** | Secondary | L8 | **L21** | **T:** L21 ➔ **P:** 22-24 ➔ **Tst:** 25 ➔ **C:** 28+ | **Tạo WOW:** Đặt ngay sau SuperHard L20 làm màn xả đạn cứu drop-rate D7. |
+| **4. Frozen Truck** | Secondary | L60 | **L32** | **T:** L32 ➔ **P:** 33-34 ➔ **Tst:** 35 ➔ **C:** 38+ | **Thư giãn xúc giác:** Đưa lên sớm làm vùng thở sau SuperHard L30. |
+| **5. Solid Wood Parcel** | Secondary | L41 | **L51** | **T:** L51 ➔ **P:** 52-54 ➔ **Tst:** 55 ➔ **C:** 58+ | **Đặt đúng Milestone:** Đổi mới tư duy định tuyến không gian mở màn Act 2. |
+| **6. Mystery Parcel** | Secondary | L50 | **L63** | **T:** L63 ➔ **P:** 64-66 ➔ **Tst:** 68 ➔ **C:** 70+ | **Giãn cách:** Tránh đụng độ nhận thức với Wood Wall L51. |
+| **7. Hard Parcel Block**| Secondary | L30 | **L76** | **T:** L76 ➔ **P:** 77-79 ➔ **Tst:** 80 ➔ **C:** 84+ | **Tăng tải chuẩn:** Đặt trước Bomb để rèn kỹ năng dồn tài nguyên đạn. |
+| **8. Shooter Bomb** | Secondary | L70 | **L92** | **T:** L92 ➔ **P:** 93-95 ➔ **Tst:** 98 ➔ **C:** 100+ | **Khẩn cấp Climax:** Dời về L92 để phục vụ màn Climax PEAK L100. |
+| **9. Long Key** | Secondary | L80 | **L108** | **T:** L108 ➔ **P:** 109-112 ➔ **Tst:** 113 ➔ **C:** 114+ | **Phá nhịp Mid-game:** Phá chu kỳ .5 ở L113 cho người chơi Veteran. |
+| **10. Truck Pipe** | Secondary | L101 | **L124** | **T:** L124 ➔ **P:** 125-127 ➔ **Tst:** 128 ➔ **C:** 130+ | **Tạo khoảng thở:** Thở ở L120 ➔ Dạy L124 ➔ Climax SH L135. |
+| **11. Curtains** | Secondary | L90 | **L141** | **T:** L141 ➔ **P:** 142-143 ➔ **Tst:** 144 ➔ **C:** 146+ | **Visual Relief:** Đổi gió thị giác trước màn Mega PEAK L150. |
+| **12. Key Hunt** | Secondary | L120 | **L163** | **T:** L163 ➔ **P:** 164-166 ➔ **Tst:** 167 ➔ **C:** 169+ | **Thử thách Đa tầng:** Đặt ở Late-game thử thách giải đố sâu. |
+| **13. Truck Tunnel** | Situational | L150 | **L201** | **T:** L201 ➔ **P:** 202-204 ➔ **Tst:** 205 ➔ **C:** 208+ | **Endgame PEAK:** Mốc sau L200 ra mắt Mechanic cuối cùng hội tụ 13 Mechanics. |
 
 ---
 

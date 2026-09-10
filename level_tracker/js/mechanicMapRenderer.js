@@ -12,22 +12,22 @@ import { calculatePixelArtBounds } from './pixelArtRenderer.js';
 
 export const MECHANIC_DEFINITIONS = {
   block: {
-    7: { id: 'b_7', type: 7, name: 'Loader Stack', icon: '🔫', iconPath: './assets/mechanics/block_loader_stack.png', category: 'SECONDARY', desc: 'BlockShooter (Súng phát sinh block khi bắn trúng)', tutLevel: 8, order: 1 },
-    1: { id: 'b_1', type: 1, aliasTypes: [2, 3, 4], name: 'Hard Parcel Block', icon: '🧱', iconPath: './assets/mechanics/block_hard_parcel.png', category: 'SECONDARY', desc: 'BlockBig (Khối bưu kiện lớn đa hit 2x2, 2x3, 3x2, 3x3)', tutLevel: 30, order: 4 },
-    8: { id: 'b_8', type: 8, name: 'Solid Wood Parcel', icon: '🛡️', iconPath: './assets/mechanics/block_wood_wall.png', category: 'SECONDARY', desc: 'BlockWall (Tường chắn gỗ bất hoại)', tutLevel: 41, order: 5 },
-    6: { id: 'b_6', type: 6, name: 'Mystery Parcel', icon: '❓', iconPath: './assets/mechanics/block_mystery.png', category: 'SECONDARY', desc: 'BlockUnknown (Khối bí ẩn / Ẩn màu)', tutLevel: 50, order: 6 },
-    5: { id: 'b_5', type: 5, name: 'Key Hunt Block', icon: '🔑', iconPath: './assets/mechanics/block_key.png', category: 'SECONDARY', desc: 'BlockKey (Khối chìa khoá)', tutLevel: 120, order: 12 },
+    7: { id: 'b_7', type: 7, name: 'Loader Stack', icon: '🔫', iconPath: './assets/mechanics/block_loader_stack.png', category: 'SECONDARY', desc: 'BlockShooter (Súng phát sinh block khi bắn trúng)', tutLevel: 21, order: 3 },
+    8: { id: 'b_8', type: 8, name: 'Solid Wood Parcel', icon: '🛡️', iconPath: './assets/mechanics/block_wood_wall.png', category: 'SECONDARY', desc: 'BlockWall (Tường chắn gỗ bất hoại)', tutLevel: 51, order: 5 },
+    6: { id: 'b_6', type: 6, name: 'Mystery Parcel', icon: '❓', iconPath: './assets/mechanics/block_mystery.png', category: 'SECONDARY', desc: 'BlockUnknown (Khối bí ẩn / Ẩn màu)', tutLevel: 63, order: 6 },
+    1: { id: 'b_1', type: 1, aliasTypes: [2, 3, 4], name: 'Hard Parcel Block', icon: '🧱', iconPath: './assets/mechanics/block_hard_parcel.png', category: 'SECONDARY', desc: 'BlockBig (Khối bưu kiện lớn đa hit 2x2, 2x3, 3x2, 3x3)', tutLevel: 76, order: 7 },
+    5: { id: 'b_5', type: 5, name: 'Key Hunt Block', icon: '🔑', iconPath: './assets/mechanics/block_key.png', category: 'SECONDARY', desc: 'BlockKey (Khối chìa khoá)', tutLevel: 163, order: 12 },
   },
   shooter: {
-    'connected': { id: 's_connected', type: 'connected', name: 'Connected Trucks', icon: '⭐', iconPath: './assets/mechanics/shooter_connected.png', category: 'CORE', desc: 'ShooterLinked (Xe liên kết di chuyển/bắn cùng nhau)', tutLevel: 10, order: 2 },
-    'hidden': { id: 's_hidden', type: 'hidden', name: 'Hidden Truck', icon: '🕶️', iconPath: './assets/mechanics/shooter_hidden.png', category: 'CORE', desc: 'ShooterHidden (Xe ẩn màu ban đầu)', tutLevel: 23, order: 3 },
-    'frozen': { id: 's_frozen', type: 'frozen', name: 'Frozen Truck', icon: '❄️', iconPath: './assets/mechanics/shooter_frozen.png', category: 'SECONDARY', desc: 'ShooterIce (Xe bị đóng băng cần giải cứu)', tutLevel: 60, order: 7 },
-    'bomb_truck': { id: 's_bomb_truck', type: 'bomb_truck', name: 'Bomb Truck', icon: '💣', iconPath: './assets/mechanics/shooter_bomb.png', category: 'SECONDARY', desc: 'ShooterBomb (Xe bom nổ phá huỷ block xung quanh)', tutLevel: 70, order: 8 },
-    'long_key': { id: 's_long_key', type: 'long_key', name: 'Long Key', icon: '🗝️', iconPath: './assets/mechanics/shooter_long_key.png', category: 'SECONDARY', desc: 'ShooterKeyLong (Xe chìa khóa dài mở cổng)', tutLevel: 80, order: 9 },
-    'curtains': { id: 's_curtains', type: 'curtains', name: 'Curtains', icon: '🎪', iconPath: './assets/mechanics/shooter_curtains.png', category: 'SECONDARY', desc: 'ShooterCurtains (Rèm che khuất tầm nhìn xe)', tutLevel: 90, order: 10 },
-    'pipe': { id: 's_pipe', type: 'pipe', name: 'Truck Pipe', icon: '🧪', iconPath: './assets/mechanics/shooter_pipe.png', category: 'SECONDARY', desc: 'ShooterPipe (Ống dẫn đoàn xe tiếp ứng)', tutLevel: 101, order: 11 },
-    'key_truck': { id: 's_key', type: 'key_truck', name: 'Key Hunt Truck', icon: '🔒', iconPath: './assets/mechanics/shooter_key_truck.png', category: 'SECONDARY', desc: 'ShooterLock (Xe khóa)', tutLevel: 120, order: 13 },
-    'tunnel': { id: 's_tunnel', type: 'tunnel', name: 'Truck Tunnel', icon: '🚇', iconPath: './assets/mechanics/shooter_tunnel.png', category: 'SITUATIONAL', desc: 'ShooterTunnel (Hầm xe bắn liên hoàn)', tutLevel: 150, order: 14 },
+    'hidden': { id: 's_hidden', type: 'hidden', name: 'Hidden Truck', icon: '🕶️', iconPath: './assets/mechanics/shooter_hidden.png', category: 'CORE', desc: 'ShooterHidden (Xe ẩn màu ban đầu)', tutLevel: 8, order: 1 },
+    'connected': { id: 's_connected', type: 'connected', name: 'Connected Trucks', icon: '⭐', iconPath: './assets/mechanics/shooter_connected.png', category: 'CORE', desc: 'ShooterLinked (Xe liên kết di chuyển/bắn cùng nhau)', tutLevel: 14, order: 2 },
+    'frozen': { id: 's_frozen', type: 'frozen', name: 'Frozen Truck', icon: '❄️', iconPath: './assets/mechanics/shooter_frozen.png', category: 'SECONDARY', desc: 'ShooterIce (Xe bị đóng băng cần giải cứu)', tutLevel: 32, order: 4 },
+    'bomb_truck': { id: 's_bomb_truck', type: 'bomb_truck', name: 'Bomb Truck', icon: '💣', iconPath: './assets/mechanics/shooter_bomb.png', category: 'SECONDARY', desc: 'ShooterBomb (Xe bom nổ phá huỷ block xung quanh)', tutLevel: 92, order: 8 },
+    'long_key': { id: 's_long_key', type: 'long_key', name: 'Long Key', icon: '🗝️', iconPath: './assets/mechanics/shooter_long_key.png', category: 'SECONDARY', desc: 'ShooterKeyLong (Xe chìa khóa dài mở cổng)', tutLevel: 108, order: 9 },
+    'pipe': { id: 's_pipe', type: 'pipe', name: 'Truck Pipe', icon: '🧪', iconPath: './assets/mechanics/shooter_pipe.png', category: 'SECONDARY', desc: 'ShooterPipe (Ống dẫn đoàn xe tiếp ứng)', tutLevel: 124, order: 10 },
+    'curtains': { id: 's_curtains', type: 'curtains', name: 'Curtains', icon: '🎪', iconPath: './assets/mechanics/shooter_curtains.png', category: 'SECONDARY', desc: 'ShooterCurtains (Rèm che khuất tầm nhìn xe)', tutLevel: 141, order: 11 },
+    'key_truck': { id: 's_key', type: 'key_truck', name: 'Key Hunt Truck', icon: '🔒', iconPath: './assets/mechanics/shooter_key_truck.png', category: 'SECONDARY', desc: 'ShooterLock (Xe khóa)', tutLevel: 163, order: 12 },
+    'tunnel': { id: 's_tunnel', type: 'tunnel', name: 'Truck Tunnel', icon: '🚇', iconPath: './assets/mechanics/shooter_tunnel.png', category: 'SITUATIONAL', desc: 'ShooterTunnel (Hầm xe bắn liên hoàn)', tutLevel: 201, order: 13 },
   },
 };
 
@@ -61,8 +61,8 @@ export const BOOSTER_DEFINITIONS = {
 
 export const MICRO_CLUSTERS = {
   A: { id: 'A', name: 'Áp lực không gian & Định tuyến', mechs: ['s_hidden', 's_connected', 'b_8', 's_curtains'] },
-  B: { id: 'B', name: 'Xả đạn & Xúc giác giải tỏa', mechs: ['b_7', 'b_6', 's_frozen'] },
-  C: { id: 'C', name: 'Chuỗi phụ thuộc & Giải đố khóa', mechs: ['s_connected', 'b_1', 's_long_key', 's_key', 'b_5'] },
+  B: { id: 'B', name: 'Xả đạn & Xúc giác giải tỏa', mechs: ['b_7', 's_frozen', 'b_6'] },
+  C: { id: 'C', name: 'Chuỗi phụ thuộc & Tích lũy tài nguyên', mechs: ['s_connected', 'b_1', 's_long_key', 's_key', 'b_5'] },
   D: { id: 'D', name: 'Khẩn cấp & Quản lý hàng đợi', mechs: ['s_bomb_truck', 's_pipe', 's_frozen', 's_tunnel'] }
 };
 
@@ -148,12 +148,12 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     type: 'hidden',
     coreComboPartner: 's_connected',
     intent: 'Buộc player quan sát viền/pattern màu cần tìm, cân nhắc rủi ro (risk vs reward), ghi nhớ đường chọn xe.',
-    behaviorChange: 'Hành vi A (Suy đoán & Khám phá): Chọn xe có suy tính thay vì click tự do; học cách suy đoán màu.',
+    behaviorChange: 'Hành vi A (Suy đoán & Quan sát viền): Chọn xe có suy tính thay vì click tự do; học cách suy đoán màu.',
     teachLevel: 8,
     practiceLevels: [9, 10, 11],
     testLevel: 12,
-    combineStartLevel: 15,
-    pacingNote: 'Dạy tại L8 (ngay trước mốc D1 retention risk L10), rèn luyện kỹ năng quan sát viền màu. Practice solo tại Super Hard L10.',
+    combineStartLevel: 14,
+    pacingNote: 'Dạy tại L8 (ngay trước mốc D1 retention risk L10), rèn luyện kỹ năng quan sát viền màu.',
     riskMitigation: 'Giúp player hình thành thói quen quan sát ngay trước điểm rớt D1 (L10).'
   },
   {
@@ -166,7 +166,7 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     type: 'connected',
     coreComboPartner: 's_hidden',
     intent: '2 xe liên kết di chuyển cùng lúc, chiếm slot kép, dễ gây kẹt lane (stuck) nếu không nhìn trước 1 nước.',
-    behaviorChange: 'Hành vi C (Quản lý slot & Tính toán): Quan sát slot và không gian chờ trước khi click; tính toán nước đi đôi.',
+    behaviorChange: 'Hành vi C (Quản lý slot & Nước đi đôi): Quan sát slot và không gian chờ trước khi click; tính toán nước đi đôi.',
     teachLevel: 14,
     practiceLevels: [15, 16, 17],
     testLevel: 18,
@@ -182,7 +182,7 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     tier: 'SECONDARY',
     groupType: 'block',
     type: 7,
-    intent: 'Bắn trúng phát sinh block mới, tạo cảm giác tactile "xả đạn" liên tục đã tai đã mắt, giảm áp lực hết đạn.',
+    intent: 'Bắn trúng phát sinh block mới, tạo cảm giác tactile "xả đạn" liên tục đã tai đã mắt, giải tỏa áp lực đạn.',
     behaviorChange: 'Hành vi B (Xả đạn & Xúc giác thỏa mãn): Tận hưởng nhịp xả đạn nhanh, giải tỏa căng thẳng sau màn khó.',
     teachLevel: 21,
     practiceLevels: [22, 23, 24],
@@ -192,22 +192,21 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     riskMitigation: 'Cứu drop rate sau màn SuperHard đầu tiên (L20).'
   },
   {
-    id: 'b_1',
-    name: 'Hard Parcel Block',
-    icon: '🧱',
-    iconPath: './assets/mechanics/block_hard_parcel.png',
+    id: 's_frozen',
+    name: 'Frozen Truck',
+    icon: '❄️',
+    iconPath: './assets/mechanics/shooter_frozen.png',
     tier: 'SECONDARY',
-    groupType: 'block',
-    type: 1,
-    aliasTypes: [2, 3, 4],
-    intent: 'Khối bưu kiện lớn nhiều hit (2x2, 3x3), đòi hỏi dồn nhiều lượt bắn cùng màu để phá vỡ.',
-    behaviorChange: 'Hành vi C (Dồn tài nguyên & Tích trữ): Lên kế hoạch tích trữ đạn cùng màu để phá khối kiên cố.',
-    teachLevel: 35,
-    practiceLevels: [36, 37, 38],
-    testLevel: 40,
-    combineStartLevel: 42,
-    pacingNote: 'Dạy tại L35 (giãn cách nhẹ củng cố Core), tăng dần tải lượng và test khối 3x3 tại SuperHard L40.',
-    riskMitigation: 'Tạo milestone độ khó rõ ràng với quy tắc tăng dần tải lượng.'
+    groupType: 'shooter',
+    type: 'frozen',
+    intent: 'Xe bị đóng băng cần giải cứu trước khi dùng được; chiếm dụng slot chờ tạm thời tạo bài toán nhịp độ.',
+    behaviorChange: 'Hành vi B\' (Mục tiêu phụ & Xúc giác băng vỡ): Phân chia mục tiêu giải cứu xe đóng băng trước khi bắn target chính.',
+    teachLevel: 32,
+    practiceLevels: [33, 34],
+    testLevel: 35,
+    combineStartLevel: 38,
+    pacingNote: 'Dạy tại L32 (Relief sau SuperHard L30), practice 33-34, test tại Hard L35, combine từ L38+.',
+    riskMitigation: 'Tạo thử thách nhịp độ slot nhẹ nhàng, giải tỏa xúc giác băng vỡ.'
   },
   {
     id: 'b_8',
@@ -235,7 +234,7 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     groupType: 'block',
     type: 6,
     intent: 'Che giấu màu pixel bên trong, buộc người chơi dọn các pixel xung quanh để "lật mở" thông tin.',
-    behaviorChange: 'Hành vi A (Suy đoán & Mở vùng biên): Khám phá và giải tỏa vùng biên trước khi chạm vào lõi bí ẩn.',
+    behaviorChange: 'Hành vi A\' (Suy đoán & Mở vùng biên): Khám phá và giải tỏa vùng biên trước khi chạm vào lõi bí ẩn.',
     teachLevel: 63,
     practiceLevels: [64, 65, 66],
     testLevel: 68,
@@ -244,21 +243,22 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     riskMitigation: 'Kích thích tính tò mò và bất ngờ mà không làm ngợp não.'
   },
   {
-    id: 's_frozen',
-    name: 'Frozen Truck',
-    icon: '❄️',
-    iconPath: './assets/mechanics/shooter_frozen.png',
+    id: 'b_1',
+    name: 'Hard Parcel Block',
+    icon: '🧱',
+    iconPath: './assets/mechanics/block_hard_parcel.png',
     tier: 'SECONDARY',
-    groupType: 'shooter',
-    type: 'frozen',
-    intent: 'Xe bị đóng băng cần giải cứu trước khi dùng được; hiệu ứng âm thanh băng vỡ giòn tan thỏa mãn.',
-    behaviorChange: 'Hành vi B (Mục tiêu phụ ngắn hạn & Xúc giác): Giải phóng xe đóng băng trước khi bắn target chính.',
+    groupType: 'block',
+    type: 1,
+    aliasTypes: [2, 3, 4],
+    intent: 'Khối bưu kiện lớn nhiều hit (2x2, 3x3), đòi hỏi dồn nhiều lượt bắn cùng màu để phá vỡ.',
+    behaviorChange: 'Hành vi C\' (Dồn tài nguyên & Tích trữ): Lên kế hoạch tích trữ đạn cùng màu để phá khối kiên cố.',
     teachLevel: 76,
     practiceLevels: [77, 78, 79],
     testLevel: 80,
     combineStartLevel: 84,
-    pacingNote: 'Dạy tại L76 mang lại cảm giác tactile thỏa mãn khi đập băng, test tại SuperHard L80 trước khi vào Bomb.',
-    riskMitigation: 'Giảm căng thẳng nhận thức trước khi gặp cơ chế đếm ngược/bom.'
+    pacingNote: 'Dạy tại L76 (tăng tải dần từ 2x2 lên 3x3), test tại SuperHard L80 trước khi bước vào Bomb.',
+    riskMitigation: 'Rèn luyện kỹ năng dồn tài nguyên đạn trước khi gặp cơ chế áp lực thời gian Bomb.'
   },
   {
     id: 's_bomb_truck',
@@ -274,7 +274,7 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     practiceLevels: [93, 94, 95],
     testLevel: 98,
     combineStartLevel: 100,
-    pacingNote: 'Dạy tại L92 (gap 16 level sau Ice) -> Practice 93-95 -> Test 98. Climax kết hợp Bomb tại Mega PEAK L100.',
+    pacingNote: 'Dạy tại L92 (gap 16 level sau Hard Block) -> Practice 93-95 -> Test 98. Climax kết hợp Bomb tại Mega PEAK L100.',
     riskMitigation: 'Tạo khoảng cách xa để tạo hiệu ứng Wow bất ngờ cho Emergency Protocol.'
   },
   {
@@ -286,7 +286,7 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     groupType: 'shooter',
     type: 'long_key',
     intent: 'Giải phóng then cài: thu thập xe ở đầu chốt (Key Head) để rút thanh khóa mở đường cho các xe bị chặn.',
-    behaviorChange: 'Hành vi E (Chuỗi phụ thuộc): Phân tích chuỗi phụ thuộc (dependency chain) của các hàng xe.',
+    behaviorChange: 'Hành vi E\' (Chuỗi phụ thuộc cơ học): Phân tích chuỗi phụ thuộc (dependency chain) của các hàng xe.',
     teachLevel: 108,
     practiceLevels: [109, 110, 111, 112],
     testLevel: 113,
@@ -303,7 +303,7 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     groupType: 'shooter',
     type: 'pipe',
     intent: 'Đoàn xe tiếp tế trong ống dạng hàng đợi (FIFO), thu gọn số xe trên bàn chơi, tăng kích thước xe hiển thị.',
-    behaviorChange: 'Hành vi D (Quản lý hàng đợi FIFO): Lập kế hoạch tiêu thụ đạn theo thứ tự tiếp ứng trong ống.',
+    behaviorChange: 'Hành vi D\' (Quản lý hàng đợi FIFO): Lập kế hoạch tiêu thụ đạn theo thứ tự tiếp ứng trong ống.',
     teachLevel: 124,
     practiceLevels: [125, 126, 127],
     testLevel: 128,
@@ -320,7 +320,7 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     groupType: 'shooter',
     type: 'curtains',
     intent: 'Rèm che khuất tầm nhìn, tạo sự bất ngờ nhẹ nhàng và đổi gió thị giác.',
-    behaviorChange: 'Hành vi A (Khám phá & Thư giãn thị giác): Khám phá dần dần các xe phía sau rèm.',
+    behaviorChange: 'Hành vi A\'\' (Khám phá & Thư giãn thị giác): Khám phá dần dần các xe phía sau rèm.',
     teachLevel: 141,
     practiceLevels: [142, 143],
     testLevel: 144,
@@ -336,9 +336,9 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     tier: 'SECONDARY',
     groupType: 'shooter',
     type: 'key_truck',
-    tutLevel: 120,
+    tutLevel: 163,
     intent: 'Thu thập chìa khóa để giải phóng xe khóa tương ứng.',
-    behaviorChange: 'Hành vi E (Mở khóa đa tầng): Tìm kiếm và dọn màu chìa khóa trước khi tiếp cận các pixel mục tiêu phía sau.',
+    behaviorChange: 'Hành vi E\'\' (Mở khóa đa tầng): Tìm kiếm và dọn màu chìa khóa trước khi tiếp cận các pixel mục tiêu phía sau.',
     teachLevel: 163,
     practiceLevels: [164, 165, 166],
     testLevel: 167,
@@ -355,7 +355,7 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
     groupType: 'shooter',
     type: 'tunnel',
     intent: 'Hầm xe di chuyển liên hoàn ngầm dưới sàn đấu, tạo biến thể không gian cấp cao.',
-    behaviorChange: 'Hành vi D (Dự đoán không gian ngầm): Phán đoán điểm xuất hiện và vòng lặp của đoàn xe hầm.',
+    behaviorChange: 'Hành vi D\'\' (Dự đoán không gian ngầm): Phán đoán điểm xuất hiện và vòng lặp của đoàn xe hầm.',
     teachLevel: 201,
     practiceLevels: [202, 203, 204],
     testLevel: 205,
@@ -375,7 +375,7 @@ export function getProposedLevelDifficultyInfo(levelNum) {
     if (levelNum % 50 === 0) return { type: 'PEAK', isSuperHard: true, isHard: false, text: `⚡ PEAK Climax L${levelNum}` };
     if (levelNum % 10 === 0) return { type: 'SUPER_HARD', isSuperHard: true, isHard: false, text: `💀 Super Hard L${levelNum}` };
     if (levelNum % 10 === 5) return { type: 'HARD', isSuperHard: false, isHard: true, text: `🔥 Hard Level L${levelNum}` };
-    if (levelNum % 10 === 1 || levelNum === 21) return { type: 'RELIEF', isSuperHard: false, isHard: false, text: `🟢 Normal (Teach / Relief)` };
+    if (levelNum % 10 === 1 || levelNum === 21 || levelNum === 32 || levelNum === 51 || levelNum === 63 || levelNum === 76 || levelNum === 92) return { type: 'RELIEF', isSuperHard: false, isHard: false, text: `🟢 Normal (Teach / Relief)` };
     return { type: 'NORMAL', isSuperHard: false, isHard: false, text: `🟢 Normal` };
   }
 
@@ -452,6 +452,7 @@ export class MechanicMapRenderer {
   }
 
   initSkeleton() {
+    if (!this.container) return;
     this.container.innerHTML = `
       <div class="mechanic-map-wrapper">
         <!-- Main Mode Switcher Bar -->
@@ -566,7 +567,12 @@ export class MechanicMapRenderer {
         this.cancelHideTooltip();
       });
       tooltip.addEventListener('mouseleave', () => {
-        this.scheduleHideTooltip(250);
+        if (this.editMode) {
+          this.scheduleHideTooltip(600);
+        } else {
+          this.cancelHideTooltip();
+          tooltip.style.display = 'none';
+        }
       });
     }
 
@@ -1050,6 +1056,25 @@ export class MechanicMapRenderer {
         if (maxCombineSlots > 0) {
           const cores = combineCandidates.filter(c => c.mech.tier === 'CORE');
           const activeCluster = getActiveClusterForLevel(lvl);
+
+          // Phân bổ Core Mechanics linh hoạt (Decoupled Core Rotation):
+          // - Màn Hard / SuperHard / Pre-Hard (lvl % 5 === 4): Kết hợp cả 2 Cores (Dual Core Pressure)
+          // - Màn Normal thông thường: Xoay vòng độc lập 1 Core theo Cụm chủ đề & Thời gian vắng mặt (Idle Time)
+          let selectedCores = [];
+          if (isHardOrSuperHard || (lvl % 5 === 4)) {
+            selectedCores = [...cores];
+          } else {
+            const sortedCores = [...cores].sort((a, b) => {
+              const inClusterA = activeCluster && activeCluster.mechs.includes(a.mech.id) ? 1 : 0;
+              const inClusterB = activeCluster && activeCluster.mechs.includes(b.mech.id) ? 1 : 0;
+              if (inClusterA !== inClusterB) return inClusterB - inClusterA;
+              return b.idleTime - a.idleTime;
+            });
+            if (sortedCores.length > 0) {
+              selectedCores = [sortedCores[0]];
+            }
+          }
+
           // Sắp xếp các mechanic secondary theo Cluster chủ đề (Micro Cluster) và thời gian vắng mặt (Fair Idle-Time)
           const secondaries = combineCandidates.filter(c => c.mech.tier !== 'CORE').sort((a, b) => {
             const inClusterA = activeCluster && activeCluster.mechs.includes(a.mech.id) ? 1 : 0;
@@ -1059,8 +1084,8 @@ export class MechanicMapRenderer {
           });
 
           let added = 0;
-          // 1. Luôn bảo đảm Core Combo (Hidden & Connected)
-          for (const core of cores) {
+          // 1. Thêm Core mechanics đã chọn
+          for (const core of selectedCores) {
             if (added < maxCombineSlots) {
               activeForLvl.push(core);
               added++;
@@ -2019,16 +2044,26 @@ export class MechanicMapRenderer {
           // Lấy comment hiện tại của level này (nếu có)
           const currentLevelNote = this.getLevelComment(levelNum);
 
-          tooltipHtml = `
-            <div class="tip-header edit-mode-header" style="background: rgba(234, 179, 8, 0.15); margin: -12px -16px 8px -16px; padding: 8px 12px; border-bottom: 1px solid rgba(234, 179, 8, 0.3);">
-              <strong style="color: #fbbf24; font-size: 13px;">✏️ Quick Edit Mechanics — Level ${levelNum}</strong>
-              <span style="font-size: 10px; color: var(--text-secondary); display: block;">Tích chọn mechanic có mặt & chọn Phase</span>
+            tooltipHtml = `
+            <div class="tip-header edit-mode-header" style="background: rgba(234, 179, 8, 0.15); margin: -12px -16px 8px -16px; padding: 8px 12px; border-bottom: 1px solid rgba(234, 179, 8, 0.3); display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <strong style="color: #fbbf24; font-size: 13px;">✏️ Quick Edit Mechanics — Level ${levelNum}</strong>
+                <span style="font-size: 10px; color: var(--text-secondary); display: block;">Tích chọn mechanic có mặt & chọn Phase</span>
+              </div>
+              <button id="btnTipClose_${levelNum}" style="background: none; border: none; color: #94a3b8; font-size: 18px; line-height: 1; cursor: pointer; padding: 0 4px;" title="Đóng">&times;</button>
             </div>
             <div class="tip-edit-checklist" style="max-height: 240px; overflow-y: auto; padding-right: 2px;">
               ${checklistRowsHtml}
             </div>
             <div style="margin-top: 8px;">
               <textarea id="tipLevelNoteInput_${levelNum}" class="form-control form-control-sm" rows="2" placeholder="💬 Ghi chú ý đồ thiết kế cho Level ${levelNum}..." style="width: 100%; font-size: 11px; resize: vertical; border-color: rgba(234, 179, 8, 0.4);">${currentLevelNote}</textarea>
+            </div>
+            <div class="tip-smart-yard-box" style="margin-top: 8px; padding: 6px 10px; background: rgba(59, 130, 246, 0.12); border: 1px solid rgba(59, 130, 246, 0.35); border-radius: 6px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+              <div style="font-size: 10.5px; color: #93c5fd; line-height: 1.3;">
+                <strong style="color: #60a5fa;">🚚 Smart Truck Yard:</strong>
+                <span style="display: block; font-size: 9.5px; color: #cbd5e1;">Gen bãi đỗ 100% Solvable & Suýt thắng (85-95%)</span>
+              </div>
+              <button id="btnQuickGenSmartYard_${levelNum}" class="btn btn-sm" style="font-size: 10.5px; padding: 4px 10px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #ffffff; border: none; font-weight: 700; border-radius: 4px; cursor: pointer; white-space: nowrap; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">⚡ Gen Bãi Đỗ</button>
             </div>
             <div style="margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; gap: 8px; justify-content: space-between; align-items: center;">
               <button id="btnResetQuickLvl_${levelNum}" class="btn btn-sm btn-danger" style="font-size: 10px; padding: 2px 6px;">Reset Lvl ${levelNum}</button>
@@ -2118,25 +2153,190 @@ export class MechanicMapRenderer {
           tooltip.innerHTML = tooltipHtml;
           tooltip.style.display = 'block';
 
+          if (this.editMode) {
+            tooltip.classList.add('edit-mode-tooltip');
+
+            // 1. Nút Đóng
+            const btnClose = tooltip.querySelector(`#btnTipClose_${levelNum}`);
+            if (btnClose) {
+              btnClose.addEventListener('click', (ev) => {
+                ev.stopPropagation();
+                this.cancelHideTooltip();
+                tooltip.style.display = 'none';
+              });
+            }
+
+            // 2. Checkbox & Phase dropdown toggle
+            allAvailableMechs.forEach((m) => {
+              const chk = tooltip.querySelector(`#chk_${levelNum}_${m.id}`);
+              const lbl = tooltip.querySelector(`#lbl_${levelNum}_${m.id}`);
+              const sel = tooltip.querySelector(`#sel_${levelNum}_${m.id}`);
+              if (chk && lbl && sel) {
+                chk.addEventListener('change', () => {
+                  if (chk.checked) {
+                    lbl.classList.remove('unchecked');
+                    lbl.classList.add('checked');
+                    sel.style.display = 'inline-block';
+                  } else {
+                    lbl.classList.remove('checked');
+                    lbl.classList.add('unchecked');
+                    sel.style.display = 'none';
+                  }
+                });
+              }
+            });
+
+            // 3. Nút Reset Level
+            const btnReset = tooltip.querySelector(`#btnResetQuickLvl_${levelNum}`);
+            if (btnReset) {
+              btnReset.addEventListener('click', async (ev) => {
+                ev.stopPropagation();
+                const keysToRemove = [];
+                for (const key of this.editsMap.keys()) {
+                  if (key.startsWith(`${levelNum}_`)) {
+                    keysToRemove.push(key);
+                  }
+                }
+                for (const key of keysToRemove) {
+                  if (this.callbacks.onRemoveEdit) {
+                    await this.callbacks.onRemoveEdit(key);
+                  } else {
+                    this.editsMap.delete(key);
+                  }
+                }
+                this.cancelHideTooltip();
+                tooltip.style.display = 'none';
+                this.render();
+              });
+            }
+
+            // 3.5 Nút Quick Gen Smart Yard
+            const btnQuickGenYard = tooltip.querySelector(`#btnQuickGenSmartYard_${levelNum}`);
+            if (btnQuickGenYard) {
+              btnQuickGenYard.addEventListener('click', async (ev) => {
+                ev.stopPropagation();
+                btnQuickGenYard.disabled = true;
+                btnQuickGenYard.textContent = '⏳ Đang gen...';
+                if (this.callbacks.onGenerateSmartYard) {
+                  await this.callbacks.onGenerateSmartYard(levelNum);
+                }
+                this.cancelHideTooltip();
+                tooltip.style.display = 'none';
+              });
+            }
+
+            // 4. Nút Lưu & Cập nhật Level
+            const btnSave = tooltip.querySelector(`#btnSaveQuickLvl_${levelNum}`);
+            if (btnSave) {
+              btnSave.addEventListener('click', async (ev) => {
+                ev.stopPropagation();
+                btnSave.disabled = true;
+                btnSave.textContent = '⏳ Đang lưu...';
+
+                for (const m of allAvailableMechs) {
+                  const chk = tooltip.querySelector(`#chk_${levelNum}_${m.id}`);
+                  const sel = tooltip.querySelector(`#sel_${levelNum}_${m.id}`);
+                  const compositeKey = `${levelNum}_${m.id}`;
+                  const computedEntry = proposedMechs.find((p) => p.id === m.id);
+
+                  if (chk && chk.checked) {
+                    const phaseVal = sel ? sel.value : 'combine';
+                    if (computedEntry && computedEntry.phase === phaseVal) {
+                      if (this.callbacks.onRemoveEdit) await this.callbacks.onRemoveEdit(compositeKey);
+                      else this.editsMap.delete(compositeKey);
+                    } else {
+                      const record = {
+                        key: compositeKey,
+                        levelNum,
+                        mechId: m.id,
+                        mechName: m.name,
+                        overrideType: computedEntry ? 'phase_changed' : 'added',
+                        overridePhase: phaseVal,
+                        comment: ''
+                      };
+                      if (this.callbacks.onSaveEdit) await this.callbacks.onSaveEdit(record);
+                      else this.editsMap.set(compositeKey, record);
+                    }
+                  } else if (chk && !chk.checked) {
+                    if (computedEntry) {
+                      const record = {
+                        key: compositeKey,
+                        levelNum,
+                        mechId: m.id,
+                        mechName: m.name,
+                        overrideType: 'removed',
+                        overridePhase: null,
+                        comment: ''
+                      };
+                      if (this.callbacks.onSaveEdit) await this.callbacks.onSaveEdit(record);
+                      else this.editsMap.set(compositeKey, record);
+                    } else {
+                      if (this.callbacks.onRemoveEdit) await this.callbacks.onRemoveEdit(compositeKey);
+                      else this.editsMap.delete(compositeKey);
+                    }
+                  }
+                }
+
+                const noteInp = tooltip.querySelector(`#tipLevelNoteInput_${levelNum}`);
+                const noteKey = `${levelNum}_#level_comment`;
+                const noteVal = noteInp ? noteInp.value.trim() : '';
+                if (noteVal) {
+                  const record = {
+                    key: noteKey,
+                    levelNum,
+                    overrideType: 'comment',
+                    comment: noteVal
+                  };
+                  if (this.callbacks.onSaveEdit) await this.callbacks.onSaveEdit(record);
+                  else this.editsMap.set(noteKey, record);
+                } else {
+                  if (this.callbacks.onRemoveEdit) await this.callbacks.onRemoveEdit(noteKey);
+                  else this.editsMap.delete(noteKey);
+                }
+
+                this.cancelHideTooltip();
+                tooltip.style.display = 'none';
+                this.render();
+              });
+            }
+          } else {
+            tooltip.classList.remove('edit-mode-tooltip');
+          }
+
           const rect = el.getBoundingClientRect();
-          tooltip.style.left = `${rect.left + window.scrollX + rect.width / 2}px`;
-          tooltip.style.top = `${rect.top + window.scrollY - 10}px`;
+          let left = rect.left + window.scrollX + rect.width / 2;
+          let top = rect.top + window.scrollY - 10;
+          
+          if (rect.top < 380 && this.editMode) {
+            tooltip.style.transform = 'translate(-50%, 10px)';
+            tooltip.style.top = `${rect.bottom + window.scrollY}px`;
+          } else {
+            tooltip.style.transform = 'translate(-50%, -100%)';
+            tooltip.style.top = `${top}px`;
+          }
+          tooltip.style.left = `${left}px`;
         }
       });
 
       el.addEventListener('mouseleave', () => {
-        this.cancelHideTooltip();
-        if (tooltip) tooltip.style.display = 'none';
+        if (!this.editMode) {
+          this.cancelHideTooltip();
+          if (tooltip) tooltip.style.display = 'none';
+        } else {
+          this.scheduleHideTooltip(500);
+        }
       });
 
       el.addEventListener('click', () => {
-        if (tooltip) tooltip.style.display = 'none';
-        if (this.callbacks.onSelectLevel) {
-          this.callbacks.onSelectLevel(levelNum);
-        } else {
-          const lvlData = this.rawLevels.find((l) => l.level === levelNum);
-          if (lvlData) {
-            this.showLevelPreview(lvlData);
+        if (!this.editMode) {
+          if (tooltip) tooltip.style.display = 'none';
+          if (this.callbacks.onSelectLevel) {
+            this.callbacks.onSelectLevel(levelNum);
+          } else {
+            const lvlData = this.rawLevels.find((l) => l.level === levelNum);
+            if (lvlData) {
+              this.showLevelPreview(lvlData);
+            }
           }
         }
       });

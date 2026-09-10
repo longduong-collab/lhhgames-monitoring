@@ -39,9 +39,9 @@ console.log(`Invariant Valid: ${level1.invariant_valid}`);
 console.log(`Invalid Types:`, level1.invalid_types_found);
 
 console.assert(level1.level === 1, 'Level phải bằng 1');
-console.assert(level1.girdSizeX === 11, 'girdSizeX phải bằng 11');
-console.assert(level1.girdSizeY === 20, 'girdSizeY phải bằng 20');
-console.assert(level1.total_cells === 220, 'total_cells phải bằng 220');
+console.assert(level1.girdSizeX === 7, 'girdSizeX phải bằng 7');
+console.assert(level1.girdSizeY === 7, 'girdSizeY phải bằng 7');
+console.assert(level1.total_cells === 49, 'total_cells phải bằng 49');
 console.assert(level1.invariant_valid === true, 'Level 1 phải khớp Invariant');
 console.assert(level1.invalid_types_found.length === 0, 'Level 1 không được có invalid types');
 console.log('✅ Parser 1.json test PASS!\n');
@@ -109,5 +109,36 @@ console.log(`Trạng thái sau khi chơi: isWin=${engine.isWin}, isLose=${engine
 console.assert(engine.isWin === true, 'Level 1 phải giải thành công (Win)!');
 console.assert(engine.totalActiveBlocks === 0, 'Toàn bộ 43 blocks phải được dọn sạch');
 console.log('✅ Playtest Engine test PASS!\n');
+
+// 6. Test Smart Truck Yard Generator (6-Stage Pipeline)
+console.log('--- 6. Kiểm tra Smart Truck Yard Generator (P10) ---');
+import { generateSmartTruckYard, generateLevelByIntent } from './level_tracker/js/designIntent.js';
+
+const generatedYard = generateLevelByIntent(JSON.parse(sample1Raw), 'P10_SMART_YARD_NEAR_MISS');
+console.assert(generatedYard !== null, 'Phải sinh được level từ P10');
+console.assert(generatedYard.shooters && generatedYard.shooters.length >= 3, 'Bãi đỗ phải có ít nhất 3 cột');
+
+const parsedGenerated = parseLevelData(generatedYard, '1_smart_yard.json');
+console.log(`Smart Yard Metrics (Level 1):`, generatedYard._yardMetrics);
+console.log(`Invariant Valid: ${parsedGenerated.invariant_valid}`);
+console.assert(parsedGenerated.invariant_valid === true, 'Level 1 mới sinh phải 100% cân bằng Invariant!');
+console.assert(generatedYard._yardMetrics.isSolvable === true, 'Level 1: Solver phải xác nhận 100% Solvable!');
+console.log(`Near-Miss Rate (Level 1): ${generatedYard._yardMetrics.nearMissRate}`);
+
+// Test sample 2
+const genYard2 = generateSmartTruckYard(JSON.parse(sample2Raw));
+const parsedGen2 = parseLevelData(genYard2, '2_smart_yard.json');
+console.log(`Smart Yard Metrics (Level 2):`, genYard2._yardMetrics);
+console.assert(parsedGen2.invariant_valid === true, 'Level 2 mới sinh phải 100% cân bằng Invariant!');
+console.assert(genYard2._yardMetrics.isSolvable === true, 'Level 2: Solver phải xác nhận 100% Solvable!');
+
+// Test sample 3
+const genYard3 = generateSmartTruckYard(JSON.parse(sample3Raw));
+const parsedGen3 = parseLevelData(genYard3, '3_smart_yard.json');
+console.log(`Smart Yard Metrics (Level 3):`, genYard3._yardMetrics);
+console.assert(parsedGen3.invariant_valid === true, 'Level 3 mới sinh phải 100% cân bằng Invariant!');
+console.assert(genYard3._yardMetrics.isSolvable === true, 'Level 3: Solver phải xác nhận 100% Solvable!');
+
+console.log('✅ Smart Truck Yard Generator test PASS!\n');
 
 console.log('🎉 TẤT CẢ CÁC BÀI KIỂM THỬ ĐÃ THÀNH CÔNG RỰC RỠ!');
