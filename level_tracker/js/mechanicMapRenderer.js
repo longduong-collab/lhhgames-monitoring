@@ -9,6 +9,7 @@
 
 import { getColor } from './palette.js';
 import { calculatePixelArtBounds } from './pixelArtRenderer.js';
+import { getLevelDifficulty } from './levelConfig.js';
 
 export const MECHANIC_DEFINITIONS = {
   block: {
@@ -582,52 +583,45 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
 
 /**
  * Trả về thông tin độ khó đề xuất cho từng Level:
- * - L1..L100: Giữ nguyên nhịp 5/10 (Modulo % 5 = Hard, % 10 = SuperHard).
- * - L101+: Phá nhịp pattern theo mốc Mechanic thực tế (Key Hunt, Pipe, Curtains, Long Key, Tunnel).
+ * - Trước level 150: Đuôi 5 là Hard, đuôi 0 là Super Hard (L50, L100, L150 là PEAK).
+ * - Sau level 150: Đuôi 4 và 7 là Hard, đuôi 0 là Super Hard (L200, L250, L300... là PEAK).
  */
 export function getProposedLevelDifficultyInfo(levelNum) {
-  if (levelNum <= 100) {
-    if (levelNum % 50 === 0)
+  const teachLevels = [8, 14, 21, 31, 51, 63, 76, 92, 108, 124, 141, 163, 201];
+
+  if (levelNum <= 150) {
+    if (levelNum % 50 === 0) {
       return {
         type: 'PEAK',
         isSuperHard: true,
         isHard: false,
-        text: `⚡ PEAK Climax L${levelNum}`,
+        text: `⚡ PEAK Climax L${levelNum} (Mega Challenge Sink)`,
       };
-    if (levelNum % 10 === 0)
+    }
+    if (levelNum % 10 === 0) {
       return {
         type: 'SUPER_HARD',
         isSuperHard: true,
         isHard: false,
         text: `💀 Super Hard L${levelNum}`,
       };
-    if (levelNum % 10 === 5)
+    }
+    if (levelNum % 10 === 5) {
       return { type: 'HARD', isSuperHard: false, isHard: true, text: `🔥 Hard Level L${levelNum}` };
-    if (
-      levelNum % 10 === 1 ||
-      levelNum === 21 ||
-      levelNum === 32 ||
-      levelNum === 51 ||
-      levelNum === 63 ||
-      levelNum === 76 ||
-      levelNum === 92
-    )
+    }
+    if (teachLevels.includes(levelNum)) {
       return {
         type: 'RELIEF',
         isSuperHard: false,
         isHard: false,
         text: `🟢 Normal (Teach / Relief)`,
       };
+    }
     return { type: 'NORMAL', isSuperHard: false, isHard: false, text: `🟢 Normal` };
   }
 
-  // L101+: Pattern breaking động
-  const superHardLevels = [119, 135, 172];
-  const hardLevels = [113, 128, 144, 156, 167, 178, 197, 205];
-  const peakLevels = [150, 200];
-  const reliefLevels = [101, 108, 120, 124, 141, 151, 163, 201];
-
-  if (peakLevels.includes(levelNum) || (levelNum % 50 === 0 && levelNum > 200)) {
+  // Sau level 150: Đuôi 4 & 7 là Hard, Đuôi 0 là Super Hard (bội 50 là PEAK)
+  if (levelNum % 50 === 0) {
     return {
       type: 'PEAK',
       isSuperHard: true,
@@ -635,23 +629,23 @@ export function getProposedLevelDifficultyInfo(levelNum) {
       text: `⚡ PEAK L${levelNum} (Mega Challenge Sink)`,
     };
   }
-  if (superHardLevels.includes(levelNum)) {
+  if (levelNum % 10 === 0) {
     return {
       type: 'SUPER_HARD',
       isSuperHard: true,
       isHard: false,
-      text: `💀 Super Hard L${levelNum} (Mechanic Climax)`,
+      text: `💀 Super Hard L${levelNum}`,
     };
   }
-  if (hardLevels.includes(levelNum)) {
+  if (levelNum % 10 === 4 || levelNum % 10 === 7) {
     return {
       type: 'HARD',
       isSuperHard: false,
       isHard: true,
-      text: `🔥 Hard Level L${levelNum} (Mechanic Test — Pattern Break)`,
+      text: `🔥 Hard Level L${levelNum}`,
     };
   }
-  if (reliefLevels.includes(levelNum)) {
+  if (teachLevels.includes(levelNum)) {
     return {
       type: 'RELIEF',
       isSuperHard: false,
@@ -659,17 +653,6 @@ export function getProposedLevelDifficultyInfo(levelNum) {
       text: `🟢 Normal (Teach / Relief)`,
     };
   }
-
-  // Generic fallback cho L101+ nếu không thuộc danh sách đặc biệt trên:
-  if (levelNum % 20 === 0)
-    return {
-      type: 'SUPER_HARD',
-      isSuperHard: true,
-      isHard: false,
-      text: `💀 Super Hard L${levelNum}`,
-    };
-  if (levelNum % 7 === 0)
-    return { type: 'HARD', isSuperHard: false, isHard: true, text: `🔥 Hard Level L${levelNum}` };
 
   return { type: 'NORMAL', isSuperHard: false, isHard: false, text: `🟢 Normal` };
 }

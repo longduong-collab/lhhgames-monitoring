@@ -29,6 +29,7 @@ import {
 } from './mechanicMapRenderer.js';
 import { AnalyticsImporter } from './analyticsImporter.js';
 import { AnalyticsDashboard } from './analyticsDashboard.js';
+import { EconomyMapRenderer } from './economyMapRenderer.js';
 import { saveLevels, loadLevels, clearStoredLevels } from './levelStorage.js';
 import { saveEdit, removeEdit, loadAllEdits, clearAllEdits } from './mechanicMapEditsStorage.js';
 import { exportProposedBlueprintCSV } from './csvExporter.js';
@@ -92,10 +93,13 @@ class App {
     this.navTabExplorer = document.getElementById('navTabExplorer');
     this.navTabMechanicMap = document.getElementById('navTabMechanicMap');
     this.navTabAnalytics = document.getElementById('navTabAnalytics');
+    this.navTabEconomy = document.getElementById('navTabEconomy');
 
     this.viewLevelExplorer = document.getElementById('viewLevelExplorer');
     this.viewMechanicMap = document.getElementById('viewMechanicMap');
     this.viewAnalyticsDashboard = document.getElementById('viewAnalyticsDashboard');
+    this.viewEconomyMap = document.getElementById('viewEconomyMap');
+    this.economyMapContainer = document.getElementById('economyMapContainer');
 
     // Import elements
     this.dropZoneEl = document.getElementById('dropZone');
@@ -328,6 +332,9 @@ class App {
       }
     );
 
+    // 8. Economy Map Renderer
+    this.economyMapRenderer = new EconomyMapRenderer(this.economyMapContainer);
+
     // 7. Analytics Dashboard
     this.analyticsDashboard = new AnalyticsDashboard(this.analyticsDashboardContainer, {
       onJumpToLevel: (levelNum) => {
@@ -343,6 +350,7 @@ class App {
     const navButtons = [
       { btn: this.navTabExplorer, tab: 'explorer', pane: this.viewLevelExplorer },
       { btn: this.navTabMechanicMap, tab: 'mechanic-map', pane: this.viewMechanicMap },
+      { btn: this.navTabEconomy, tab: 'economy-map', pane: this.viewEconomyMap },
       { btn: this.navTabAnalytics, tab: 'analytics', pane: this.viewAnalyticsDashboard },
     ];
 
@@ -361,6 +369,8 @@ class App {
         // Lazy Render View on Tab Switch
         if (tab === 'mechanic-map') {
           this.mechanicMapRenderer.render(this.filteredLevels.length > 0 ? this.filteredLevels : this.levels);
+        } else if (tab === 'economy-map') {
+          this.economyMapRenderer.render(this.filteredLevels.length > 0 ? this.filteredLevels : this.levels);
         } else if (tab === 'analytics') {
           this.analyticsDashboard.render(this.analyticsData, this.levels);
         }
@@ -1797,6 +1807,8 @@ class App {
     // 7. Đồng bộ sang Mechanic Map & Analytics Dashboard nếu đang active
     if (this.activeTab === 'mechanic-map') {
       this.mechanicMapRenderer.render(this.filteredLevels.length > 0 ? this.filteredLevels : this.levels);
+    } else if (this.activeTab === 'economy-map') {
+      this.economyMapRenderer.render(this.filteredLevels.length > 0 ? this.filteredLevels : this.levels);
     } else if (this.activeTab === 'analytics') {
       this.analyticsDashboard.render(this.analyticsData, this.levels);
     }

@@ -1,32 +1,46 @@
 /**
  * levelConfig.js
- * Chứa cấu hình độ khó Level trích xuất từ Assets/Resources/CS_LocalLevelConfigData.json
- * và logic tính toán độ khó (Normal / Hard / Super Hard).
+ * Chứa cấu hình độ khó Level theo quy chuẩn phân bổ mới:
+ * - Trước level 150: Đuôi 5 là Hard (5, 15, 25...), đuôi 0 là Super Hard (10, 20, 30...)
+ * - Sau level 150: Đuôi 4 và 7 là Hard (154, 157, 164, 167...), đuôi 0 là Super Hard (160, 170...)
  */
+
+export function generateStandardDifficultyMap(maxLevel = 600) {
+  const superHardSet = new Set();
+  const hardSet = new Set();
+
+  for (let l = 1; l <= maxLevel; l++) {
+    if (l <= 150) {
+      if (l % 10 === 0) superHardSet.add(l);
+      else if (l % 10 === 5) hardSet.add(l);
+    } else {
+      if (l % 10 === 0) superHardSet.add(l);
+      else if (l % 10 === 4 || l % 10 === 7) hardSet.add(l);
+    }
+  }
+
+  return {
+    LevelHards: Array.from(hardSet).sort((a, b) => a - b),
+    LevelSuperHards: Array.from(superHardSet).sort((a, b) => a - b)
+  };
+}
+
+const generatedDiff = generateStandardDifficultyMap(600);
 
 export const LOCAL_LEVEL_CONFIG = {
   name: 'Default',
-  totalLevel: 360,
+  totalLevel: 600,
   MechanicUnlockedLevel: [8, 14, 76, 163, 21, 63, 51, 124, 108, 31, 201, 141, 92, -1],
-  BoosterUnlockedLevel: [7, 13, 15, 18, 0],
-  LevelHards: [
-    5, 11, 16, 25, 35, 40, 44, 48, 52, 59, 64, 69, 81, 85, 95, 105, 115, 118, 123, 127, 136, 140,
-    152, 155, 165, 175, 180, 190, 195, 205, 215, 225, 235, 245, 255, 265, 275, 285, 295, 305, 315,
-    325, 335, 345, 355, 365, 375, 385, 395, 405, 415, 425, 435, 445, 455, 465, 475, 485, 495, 505,
-    515, 525, 535, 545, 555, 565, 575, 585, 595, 605, 615, 625
-  ],
-  LevelSuperHards: [
-    20, 31, 55, 75, 89, 100, 110, 130, 145, 160, 170, 185, 200, 210, 220, 230, 240, 250, 260, 270,
-    280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460,
-    470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630
-  ]
+  BoosterUnlockedLevel: [7, 12, 16, 19, 0],
+  LevelHards: generatedDiff.LevelHards,
+  LevelSuperHards: generatedDiff.LevelSuperHards
 };
 
 const levelHardsSet = new Set(LOCAL_LEVEL_CONFIG.LevelHards);
 const levelSuperHardsSet = new Set(LOCAL_LEVEL_CONFIG.LevelSuperHards);
 
 /**
- * Tính toán độ khó dựa vào số Level (chuẩn theo logic RunTimeData.cs trong Unity).
+ * Tính toán độ khó cho bất kỳ Level nào (áp dụng thống nhất cho toàn bộ app).
  * @param {number|string} levelNum 
  * @returns {'normal' | 'hard' | 'super_hard'}
  */
@@ -34,32 +48,23 @@ export function getLevelDifficulty(levelNum) {
   const lv = parseInt(levelNum, 10);
   if (isNaN(lv) || lv <= 0) return 'normal';
 
-  if (lv <= LOCAL_LEVEL_CONFIG.totalLevel) {
-    if (levelHardsSet.has(lv)) return 'hard';
-    if (levelSuperHardsSet.has(lv)) return 'super_hard';
-    return 'normal';
-  } else {
-    // Logic fallback cho các level vượt quá totalLevel (RunTimeData._gameDifficultyByLv)
+  if (levelSuperHardsSet.has(lv)) return 'super_hard';
+  if (levelHardsSet.has(lv)) return 'hard';
+
+  // Fallback nếu vượt quá 600:
+  if (lv > 600) {
     if (lv % 10 === 0) return 'super_hard';
-    if (lv % 10 === 3 || lv % 10 === 6) return 'hard';
-    return 'normal';
+    if (lv % 10 === 4 || lv % 10 === 7) return 'hard';
   }
+
+  return 'normal';
 }
 
 /**
- * Tính toán độ khó theo Ma Trận Đề Xuất Mới (Proposed Level Design):
- * - Level đuôi 0 (10, 20, 30...) = 'super_hard' (💀 Siêu Khó - Decade Climax)
- * - Level đuôi 5 (5, 15, 25, 35...) = 'hard' (🔥 Khó - Mid-Decade Spike / Test)
- * - Các level khác = 'normal'
- * @param {number|string} levelNum 
- * @returns {'normal' | 'hard' | 'super_hard'}
+ * Alias lấy độ khó theo Ma Trận Đề Xuất Mới (đồng bộ chuẩn hóa)
  */
 export function getProposedLevelDifficulty(levelNum) {
-  const lv = parseInt(levelNum, 10);
-  if (isNaN(lv) || lv <= 0) return 'normal';
-  if (lv % 10 === 0) return 'super_hard';
-  if (lv % 10 === 5) return 'hard';
-  return 'normal';
+  return getLevelDifficulty(levelNum);
 }
 
 /**
@@ -95,4 +100,3 @@ export function getDifficultyMeta(difficulty) {
       };
   }
 }
-
