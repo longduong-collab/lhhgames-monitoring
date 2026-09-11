@@ -112,7 +112,7 @@ export const MECHANIC_DEFINITIONS = {
       iconPath: './assets/mechanics/shooter_bomb.png',
       category: 'SECONDARY',
       desc: 'ShooterBomb (Xe bom nổ phá huỷ block xung quanh)',
-      tutLevel: 92,
+      tutLevel: 91,
       order: 8,
     },
     long_key: {
@@ -475,12 +475,12 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
       'Chế độ khẩn cấp (Emergency Protocol): tìm đường tiếp cận và giải nổ bom trước khi hết lượt.',
     behaviorChange:
       'Hành vi E (Ưu tiên khẩn cấp): Đảo lộn hoàn toàn thứ tự ưu tiên: từ thong thả sang tập trung tuyệt đối vào quả bom.',
-    teachLevel: 92,
-    practiceLevels: [93, 94, 95],
-    testLevel: 98,
-    combineStartLevel: 100,
+    teachLevel: 91,
+    practiceLevels: [92, 93, 94],
+    testLevel: 95,
+    combineStartLevel: 98,
     pacingNote:
-      'Dạy tại L92 (gap 16 level sau Hard Block) -> Practice 93-95 -> Test 98. Climax kết hợp Bomb tại Mega PEAK L100.',
+      'Dạy tại L91 (Teach Shooter Bomb) -> Practice 92-94 -> Test Hard L95 -> Combine L98+.',
     riskMitigation: 'Tạo khoảng cách xa để tạo hiệu ứng Wow bất ngờ cho Emergency Protocol.',
   },
   {
@@ -587,7 +587,7 @@ export const PROPOSED_MECHANIC_BLUEPRINT = [
  * - Sau level 150: Đuôi 4 và 7 là Hard, đuôi 0 là Super Hard (L200, L250, L300... là PEAK).
  */
 export function getProposedLevelDifficultyInfo(levelNum) {
-  const teachLevels = [8, 14, 21, 31, 51, 63, 76, 92, 108, 124, 141, 163, 201];
+  const teachLevels = [8, 14, 21, 31, 51, 63, 76, 91, 108, 124, 141, 163, 201];
 
   if (levelNum <= 150) {
     if (levelNum % 50 === 0) {
@@ -1463,7 +1463,7 @@ export class MechanicMapRenderer {
       else if (lvl === 76)
         tag =
           '<span class="mmap-tag tag-tier2" title="Teach Hard Block (2x2/3x3)">🧱 HardBlk</span>';
-      else if (lvl === 92)
+      else if (lvl === 91)
         tag =
           '<span class="mmap-tag tag-bomb" title="Teach Bomb Truck (Emergency Protocol)">💣 Bomb</span>';
       else if (lvl === 108)
@@ -1971,7 +1971,7 @@ export class MechanicMapRenderer {
           iconPath: './assets/mechanics/shooter_key_truck.png',
           category: 'SECONDARY',
           desc: 'Key Hunt: Khối Chìa Khóa (BlockKey 5) & Xe Ổ Khóa (ShooterLock 1)',
-          tutLevel: 120,
+          tutLevel: 163,
           order: 12,
           groupType: 'paired',
         };
@@ -2295,8 +2295,8 @@ export class MechanicMapRenderer {
         else if (levelNum === 70) milestoneTag = '💀 Super Hard L70 (Mystery Climax)';
         else if (levelNum === 76) milestoneTag = '🧱 Hard Block Debut (Multi-hit 2x2/3x3 Teach)';
         else if (levelNum === 80) milestoneTag = '💀 Super Hard L80 (Hard Block Climax — 3x3 Test)';
-        else if (levelNum === 92) milestoneTag = '💣 Bomb Protocol Debut (Emergency Teach)';
-        else if (levelNum === 98) milestoneTag = '🔥 Hard Level L98 (Bomb Test)';
+        else if (levelNum === 91) milestoneTag = '💣 Bomb Protocol Debut (Emergency Teach)';
+        else if (levelNum === 95) milestoneTag = '🔥 Hard Level L95 (Bomb Test)';
         else if (levelNum === 100) milestoneTag = '💀 Super Hard L100 CLIMAX (Pipe + Bomb)';
         else if (levelNum === 108) milestoneTag = '🗝️ Long Key Debut (Dependency Chain)';
         else if (levelNum === 113)

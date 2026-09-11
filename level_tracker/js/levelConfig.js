@@ -30,7 +30,7 @@ const generatedDiff = generateStandardDifficultyMap(600);
 export const LOCAL_LEVEL_CONFIG = {
   name: 'Default',
   totalLevel: 600,
-  MechanicUnlockedLevel: [8, 14, 76, 163, 21, 63, 51, 124, 108, 31, 201, 141, 92, -1],
+  MechanicUnlockedLevel: [8, 14, 76, 163, 21, 63, 51, 124, 108, 31, 201, 141, 91, -1],
   BoosterUnlockedLevel: [7, 12, 16, 19, 0],
   LevelHards: generatedDiff.LevelHards,
   LevelSuperHards: generatedDiff.LevelSuperHards

@@ -86,7 +86,7 @@ L101 - L200+     Veteran Progression: Advanced Mechanics (Long Key, Pipe, Curtai
 | **TIER 2 SECONDARY**| 5. Solid Wood Parcel | Block | 🛡️ | Level 51 | **Hành vi D (Định tuyến không gian):** Tường gỗ chặn đạn, ép bắn vòng hông |
 | **TIER 2 SECONDARY**| 6. Mystery Parcel | Block | ❓ | Level 63 | **Hành vi A' (Suy đoán & Mở lõi):** Ẩn màu pixel bên trong, mở biên để lật |
 | **TIER 2 SECONDARY**| 7. Hard Parcel Block | Block | 🧱 | Level 76 | **Hành vi C' (Dồn đạn tích trữ):** Khối bưu kiện 2x2, 3x3 nhiều máu |
-| **TIER 2 SECONDARY**| 8. Shooter Bomb | Shooter | 💣 | Level 92 | **Hành vi E (Khẩn cấp Protocol):** Bom đếm ngược lượt bắn, ép xử lý ưu tiên |
+| **TIER 2 SECONDARY**| 8. Shooter Bomb | Shooter | 💣 | Level 91 | **Hành vi E (Khẩn cấp Protocol):** Bom đếm ngược lượt bắn, ép xử lý ưu tiên |
 | **TIER 2 SECONDARY**| 9. Long Key | Shooter | 🗝️ | Level 108 | **Hành vi E' (Chuỗi phụ thuộc):** Rút then cài giải phóng xe bị chặn |
 | **TIER 2 SECONDARY**| 10. Truck Pipe | Shooter | 🧪 | Level 124 | **Hành vi D' (Quản lý hàng đợi FIFO):** Cấp xe liên tục qua ống tiếp ứng |
 | **TIER 2 SECONDARY**| 11. Curtains | Shooter | 🎪 | Level 141 | **Hành vi A'' (Khám phá & Thư giãn thị giác):** Rèm che khuất tầm nhìn xe |
@@ -142,7 +142,7 @@ L31: ❄️ 4. Frozen Truck (Teach) ➔ L32-34 (Practice) ➔ L35 (Test Hard) �
 L51: 🛡️ 5. Solid Wood Parcel (Teach) ➔ L52-54 (Practice) ➔ L55 (Test Hard) ➔ L58+ (Combine)
 L63: ❓ 6. Mystery Parcel (Teach) ➔ L64-66 (Practice) ➔ L68 (Test Hard) ➔ L70+ (Combine Climax)
 L76: 🧱 7. Hard Parcel Block (Teach) ➔ L77-79 (Practice) ➔ L80 (Test SuperHard) ➔ L84+ (Combine)
-L92: 💣 8. Shooter Bomb (Teach) ➔ L93-95 (Practice) ➔ L98 (Test Hard) ➔ L100+ (Combine PEAK L100)
+L91: 💣 8. Shooter Bomb (Teach) ➔ L92-94 (Practice) ➔ L95 (Test Hard) ➔ L98+ (Combine)
 L108:🗝️ 9. Long Key (Teach) ➔ L109-112 (Practice) ➔ L113 (Test Hard) ➔ L114+ (Combine)
 L124:🧪 10. Truck Pipe (Teach) ➔ L125-127 (Practice) ➔ L128 (Test Hard) ➔ L130+ (Combine)
 L141:🎪 11. Curtains (Teach) ➔ L142-143 (Practice) ➔ L144 (Test Hard) ➔ L146+ (Combine PEAK L150)
@@ -198,7 +198,7 @@ L201:🚇 13. Truck Tunnel (Teach Endgame) ➔ L202-204 (Practice) ➔ L205 (Tes
 - **Chiến lược Retention:** Rèn luyện kỹ năng dồn tài nguyên đạn trước khi bước vào cơ chế áp lực thời gian Bomb.
 
 #### 8. Shooter Bomb (💣 Xe Bom Khẩn Cấp) — Tier 2 Secondary
-- **Teach:** Level 92 | **Practice:** Level 93, 94, 95 | **Test:** Level 98 (Hard) | **Combine Start:** Level 100
+- **Teach:** Level 91 | **Practice:** Level 92, 93, 94 | **Test:** Level 95 (Hard) | **Combine Start:** Level 98
 - **Ý đồ thiết kế (Intent):** Chế độ khẩn cấp (Emergency Protocol): Tìm đường tiếp cận và giải nổ quả bom trước khi hết số lượt bắn.
 - **Biến đổi hành vi (Behavioral Change):** Đảo lộn hoàn toàn thứ tự ưu tiên: Chuyển từ thong thả sang tập trung tuyệt đối vào quả bom.
 - **Chiến lược Retention:** Tạo cao trào kịch tính cho cột mốc **PEAK L100 CLIMAX** (kết hợp Bomb + Pipe).
@@ -271,7 +271,7 @@ Dạy Truck Pipe (L101) và Truck Tunnel (L150) quá gần nhau khi cả hai đ�
 | **5. Solid Wood Parcel** | Secondary | L41 | **L51** | **T:** L51 ➔ **P:** 52-54 ➔ **Tst:** 55 ➔ **C:** 58+ | **Đặt đúng Milestone:** Đổi mới tư duy định tuyến không gian mở màn Act 2. |
 | **6. Mystery Parcel** | Secondary | L50 | **L63** | **T:** L63 ➔ **P:** 64-66 ➔ **Tst:** 68 ➔ **C:** 70+ | **Giãn cách:** Tránh đụng độ nhận thức với Wood Wall L51. |
 | **7. Hard Parcel Block**| Secondary | L30 | **L76** | **T:** L76 ➔ **P:** 77-79 ➔ **Tst:** 80 ➔ **C:** 84+ | **Tăng tải chuẩn:** Đặt trước Bomb để rèn kỹ năng dồn tài nguyên đạn. |
-| **8. Shooter Bomb** | Secondary | L70 | **L92** | **T:** L92 ➔ **P:** 93-95 ➔ **Tst:** 98 ➔ **C:** 100+ | **Khẩn cấp Climax:** Dời về L92 để phục vụ màn Climax PEAK L100. |
+| **8. Shooter Bomb** | Secondary | L70 | **L91** | **T:** L91 ➔ **P:** 92-94 ➔ **Tst:** 95 ➔ **C:** 98+ | **Khẩn cấp Climax:** Dạy L91, Test Hard L95, Combine L98+. |
 | **9. Long Key** | Secondary | L80 | **L108** | **T:** L108 ➔ **P:** 109-112 ➔ **Tst:** 113 ➔ **C:** 114+ | **Phá nhịp Mid-game:** Phá chu kỳ .5 ở L113 cho người chơi Veteran. |
 | **10. Truck Pipe** | Secondary | L101 | **L124** | **T:** L124 ➔ **P:** 125-127 ➔ **Tst:** 128 ➔ **C:** 130+ | **Tạo khoảng thở:** Thở ở L120 ➔ Dạy L124 ➔ Climax SH L135. |
 | **11. Curtains** | Secondary | L90 | **L141** | **T:** L141 ➔ **P:** 142-143 ➔ **Tst:** 144 ➔ **C:** 146+ | **Visual Relief:** Đổi gió thị giác trước màn Mega PEAK L150. |
